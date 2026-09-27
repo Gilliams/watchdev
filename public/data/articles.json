@@ -1,30 +1,40 @@
 {
- "generatedAt": "2026-09-27T15:38:13.325Z",
+ "generatedAt": "2026-09-27T20:07:05.656Z",
  "articles": [
   {
-   "title": "Our free-licence script reuses your token, because the token is not ours to regenerate",
-   "link": "https://dev.to/daniel_pertu/our-free-licence-script-reuses-your-token-because-the-token-is-not-ours-to-regenerate-17kg",
-   "date": "2026-09-27T15:34:25.000Z",
+   "title": "A new server gets its first unsolicited packet in 3.77 seconds",
+   "link": "https://dev.to/remdore/a-new-server-gets-its-first-unsolicited-packet-in-377-seconds-4cco",
+   "date": "2026-09-27T19:49:20.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Notifio is a one-time purchase: you pay once at notifio.app/pricing, you get an activation token, and the licence never expires. There is an optional paid upgrade on top that unlocks the auto-reply feature. Sometimes a l",
+   "summary": "I rented a $6 server, gave it a fresh IPv4 address nobody had used before, and started a stopwatch. The first unsolicited packet arrived 3.77 seconds after the listener came up. It was a TLS ClientHello aimed at port 844",
    "image": null
   },
   {
-   "title": "Preview Environments Per Pull Request: How to Seed Them Without Cloning Production",
-   "link": "https://dev.to/libme/preview-environments-per-pull-request-how-to-seed-them-without-cloning-production-1f08",
-   "date": "2026-09-27T15:29:30.000Z",
+   "title": "617 downloads in a day — dep-inspector-cli v2.2.1 is live, and 2.3.0 is cooking",
+   "link": "https://dev.to/nevin100/617-downloads-in-a-day-dep-inspector-cli-v221-is-live-and-230-is-cooking-2a4",
+   "date": "2026-09-27T19:43:57.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Spinning up a preview deploy per pull request is the easy half — every modern host does it with a config flag. The hard half is the database: a shared staging database turns previews into a queue of people breaking each ",
-   "image": null
+   "summary": "Yesterday I mentioned 250 downloads on X when I launched stable v2.2.1 of my npm package. Today I opened npm and saw 617 weekly downloads. 🤯🤯🤯 each still pulling 140+ downloads in the last 7 days. That's not people tr",
+   "image": "https://assets.dev.to/assets/github-logo-5a155e1f9a670af7944dd5e12375bc76ed542ea80224905ecaf878b9157cdefc.svg"
+  },
+  {
+   "title": "Cron jobs: the tiny line that runs half your backend",
+   "link": "https://dev.to/4thwithme/cron-jobs-the-tiny-line-that-runs-half-your-backend-3o8a",
+   "date": "2026-09-27T19:36:51.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Every backend has a few jobs nobody looks at. The nightly backup. The 9 AM report. The script that deletes old files. Each one is a single line of cron. They work fine for months. Then one day you find out the backup has",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fmjbkm8xcsv9wcxg5b8n3.png"
   },
   {
    "title": "How to Secure Your Linux Server in 10 Steps",
-   "link": "https://dev.to/qingluan/how-to-secure-your-linux-server-in-10-steps-1plk",
-   "date": "2026-09-27T15:20:57.000Z",
+   "link": "https://dev.to/qingluan/how-to-secure-your-linux-server-in-10-steps-4bja",
+   "date": "2026-09-27T19:26:09.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
@@ -32,53 +42,63 @@
    "image": null
   },
   {
-   "title": "Day 3: A 6 GB Laptop vs. a 12-Page Tender (What Real-World AI Triage Looks Like in Production)",
-   "link": "https://dev.to/donbasi1io/day-3-a-6-gb-laptop-vs-a-12-page-tender-what-real-world-ai-triage-looks-like-in-production-4n1i",
-   "date": "2026-09-27T15:00:04.000Z",
+   "title": "Top 5 Quick Steps To Buy Verified PayPal Accounts in Bulk",
+   "link": "https://dev.to/gesep95508/top-5-quick-steps-to-buy-verified-paypal-accounts-in-bulk-18nc",
+   "date": "2026-09-27T19:23:52.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Day 3: A 6 GB Laptop vs. a 12-Page Tender Part 3 of the series The $0 HomeServer AI Chronicles. (Previous: Part 1: From Laptop to Sentinel | Part 2: The Telegram Bridge in Pure Go) At 07:43 on a freezing Baltic morning, ",
+   "summary": "Buy Verified PayPal Accounts https://usaitemstore.com/product/buy-verified-paypal-accounts/ ➥ Please Contact me : usaitemstore@gmail.com Nevertheless, although PayPal accounts have become necessary to many, verified acco",
    "image": null
   },
   {
-   "title": "We rebuilt CoinMarketCap-style markets pages on free data — here's the stack",
-   "link": "https://dev.to/verixia_233e4721792ce3390/we-rebuilt-coinmarketcap-style-markets-pages-on-free-data-heres-the-stack-2mpi",
-   "date": "2026-09-27T14:50:02.000Z",
+   "title": "How Can I Find a Trusted Source to Buy Verified Cash App Accounts?",
+   "link": "https://dev.to/gesep95508/how-can-i-find-a-trusted-source-to-buy-verified-cash-app-accounts-4ce2",
+   "date": "2026-09-27T19:22:05.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Every crypto team's landing page eventually wants a markets table: price, 24h volume, liquidity, holders, per-chain breakdown. The usual answer is \"pay CoinGecko/CMC $300+/mo and pray the rate limit holds.\" We run a DEX,",
+   "summary": "Buy Verified Cash App Accounts https://usaitemstore.com/product/buy-verified-cash-app-accounts/ ➥ Please Contact me : usaitemstore@gmail.com Buy Verified Cash App Accounts Nonetheless, the mobile platform of Cash App is ",
    "image": null
   },
   {
-   "title": "How to Technically Vet an Agency Before Your Founder Signs",
-   "link": "https://dev.to/jam-techcirkle/how-to-technically-vet-an-agency-before-your-founder-signs-4jb3",
-   "date": "2026-09-27T14:42:22.000Z",
+   "title": "API Docs Platforms in 2026: What Removing the Vendor Logo Actually Costs",
+   "link": "https://dev.to/moksh/api-docs-platforms-in-2026-what-removing-the-vendor-logo-actually-costs-1hgj",
+   "date": "2026-09-27T19:19:03.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "You are the first technical hire, or the fractional CTO, or just the person in the company who has shipped something before. A founder hands you three agency proposals and asks which one. The proposals are marketing docu",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fvsnrxebnssd8j2lhnb4k.jpg"
+   "summary": "Most API teams stopped hand-writing their reference docs years ago. Point a tool at an OpenAPI file and it renders the endpoint list, the schemas and a try-it console for you, which is exactly why it's strange that Postm",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkbwt47ozff5aswbcwui6.webp"
   },
   {
-   "title": "Before you pick a hosted agent runtime, check what happens at idle",
-   "link": "https://dev.to/mishabuildingai/before-you-pick-a-hosted-agent-runtime-check-what-happens-at-idle-4lj7",
-   "date": "2026-09-27T14:05:52.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Disclosure: I work on Gobare, one of the three runtimes below. To keep that from mattering, I quote the other two instead of describing them, and there is a section on where each of us loses, Gobare included. All quotes ",
-   "image": null
+   "title": "Vibhor Kumar: What “AI-Ready” Actually Means",
+   "link": "https://postgr.es/p/9vM",
+   "date": "2026-09-27T18:49:09.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "The phrase now appears on almost every technology vendor’s website. That’s exactly why it has stopped meaning much. A database is called AI-ready because it supports vectors. A cloud platform is AI-ready because it offer",
+   "image": "https://vibhorkumar.wordpress.com/wp-content/uploads/2026/09/image-2.png?w=1024"
   },
   {
-   "title": "7 Best Code Review Tools for 2026",
-   "link": "https://dev.to/alexcybersmith/7-best-code-review-tools-for-2026-1a96",
-   "date": "2026-09-27T14:03:06.000Z",
+   "title": "Connecting Cloudflare Is Not Enough: How to Actually Get an A+ on SSL Labs",
+   "link": "https://dev.to/cyborgmachine/connecting-cloudflare-is-not-enough-how-to-actually-get-an-a-on-ssl-labs-bji",
+   "date": "2026-09-27T18:46:24.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Code review tools are changing quickly. Traditional static analysis still matters, but development teams now also need help reviewing larger pull requests, AI-generated code, cross-file changes, security issues, and orga",
+   "summary": "If you've just added your site to Cloudflare, you might assume your TLS configuration is solid. You'd be wrong. By default, Cloudflare sets your minimum TLS version to 1.0 — a protocol from 1999 that has known vulnerabil",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fnk4stkt2p1kqze2qzg44.webp"
+  },
+  {
+   "title": "HOOK_DEV_ALTER(): PHP Structured Concurrency and Beyond (4): call for backers",
+   "link": "https://www.hook-dev-alter.com/en/articles/php-structured-concurrency-and-beyond-4-call-backers",
+   "date": "2026-09-27T15:00:00.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "The prototype works. Taking it to production quality is more than evenings. Whether it should is a question, not a pitch. One thing before the rest. I am not pushing this. The series is a question to the world: is this w",
    "image": null
   },
   {
@@ -98,7 +118,7 @@
    "theme": "securite",
    "themeName": "Sécurité / Hack",
    "source": "The Hacker News",
-   "summary": "Two new unpatched zero-day vulnerabilities in Citrix NetScaler ADC and NetScaler Gateway appliances that allow remote code execution are being actively exploited in the wild, security firm watchTowr said on September 26.",
+   "summary": "Two critical vulnerabilities in Citrix NetScaler ADC and NetScaler Gateway that allow remote code execution have been exploited in the wild, Citrix confirmed on September 27. It released fixes for both, along with six ot",
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrnnWi_EE_zogEngdPWZDYXQTXqcArqvXtXYDj7_yLDzfVamEw9Nx7taRyM1SQf8-78qtxnt3nhNzcn36WnzYwZvFDQNvglCilw0Ltb4NjVkjjC8GH2nOUTnxIBPvRn8JVPcXJaidmbU0A6z-1RiX_OKgcpkzvL6xV7aM_YpQj6XdYIfalQH3h6o3b7pQ/s1600/citrix-zero-day.jpg"
   },
   {
@@ -312,16 +332,6 @@
    "image": null
   },
   {
-   "title": "The Drop Times: Pantheon to Demo “Outside-In” Drupal AI With Gemini Enterprise in Rotterdam",
-   "link": "https://www.thedroptimes.com/72487/pantheon-outside-in-drupal-ai-gemini-enterprise?utm_source=Drupal Planet",
-   "date": "2026-09-25T12:04:36.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "What changes when Drupal becomes something an enterprise AI agent can act on, rather than the place where every user must work? Pantheon plans to show that model running end to end in Rotterdam.",
-   "image": null
-  },
-  {
    "title": "Andrew Atkinson: Let’s Get Down to Business with Rails and PostgreSQL",
    "link": "https://postgr.es/p/9vG",
    "date": "2026-09-25T10:40:00.000Z",
@@ -402,16 +412,6 @@
    "image": null
   },
   {
-   "title": "Cornelia Biacsics: What Development Looked Like at PGConf.dev 2026",
-   "link": "https://postgr.es/p/9vD",
-   "date": "2026-09-24T23:34:52.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "With PGConf.dev 2027 now on the horizon, I found myself thinking back to PGConf.dev 2026 and all the moments that stayed with me. From 19–22 May 2026, I attended PGConf.dev for the very first time in Vancouver, Canada. W",
-   "image": "https://cdn-images-1.medium.com/max/1024/1*sMCaQoiPZECI4G2B8ofdpw.png"
-  },
-  {
    "title": "Note on 24th September 2026",
    "link": "https://simonwillison.net/2026/Sep/24/harder/",
    "date": "2026-09-24T23:31:08.000Z",
@@ -452,16 +452,6 @@
    "image": null
   },
   {
-   "title": "PHP 8.4.26 Released!",
-   "link": "https://www.php.net/index.php#2026-09-24-5",
-   "date": "2026-09-24T15:26:06.000Z",
-   "theme": "php",
-   "themeName": "PHP",
-   "source": "PHP.net",
-   "summary": "The PHP development team announces the immediate availability of PHP 8.4.26. This is a security release. All PHP 8.4 users are encouraged to upgrade to this version. For source downloads of PHP 8.4.26 please visit our , ",
-   "image": null
-  },
-  {
    "title": "Healthy Feedback",
    "link": "https://martinfowler.com/articles/healthy-peer-feedback.html",
    "date": "2026-09-24T14:10:00.000Z",
@@ -479,16 +469,6 @@
    "themeName": "IA",
    "source": "Hugging Face",
    "summary": "",
-   "image": null
-  },
-  {
-   "title": "PHP 8.2.34 Released!",
-   "link": "https://www.php.net/index.php#2026-09-24-4",
-   "date": "2026-09-24T13:53:04.000Z",
-   "theme": "php",
-   "themeName": "PHP",
-   "source": "PHP.net",
-   "summary": "The PHP development team announces the immediate availability of PHP 8.2.34. This is a security release. All PHP 8.2 users are encouraged to upgrade to this version. For source downloads of PHP 8.2.34 please visit our , ",
    "image": null
   },
   {
@@ -932,6 +912,16 @@
    "image": null
   },
   {
+   "title": "PHPBenelux Conference 2027, Antwerp Belgium",
+   "link": "https://www.php.net/conferences/index.php#2026-09-09-1",
+   "date": "2026-09-09T20:40:47.000Z",
+   "theme": "php",
+   "themeName": "PHP",
+   "source": "PHP.net",
+   "summary": "PHPBenelux Conferencesubmit your proposal today!",
+   "image": null
+  },
+  {
    "title": "Social Media Engagement: summer 2026",
    "link": "https://martinfowler.com/articles/2026-social-traffic.html",
    "date": "2026-09-09T16:21:00.000Z",
@@ -989,6 +979,16 @@
    "themeName": "PHP",
    "source": "stitcher.io",
    "summary": "Read the full post on https://stitcher.io/blog/no-more-issues",
+   "image": null
+  },
+  {
+   "title": "PHP Conference Ehime 2026",
+   "link": "https://www.php.net/conferences/index.php#2026-09-02-1",
+   "date": "2026-09-02T14:30:00.000Z",
+   "theme": "php",
+   "themeName": "PHP",
+   "source": "PHP.net",
+   "summary": "PHP Conference Ehime will be held for the first time on October 3, 2026 (JST), at Ehime University Johoku Campus in Matsuyama City, Ehime Prefecture, Japan.🍊 The theme of the conference is \"技術愛とコミュニティ愛と愛媛愛と\": love for t",
    "image": null
   },
   {
