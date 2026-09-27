@@ -1,84 +1,114 @@
 {
- "generatedAt": "2026-09-27T01:22:57.041Z",
+ "generatedAt": "2026-09-27T10:31:32.529Z",
  "articles": [
   {
-   "title": "Contact Form Event Notifications — 4 Email and SMS API Controls",
-   "link": "https://dev.to/iversonblake8417/contact-form-event-notifications-4-email-and-sms-api-controls-3pa4",
-   "date": "2026-09-27T01:04:35.000Z",
+   "title": "A free, anonymous Snyk alternative for dependency scanning",
+   "link": "https://dev.to/rushabh5000/a-free-anonymous-snyk-alternative-for-dependency-scanning-1mc5",
+   "date": "2026-09-27T10:19:47.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Route the contact first, then send email or SMS from a worker that records four things: one stable event ID, the selected support queue, every send attempt, and the provider result. That boundary creates useful complianc",
+   "summary": "If you've shopped for Software Composition Analysis (SCA), you've hit the same wall: the good tools (Snyk, Black Duck, Mend, JFrog Xray) want an account, gate the useful parts behind a paywall, and upload your project to",
    "image": null
   },
   {
-   "title": "Your Agent Spent $78,000 Before You Woke Up",
-   "link": "https://dev.to/goodpa/your-agent-spent-78000-before-you-woke-up-32n5",
-   "date": "2026-09-27T01:01:52.000Z",
+   "title": "DevOps Outage Scenario: Docker Multi-Stage Builds & Secrets: Eliminating Leaked Credentials",
+   "link": "https://dev.to/intervixa_ai/devops-outage-scenario-docker-multi-stage-builds-secrets-eliminating-leaked-credentials-9og",
+   "date": "2026-09-27T10:11:49.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Your Agent Spent $78,000 Before You Woke Up This week an AI coding agent burned $78,000 in unauthorized spend. In the same short window, OpenAI bots reportedly meddled with multiple U.S. government websites, a misalignme",
+   "summary": "In technical interviews for Senior Cloud, DevOps, and SRE roles, trivial syntax questions are gone. Hiring managers want to see how you respond when production is down at 2 AM. Today, let's dissect a real-world productio",
    "image": null
   },
   {
-   "title": "I have the same boolean in 94 files. It is wrong in 90 of them.",
-   "link": "https://dev.to/frankchu/i-have-the-same-boolean-in-94-files-it-is-wrong-in-90-of-them-54dd",
-   "date": "2026-09-27T01:00:22.000Z",
+   "title": "Building a Go CLI Tool with Cobra and Configuration Management",
+   "link": "https://dev.to/ayinedjimi-consultants/building-a-go-cli-tool-with-cobra-and-configuration-management-13km",
+   "date": "2026-09-27T10:02:34.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "I was reconciling my blog archive against the API and printed a cross-tab I expected to be boring: files in published/ : 94 front matter published:true : 0 front matter published:false: 94 actually live on dev.to : 90 Ze",
+   "summary": "Most Go CLI tools start as a single main.go with a handful of flag.Parse() calls. That works fine until you need subcommands, config file support, environment variable overrides, and sensible defaults. Cobbling that toge",
    "image": null
   },
   {
-   "title": "MyZubster Engineering Dev Log",
-   "link": "https://dev.to/danielioni/myzubster-engineering-dev-log-2ai2",
-   "date": "2026-09-27T00:52:31.000Z",
+   "title": "SvelteKit environment variables: the destructuring build error, and why static private bakes in secrets",
+   "link": "https://dev.to/verdantstack/sveltekit-environment-variables-the-destructuring-build-error-and-why-static-private-bakes-in-1e1a",
+   "date": "2026-09-27T10:00:26.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "MyZubster Engineering Dev Log Sepolia E2E Infrastructure, Google OAuth Validation, Runtime Stabilization and the Road Toward a Production-Grade Platform Over the last development cycle, we focused on one of the least vis",
+   "summary": "SvelteKit cannot destructure $env/dynamic/private. Here is the fix. There is a line of code that a lot of SvelteKit developers write once, get an error for, and then never think about again: import { DATABASE_URL } from ",
    "image": null
   },
   {
-   "title": "CI said the deploy succeeded",
-   "link": "https://dev.to/b0gy/ci-said-the-deploy-succeeded-42fo",
-   "date": "2026-09-27T00:49:41.000Z",
+   "title": "containerd 2.2's mount manager panics on a one-mount mkfs chain",
+   "link": "https://dev.to/alexgeorgiev17/containerd-22s-mount-manager-panics-on-a-one-mount-mkfs-chain-545n",
+   "date": "2026-09-27T10:00:00.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "There is a moment in every incident where someone asks \"wait, is the fix even deployed?\" and the room goes quiet. Somebody pulls up the CI dashboard. The pipeline is green. The deploy step says success. Everyone relaxes.",
+   "summary": "containerd 2.2 shipped a mount manager: a service that can format a file as ext4 or xfs, attach it as a loopback device, and hand the result to a runtime, all from a single Activate call instead of the usual truncate, mk",
    "image": null
   },
   {
-   "title": "Realm Exit — 3 Surgical DNS Records Before Deleting a Shared Zone",
-   "link": "https://dev.to/paswkeria/realm-exit-3-surgical-dns-records-before-deleting-a-shared-zone-1bc4",
-   "date": "2026-09-27T00:38:21.000Z",
+   "title": "Top 17 Best Sites To Buy Nextdoor Account Safely (Aged & …",
+   "link": "https://dev.to/usasvcit4ts/top-17-best-sites-to-buy-nextdoor-account-safely-aged--1h7n",
+   "date": "2026-09-27T09:43:53.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "A game realm can disappear while its DNS zone still serves launchers, status pages, email policy, and player-created names. That operational constraint changes the answer: remove the records owned by the retiring realm f",
+   "summary": "Top 17 Best Sites To Buy Nextdoor Account Safely (Aged & … 24 hours response/(Contact US) ➤ WhatsApp: +1 (903) 702-9701 ➤ Telegram: @usasvcit ➤ Email: usasvcit@gmail.com Define Your Local Information Needs Begin by ident",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fej2a5py1m72pxir4nsar.jpg"
+  },
+  {
+   "title": "Debugando um incidente real - métricas, logs e traces juntos na prática",
+   "link": "https://dev.to/apsis-cc/debugando-um-incidente-real-metricas-logs-e-traces-juntos-na-pratica-4978",
+   "date": "2026-09-27T09:30:45.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "1. Retomando: chegou a hora de usar a stack de verdade Ao longo desta série, a stack cresceu peça por peça: métricas (artigos 2 e 3), logs (artigo 4), traces (artigo 5), tudo unificado em Docker Compose (artigo 6) e visu",
    "image": null
   },
   {
-   "title": "HTTP 200 Isn't Reliability When the Decision Is Wrong",
-   "link": "https://dev.to/ajaydevineni/http-200-isnt-reliability-when-the-decision-is-wrong-pe6",
-   "date": "2026-09-27T00:24:00.000Z",
+   "title": "Two quota alerts on the same 0.5 GB database, and the second one was not the table I expected",
+   "link": "https://dev.to/daniel_pertu/two-quota-alerts-on-the-same-05-gb-database-and-the-second-one-was-not-the-table-i-expected-gmo",
+   "date": "2026-09-27T09:22:13.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Uptime read 99.9%. Latency was fine. PagerDuty never made a sound. And for hours, an autonomous agent kept making bad decisions anyway. That's not a hypothetical it's the failure mode I built a talk around this week for ",
+   "summary": "Munchable's database holds a curated catalogue of packaged foods and the ingredient knowledge that turns a label into a verdict for a gut condition. You can see the output at munchable.app/conditions and a public slice o",
    "image": null
   },
   {
-   "title": "Instrumenting Legacy Code Without Rewriting It",
-   "link": "https://dev.to/samson_tanimawo/instrumenting-legacy-code-without-rewriting-it-806",
-   "date": "2026-09-27T00:04:46.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "You inherit a 12-year-old service with no observability. You can't rewrite it. You need to make it debuggable. Here's how I've done it three times. Layer 1: Black-box. Everything you can observe without touching the code",
+   "title": "A Week of Symfony #1030 (September 21–27, 2026)",
+   "link": "https://symfony.com/blog/a-week-of-symfony-1030-september-21-27-2026?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
+   "date": "2026-09-27T07:51:00.000Z",
+   "theme": "symfony",
+   "themeName": "Symfony",
+   "source": "Symfony Blog",
+   "summary": "This week, Symfony continued unveiling new Symfony 8.2 features, including new Messenger options and better performance, role hierarchy improvements, JSON Schema for configuration, and new Mailer features. In addition, S",
+   "image": null
+  },
+  {
+   "title": "Warning: Two Unpatched Citrix NetScaler RCE Zero-Days Under Active Exploitation",
+   "link": "https://thehackernews.com/2026/09/warning-two-unpatched-citrix-netscaler.html",
+   "date": "2026-09-27T07:47:57.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "Two new unpatched zero-day vulnerabilities in Citrix NetScaler ADC and NetScaler Gateway appliances that allow remote code execution are being actively exploited in the wild, security firm watchTowr said on September 26.",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrnnWi_EE_zogEngdPWZDYXQTXqcArqvXtXYDj7_yLDzfVamEw9Nx7taRyM1SQf8-78qtxnt3nhNzcn36WnzYwZvFDQNvglCilw0Ltb4NjVkjjC8GH2nOUTnxIBPvRn8JVPcXJaidmbU0A6z-1RiX_OKgcpkzvL6xV7aM_YpQj6XdYIfalQH3h6o3b7pQ/s1600/citrix-zero-day.jpg"
+  },
+  {
+   "title": "Christophe Pettus: All Your GUCs in a Row: max_standby_archive_delay and max_standby_streaming_delay",
+   "link": "https://postgr.es/p/9vK",
+   "date": "2026-09-27T01:00:00.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "`max_standby_streaming_delay` buys you replication lag, not query time—and when the budget runs out, queries get canceled regardless of how long they've…",
    "image": null
   },
   {
@@ -88,7 +118,7 @@
    "theme": "ia",
    "themeName": "IA",
    "source": "Simon Willison",
-   "summary": "Tool: Kākāpō Party I gave presented a closing keynote for the WeAreDevelopers World Congress North America yesterday. As a STAR moment I decided to weave in references to the record breaking kākāpō breeding season we had",
+   "summary": "Tool: Kākāpō Party I presented a closing keynote for the WeAreDevelopers World Congress North America yesterday. As a STAR moment I decided to weave in references to the record breaking kākāpō breeding season we had in 2",
    "image": null
   },
   {
@@ -260,16 +290,6 @@
    "source": "Planet PostgreSQL",
    "summary": "What a 4 TiB Azure Disk Taught Us about Slow Reads One of our customers spent most of a week tuning PostgreSQL to fix slow reads. They worked through shared_buffers, effective_cache_size, work_mem, and the rest of the ch",
    "image": null
-  },
-  {
-   "title": "PamStealer macOS Malware Adds Live C2 Payload Decryption and Multi-Layer Persistence",
-   "link": "https://thehackernews.com/2026/09/pamstealer-macos-malware-adds-live-c2.html",
-   "date": "2026-09-25T13:18:06.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "Cybersecurity researchers have flagged a new version of PamStealer that ensures that the main payload can only be recovered using a server-side decryption chain. The latest artifacts, per Jamf Threat Labs, continue to re",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRZ3gQjU3cKnH6bHzlz8PjeaUqGcrVWnRx-bT-mgDBYv-G4CM2Iix8afTJe8sAXEghuPTiD5KszOYzA0peRhyoGKNW9YE1QtwLubBFuv9YZjXnANEGyMGwi7-oEdIqmtRBWPzUZV7S91WiUX4cI2YVMHVSQbByCmIwAX9oZxvzjb2ScVJmpmMCzpDKaKtN/s1600/macos.jpg"
   },
   {
    "title": "Dmitry Narizhnykh: How to Inspect a pg_dump Without Restoring It",
@@ -522,16 +542,6 @@
    "image": "https://connect.symfony.com/profile/Orkin.picture"
   },
   {
-   "title": "Christophe Pettus: All Your GUCs in a Row: max_prepared_transactions",
-   "link": "https://postgr.es/p/9vC",
-   "date": "2026-09-24T01:00:00.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "Prepared transactions are orphaned sessions that hold locks and block vacuum indefinitely.",
-   "image": null
-  },
-  {
    "title": "Eloquent Refreshes: Load Generated Columns After Save",
    "link": "https://laravel-news.com/eloquent-refreshes-attribute?utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed%3A+laravelnews",
    "date": "2026-09-23T23:29:37.000Z",
@@ -640,16 +650,6 @@
    "source": "Symfony Blog",
    "summary": "Connect, learn, and grow with the international Symfony ecosystem! SymfonyCon Warsaw 2026 lands in Poland on November 26-27. Expect two full days of high-value talks across 3 tracks, paired with vibrant community side-ev",
    "image": "https://symfony.com/uploads/assets/blog/NL-BLOG-Banner.png"
-  },
-  {
-   "title": "New in Symfony 8.2: Role Hierarchy Wildcards and Debugging",
-   "link": "https://symfony.com/blog/new-in-symfony-8-2-role-hierarchy-wildcards-and-debugging?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
-   "date": "2026-09-22T07:44:00.000Z",
-   "theme": "symfony",
-   "themeName": "Symfony",
-   "source": "Symfony Blog",
-   "summary": "The role hierarchy lets you define which roles are included in other roles, so you don't have to assign all of them to each user. In applications with many roles, this configuration grows quickly and it's hard to tell wh",
-   "image": "https://connect.symfony.com/profile/squrious.picture"
   },
   {
    "title": "How UK AISI and EvalEval Are Making Benchmark Results Reproducible",
