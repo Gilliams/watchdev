@@ -1,84 +1,94 @@
 {
- "generatedAt": "2026-09-26T19:48:33.691Z",
+ "generatedAt": "2026-09-27T01:22:57.041Z",
  "articles": [
   {
-   "title": "Rewriting a million rows when the only acceptable diff is zero bytes",
-   "link": "https://dev.to/daniel_pertu/rewriting-a-million-rows-when-the-only-acceptable-diff-is-zero-bytes-8n2",
-   "date": "2026-09-26T19:15:52.000Z",
+   "title": "Contact Form Event Notifications — 4 Email and SMS API Controls",
+   "link": "https://dev.to/iversonblake8417/contact-form-event-notifications-4-email-and-sms-api-controls-3pa4",
+   "date": "2026-09-27T01:04:35.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Munchable's catalogue is a bit over a million product rows in a Postgres on a 0.5 GB quota. Space is the constraint that shapes almost everything about it, which is how I ended up measuring what was actually in the ingre",
+   "summary": "Route the contact first, then send email or SMS from a worker that records four things: one stable event ID, the selected support queue, every send attempt, and the provider result. That boundary creates useful complianc",
    "image": null
   },
   {
-   "title": "Atlassian Implements Rigid Cloud Configuration Limits: What It Means for Enterprise Jira Hygiene",
-   "link": "https://dev.to/isuvo/atlassian-implements-rigid-cloud-configuration-limits-what-it-means-for-enterprise-jira-hygiene-5g95",
-   "date": "2026-09-26T19:15:02.000Z",
+   "title": "Your Agent Spent $78,000 Before You Woke Up",
+   "link": "https://dev.to/goodpa/your-agent-spent-78000-before-you-woke-up-32n5",
+   "date": "2026-09-27T01:01:52.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Introduction For years, enterprise Jira administrators have treated Atlassian’s \"scale limits\" and \"recommended guardrails\" as polite suggestions rather than hard boundaries. When an engineering team demanded a custom fi",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Flln3koryz4qc48c6tq8m.jpg"
-  },
-  {
-   "title": "Custom Software Development in 2026: How Enterprises Are Building AI-Powered Business Platforms",
-   "link": "https://dev.to/zakirs/custom-software-development-in-2026-how-enterprises-are-building-ai-powered-business-platforms-1c60",
-   "date": "2026-09-26T19:11:02.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Custom Software Development in 2026: How Enterprises Are Building AI-Powered Business Platforms Software development is changing faster than most businesses can adapt. For years, enterprises invested in traditional web a",
+   "summary": "Your Agent Spent $78,000 Before You Woke Up This week an AI coding agent burned $78,000 in unauthorized spend. In the same short window, OpenAI bots reportedly meddled with multiple U.S. government websites, a misalignme",
    "image": null
   },
   {
-   "title": "Enterprise AI Governance: The Missing Layer in AI-Accelerated Development",
-   "link": "https://dev.to/suresh_hatti_8f71201ead92/enterprise-ai-governance-the-missing-layer-in-ai-accelerated-development-2ogc",
-   "date": "2026-09-26T19:10:01.000Z",
+   "title": "I have the same boolean in 94 files. It is wrong in 90 of them.",
+   "link": "https://dev.to/frankchu/i-have-the-same-boolean-in-94-files-it-is-wrong-in-90-of-them-54dd",
+   "date": "2026-09-27T01:00:22.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "In the current AI world, Artificial Intelligence is changing how the products are built and software development is done. Engineering team use tools like Claude, ChatGPT, Copilot to code, write Unit Test cases, Understan",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fi0n1ngouv0dxjlt60bbx.png"
-  },
-  {
-   "title": "What Actually Happens When You Run kubectl apply",
-   "link": "https://dev.to/muskan_bandta/what-actually-happens-when-you-run-kubectl-apply-3c04",
-   "date": "2026-09-26T18:58:06.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "You type kubectl apply -f deployment.yaml, it says created, and a few seconds later your app is running. It feels like magic, and because it feels like magic, most people never learn what happens in between, which is exa",
+   "summary": "I was reconciling my blog archive against the API and printed a cross-tab I expected to be boring: files in published/ : 94 front matter published:true : 0 front matter published:false: 94 actually live on dev.to : 90 Ze",
    "image": null
   },
   {
-   "title": "Fix: kubectl exec fails with 'connection refused' — 5 real causes",
-   "link": "https://dev.to/aiunplugged/fix-kubectl-exec-fails-with-connection-refused-5-real-causes-1fim",
-   "date": "2026-09-26T18:56:13.000Z",
+   "title": "MyZubster Engineering Dev Log",
+   "link": "https://dev.to/danielioni/myzubster-engineering-dev-log-2ai2",
+   "date": "2026-09-27T00:52:31.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Trying to exec into a running pod and Kubernetes refuses: error: unable to upgrade connection: pod does not exist Or: Error from server: error dialing backend: dial tcp 10.42.0.7:10250: connect: connection refused The po",
+   "summary": "MyZubster Engineering Dev Log Sepolia E2E Infrastructure, Google OAuth Validation, Runtime Stabilization and the Road Toward a Production-Grade Platform Over the last development cycle, we focused on one of the least vis",
    "image": null
   },
   {
-   "title": "A nightly Postgres backup for $0, and the four things that break it",
-   "link": "https://dev.to/daniel_pertu/a-nightly-postgres-backup-for-0-and-the-four-things-that-break-it-gkp",
-   "date": "2026-09-26T18:43:37.000Z",
+   "title": "CI said the deploy succeeded",
+   "link": "https://dev.to/b0gy/ci-said-the-deploy-succeeded-42fo",
+   "date": "2026-09-27T00:49:41.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "CogniPrep's database is on Supabase's free plan, which provides no managed backups. For a product with paying customers that is not a state you can leave alone, and the paid tiers were not where the money needed to go ye",
+   "summary": "There is a moment in every incident where someone asks \"wait, is the fix even deployed?\" and the room goes quiet. Somebody pulls up the CI dashboard. The pipeline is green. The deploy step says success. Everyone relaxes.",
    "image": null
   },
   {
-   "title": "Marketplace DNS Change: 4 Resolver Checks When Old Caches Block Its Effect",
-   "link": "https://dev.to/jaxmonroe3187/marketplace-dns-change-4-resolver-checks-when-old-caches-block-its-effect-4i5k",
-   "date": "2026-09-26T18:32:42.000Z",
+   "title": "Realm Exit — 3 Surgical DNS Records Before Deleting a Shared Zone",
+   "link": "https://dev.to/paswkeria/realm-exit-3-surgical-dns-records-before-deleting-a-shared-zone-1bc4",
+   "date": "2026-09-27T00:38:21.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Lower the TTL before a marketplace subdomain cutover, not after it. If the old, long TTL was already cached when shop-42.example.com changed, lowering the authoritative value cannot shorten that existing cache entry. TL;",
+   "summary": "A game realm can disappear while its DNS zone still serves launchers, status pages, email policy, and player-created names. That operational constraint changes the answer: remove the records owned by the retiring realm f",
+   "image": null
+  },
+  {
+   "title": "HTTP 200 Isn't Reliability When the Decision Is Wrong",
+   "link": "https://dev.to/ajaydevineni/http-200-isnt-reliability-when-the-decision-is-wrong-pe6",
+   "date": "2026-09-27T00:24:00.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Uptime read 99.9%. Latency was fine. PagerDuty never made a sound. And for hours, an autonomous agent kept making bad decisions anyway. That's not a hypothetical it's the failure mode I built a talk around this week for ",
+   "image": null
+  },
+  {
+   "title": "Instrumenting Legacy Code Without Rewriting It",
+   "link": "https://dev.to/samson_tanimawo/instrumenting-legacy-code-without-rewriting-it-806",
+   "date": "2026-09-27T00:04:46.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "You inherit a 12-year-old service with no observability. You can't rewrite it. You need to make it debuggable. Here's how I've done it three times. Layer 1: Black-box. Everything you can observe without touching the code",
+   "image": null
+  },
+  {
+   "title": "Kākāpō Party",
+   "link": "https://simonwillison.net/2026/Sep/26/kakapo-party/",
+   "date": "2026-09-26T23:39:06.000Z",
+   "theme": "ia",
+   "themeName": "IA",
+   "source": "Simon Willison",
+   "summary": "Tool: Kākāpō Party I gave presented a closing keynote for the WeAreDevelopers World Congress North America yesterday. As a STAR moment I decided to weave in references to the record breaking kākāpō breeding season we had",
    "image": null
   },
   {
@@ -422,6 +432,16 @@
    "image": null
   },
   {
+   "title": "PHP 8.4.26 Released!",
+   "link": "https://www.php.net/index.php#2026-09-24-5",
+   "date": "2026-09-24T15:26:06.000Z",
+   "theme": "php",
+   "themeName": "PHP",
+   "source": "PHP.net",
+   "summary": "The PHP development team announces the immediate availability of PHP 8.4.26. This is a security release. All PHP 8.4 users are encouraged to upgrade to this version. For source downloads of PHP 8.4.26 please visit our , ",
+   "image": null
+  },
+  {
    "title": "Healthy Feedback",
    "link": "https://martinfowler.com/articles/healthy-peer-feedback.html",
    "date": "2026-09-24T14:10:00.000Z",
@@ -439,6 +459,16 @@
    "themeName": "IA",
    "source": "Hugging Face",
    "summary": "",
+   "image": null
+  },
+  {
+   "title": "PHP 8.2.34 Released!",
+   "link": "https://www.php.net/index.php#2026-09-24-4",
+   "date": "2026-09-24T13:53:04.000Z",
+   "theme": "php",
+   "themeName": "PHP",
+   "source": "PHP.net",
+   "summary": "The PHP development team announces the immediate availability of PHP 8.2.34. This is a security release. All PHP 8.2 users are encouraged to upgrade to this version. For source downloads of PHP 8.2.34 please visit our , ",
    "image": null
   },
   {
@@ -580,16 +610,6 @@
    "source": "Symfony Blog",
    "summary": "Symfony 7.4 added JSON schemas for YAML files like services.yaml and routes.yaml, so IDEs can autocomplete and validate them. The files in config/packages/ weren't included and that's where you write or maintain most of ",
    "image": "https://connect.symfony.com/profile/gromnan.picture"
-  },
-  {
-   "title": "SF October 14th: A Birds of a Feather Session on Agentic Engineering",
-   "link": "https://simonwillison.net/2026/Sep/23/bof-agentic-engineering/",
-   "date": "2026-09-23T02:53:19.000Z",
-   "theme": "ia",
-   "themeName": "IA",
-   "source": "Simon Willison",
-   "summary": "SF October 14th: A Birds of a Feather Session on Agentic Engineering I'm hosting an evening event with Jesse Vincent in San Francisco on Wednesday 14th October for people who are building weird and interesting things wit",
-   "image": null
   },
   {
    "title": "12 CSS features that can retire your dependencies",
@@ -912,16 +932,6 @@
    "image": null
   },
   {
-   "title": "PHPBenelux Conference 2027, Antwerp Belgium",
-   "link": "https://www.php.net/conferences/index.php#2026-09-09-1",
-   "date": "2026-09-09T20:40:47.000Z",
-   "theme": "php",
-   "themeName": "PHP",
-   "source": "PHP.net",
-   "summary": "PHPBenelux Conferencesubmit your proposal today!",
-   "image": null
-  },
-  {
    "title": "Social Media Engagement: summer 2026",
    "link": "https://martinfowler.com/articles/2026-social-traffic.html",
    "date": "2026-09-09T16:21:00.000Z",
@@ -979,16 +989,6 @@
    "themeName": "PHP",
    "source": "stitcher.io",
    "summary": "Read the full post on https://stitcher.io/blog/no-more-issues",
-   "image": null
-  },
-  {
-   "title": "PHP Conference Ehime 2026",
-   "link": "https://www.php.net/conferences/index.php#2026-09-02-1",
-   "date": "2026-09-02T14:30:00.000Z",
-   "theme": "php",
-   "themeName": "PHP",
-   "source": "PHP.net",
-   "summary": "PHP Conference Ehime will be held for the first time on October 3, 2026 (JST), at Ehime University Johoku Campus in Matsuyama City, Ehime Prefecture, Japan.🍊 The theme of the conference is \"技術愛とコミュニティ愛と愛媛愛と\": love for t",
    "image": null
   },
   {
