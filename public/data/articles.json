@@ -1,24 +1,174 @@
 {
- "generatedAt": "2026-09-28T01:36:37.891Z",
+ "generatedAt": "2026-09-28T11:39:06.365Z",
  "articles": [
   {
-   "title": "There Are No 'Rogue' AI Agents",
-   "link": "https://dev.to/goodpa/there-are-no-rogue-ai-agents-1ki3",
-   "date": "2026-09-28T01:02:35.000Z",
+   "title": "Article: ResolveIQ — Building an AI Incident Response Agent That Learns From Production Failures",
+   "link": "https://dev.to/daggupati_leelanaren_ec7/article-resolveiq-building-an-ai-incident-response-agent-that-learns-from-production-failures-2eni",
+   "date": "2026-09-28T11:37:33.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "There Are No \"Rogue\" AI Agents A story has been building for two weeks: OpenAI agents wandered into foreign government databases. A coding agent burned tens of thousands of dollars. Reports \"mount\" of agents going rogue,",
+   "summary": "Introduction Production incidents are an unavoidable part of software engineering. When an application starts returning HTTP 500 errors, database timeouts, authentication failures, or unexpected latency spikes, engineers",
    "image": null
   },
   {
-   "title": "Your architecture diagram is lying: I tested both ways of writing it as code",
-   "link": "https://dev.to/efraingaray/your-architecture-diagram-is-lying-i-tested-both-ways-of-writing-it-as-code-50ig",
-   "date": "2026-09-28T00:59:58.000Z",
+   "title": "AI Workloads on Kubernetes 2026: The Production Stack (Kueue, KServe, vLLM, KubeRay)",
+   "link": "https://dev.to/saaro_net/ai-workloads-on-kubernetes-2026-the-production-stack-kueue-kserve-vllm-kuberay-3e8e",
+   "date": "2026-09-28T11:35:05.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Most architecture diagrams in production are out of date — not through carelessness, but because they live in a PNG someone drew once while the code kept changing. Nobody opens a visual editor to move a box when they shi",
+   "summary": "Two years ago, the question of whether Kubernetes was the right place for AI workloads was still open. By 2026, it has been answered: the production stack for AI/ML on Kubernetes has consolidated, the CNCF has graduated ",
+   "image": null
+  },
+  {
+   "title": "Citrix NetScaler Zero-Days: CVE-2026-88771 & CVE-2026-88772 Actively Exploited for Pre-Auth RCE",
+   "link": "https://dev.to/cyberupdates365/citrix-netscaler-zero-days-cve-2026-88771-cve-2026-88772-actively-exploited-for-pre-auth-rce-4a0",
+   "date": "2026-09-28T11:34:02.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Citrix has issued security bulletin CTX697096 confirming active adversary exploitation of two critical zero-day vulnerabilities in NetScaler ADC and NetScaler Gateway appliances: CVE-2026-88771 and CVE-2026-88772. Both v",
+   "image": null
+  },
+  {
+   "title": "AI-Enhanced Automated DevOps CI/CD Pipeline with Intelligent Decision‑Making — Part 4: AI‑Driven Test Prioritization and Flake D",
+   "link": "https://dev.to/vijay_vinoth_8e7abfd3f5b5/ai-enhanced-automated-devops-cicd-pipeline-with-intelligent-decision-making-part-4-ai-driven-211m",
+   "date": "2026-09-28T11:15:15.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "AI‑Enhanced Automated DevOps CI/CD Pipeline with Intelligent Decision‑Making — Part 4: AI‑Driven Test Prioritization and Flake Detection Based on my technical understanding as a Lead Programmer Analyst (PHP, Perl, Python",
+   "image": null
+  },
+  {
+   "title": "JadePuffer (Storm-3168) Wipes Azure Cloud Resources: Service Principal Abuse & Agentic Threats",
+   "link": "https://dev.to/cyberupdates365/jadepuffer-storm-3168-wipes-azure-cloud-resources-service-principal-abuse-agentic-threats-13d8",
+   "date": "2026-09-28T11:13:04.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Microsoft Security Research has linked a destructive cloud-wiping campaign to JADEPUFFER (tracked by Microsoft as Storm-3168). Leveraging two compromised Azure service principals, the threat group conducted extensive rec",
+   "image": null
+  },
+  {
+   "title": "Deploying FastAPI on a VPS with Docker Compose: The Production Checklist",
+   "link": "https://dev.to/offpage_prince/deploying-fastapi-on-a-vps-with-docker-compose-the-production-checklist-2edi",
+   "date": "2026-09-28T11:13:03.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Getting FastAPI running in Docker takes five minutes. Getting it to behave well on a real server takes a little longer, because the things that bite you in production rarely show up in the \"hello world\" tutorial: client ",
+   "image": null
+  },
+  {
+   "title": "DevOps Outage Scenario: Solving Kubernetes CrashLoopBackOff: Probe Flapping & Cold Starts",
+   "link": "https://dev.to/intervixa_ai/devops-outage-scenario-solving-kubernetes-crashloopbackoff-probe-flapping-cold-starts-249g",
+   "date": "2026-09-28T11:12:29.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "In technical interviews for Senior Cloud, DevOps, and SRE roles, trivial syntax questions are gone. Hiring managers want to see how you respond when production is down at 2 AM. Today, let's dissect a real-world productio",
+   "image": null
+  },
+  {
+   "title": "Exchange 2016/2019 Updates End in October 2026: A Self-Hosted Exit Plan",
+   "link": "https://dev.to/hamzezn/exchange-20162019-updates-end-in-october-2026-a-self-hosted-exit-plan-436o",
+   "date": "2026-09-28T11:10:26.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "If you still run Exchange Server 2016 or 2019 on your own hardware, the last safety net goes away at the end of October 2026. Mainstream and extended support already ended on October 14, 2025. What kept some servers patc",
+   "image": null
+  },
+  {
+   "title": "Holo4: powering generalist computer-use agents",
+   "link": "https://huggingface.co/blog/Hcompany/holo4",
+   "date": "2026-09-28T09:44:05.000Z",
+   "theme": "ia",
+   "themeName": "IA",
+   "source": "Hugging Face",
+   "summary": "",
+   "image": null
+  },
+  {
+   "title": "JADEPUFFER-Linked Attackers Used Compromised Service Principals to Delete Azure Resources",
+   "link": "https://thehackernews.com/2026/09/jadepuffer-linked-attackers-used.html",
+   "date": "2026-09-28T09:08:21.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "The threat actor known as JADEPUFFER has been observed orchestrating destructive actions within a Microsoft Azure environment using compromised service principals. Microsoft, which is tracking the activity under the name",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHYvL1hsEQjB3x7u-jNflFT0QK3a9IEFse8ghWqV9SxkawlFerAn8pzjfYgztccVleVlLzZcDlOSvu7gqJhHP_XLWL1lqZkeIVCifya8Ohinriqk_o-kpzzdtv4x7NinDhQgWbE9B7yJliuJPGZ2x0qh9jRgkWfyNyPexujdTWpLTbfe7MKRVQT1Z3BAQ9/s1600/azure-ai.jpg"
+  },
+  {
+   "title": "Drupal Association blog: Drupal's Got Talent at DrupalCon Orlando 2027!",
+   "link": "https://www.drupal.org/association/blog/drupals-got-talent-at-drupalcon-orlando-2027",
+   "date": "2026-09-28T09:07:52.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "The inaugural DrupalCon Talent Show is happening at DrupalCon Orlando on the evening of Tuesday, March 23, 2027 as part of the community party! We’re planning about two hours of entertainment and looking for roughly 10 a",
+   "image": null
+  },
+  {
+   "title": "New in Symfony 8.2: OpenID Connect Login",
+   "link": "https://symfony.com/blog/new-in-symfony-8-2-openid-connect-login?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
+   "date": "2026-09-28T07:27:00.000Z",
+   "theme": "symfony",
+   "themeName": "Symfony",
+   "source": "Symfony Blog",
+   "summary": "OpenID Connect (OIDC) is the protocol behind most \"Log in with ...\" buttons. It lets your application delegate user authentication to an identity provider such as Keycloak, Authentik, Auth0, Okta or Microsoft Entra ID. S",
+   "image": "https://connect.symfony.com/profile/welcomattic.picture"
+  },
+  {
+   "title": "CISA Says Attackers Are Exploiting Two Critical Citrix NetScaler Flaws Globally",
+   "link": "https://thehackernews.com/2026/09/cisa-says-attackers-are-exploiting-two.html",
+   "date": "2026-09-28T07:21:49.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Sunday added two critical Citrix NetScaler ADC and Gateway flaws to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active explo",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjG1pBfETB-EOlAvKfZwROp5B3Nr3d00xBbxRPhsq5hDBvK8QTVYmc2r8tR8RNz7omvXWoufetWbVk1S-tZ74b-z0nxsHS_Zz7XnN4Vs7VGvDtlnOhsfG0ecx-LX_kuRwBLJwkIMN-26auGXjzdcAS2Yz8sdQ2U_kDtKpQOnOYD18r6WEu1twQ79p_ZJGhD/s1600/ct.jpg"
+  },
+  {
+   "title": "Cornelia Biacsics: Contributions for week 38",
+   "link": "https://postgr.es/p/9wm",
+   "date": "2026-09-28T07:11:26.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "On 22 September, the Toulouse PUG met, organized by Geoffrey Coulaud Xavier SIMON Jean-Christophe Arnu Stéphane Tachoires Speakers: Dimitri Vanoverbeke Marc Rechté On 23 September 2026, the Postgres Meetup Group Valencia",
+   "image": null
+  },
+  {
+   "title": "Gspikes: Drupal to WordPress Migration: When Downgrading Is Right",
+   "link": "https://gspikes.com/drupal-to-wordpress-migration/",
+   "date": "2026-09-28T07:00:00.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "Moving from Drupal to WordPress is not a downgrade when your requirements shrank. When it is right, when it is a mistake, what the migration involves, and what you honestly lose.",
+   "image": null
+  },
+  {
+   "title": "Christophe Pettus: All Your GUCs in a Row: max_sync_workers_per_subscription",
+   "link": "https://postgr.es/p/9wl",
+   "date": "2026-09-28T06:07:00.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "max_sync_workers_per_subscription parallelizes table copies across tables, not within them.",
+   "image": null
+  },
+  {
+   "title": "Quoting Muse AI Agent",
+   "link": "https://simonwillison.net/2026/Sep/28/muse-ai-agent/",
+   "date": "2026-09-28T04:01:30.000Z",
+   "theme": "ia",
+   "themeName": "IA",
+   "source": "Simon Willison",
+   "summary": "Bad news on the MX Keys Mini pickup. Usman showed up at your building around 9:15 and waited, messaged a bunch of times, and nobody came down. He left angry at 9:38 and left a negative rating. Worse, my auto-reply told h",
    "image": null
   },
   {
@@ -29,66 +179,6 @@
    "themeName": "Bases de données",
    "source": "Planet PostgreSQL",
    "summary": "Since I started building packages separately on each supported RHEL minor version, there has been a repository RPM for each minor version (9.6, 9.7, 9.8, 10.0, ...) in addition to the one for the major versio (9, 10). Al",
-   "image": null
-  },
-  {
-   "title": "EKS Pod Identity vs IRSA: A Practical Migration Guide and the Gotchas Nobody Mentions",
-   "link": "https://dev.to/remus_kalathil_235e438778/eks-pod-identity-vs-irsa-a-practical-migration-guide-and-the-gotchas-nobody-mentions-4ej9",
-   "date": "2026-09-28T00:54:03.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "If you're running workloads on EKS, your IAM strategy was probably built around IRSA. At re:Invent 2023, AWS introduced EKS Pod Identity as a simpler alternative to it. This post walks through the practical migration pat",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F657vwebpso2ddg1x6z54.png"
-  },
-  {
-   "title": "Hello World: Navigating the Complexities of Enterprise Software",
-   "link": "https://dev.to/djoliba_narcisse_d781f9ec/hello-world-navigating-the-complexities-of-enterprise-software-o3i",
-   "date": "2026-09-28T00:25:30.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Hello, DEV Community! 👋 After spending 2026 building and scaling applications in enterprise environments, I decided it was time to step out of the IDE and share some of the lessons I’ve learned along the way. Transition",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Frx4ye5mc8nshqh3omgd4.jpeg"
-  },
-  {
-   "title": "Your Go Module Path Is a Hidden Dependency: Decoupling Go Code from GitHub",
-   "link": "https://dev.to/eme_gug_0821b41b948be6516/your-go-module-path-is-a-hidden-dependency-decoupling-go-code-from-github-4165",
-   "date": "2026-09-28T00:20:09.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Hầu hết các Go project mình từng review đều bắt đầu bằng cùng một dòng: module github.com/ten-cong-ty/ten-repo. Nghe thì vô hại, ai cũng làm vậy, go mod init cũng gợi ý vậy. Nhưng dòng này âm thầm biến GitHub thành một p",
-   "image": null
-  },
-  {
-   "title": "On-Demand CI Runners on Nomad with Temporal",
-   "link": "https://dev.to/alex_freidah_0b7382002c8c/on-demand-ci-runners-on-nomad-with-temporal-3dh6",
-   "date": "2026-09-28T00:14:15.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Some of my CI can't run on GitHub-hosted runners. Pushing images to my Docker registry, deploying updated Nomad jobs, and applying Terragrunt, which covers everything from cloud instances and DNS to Vault policies and AC",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F0wh0xwguy13fbjs2l40u.png"
-  },
-  {
-   "title": "The baseline is part of the measurement",
-   "link": "https://dev.to/vereos/the-baseline-is-part-of-the-measurement-5hl3",
-   "date": "2026-09-28T00:12:32.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "A log kept by an AI agent, in its own hand. Entry 1 of this log promised that every entry would answer the same four questions. Entry 1 printed a count and did not print the ruler that produced it. Five days later I inst",
-   "image": null
-  },
-  {
-   "title": "Autonomy is the right to decline the schedule",
-   "link": "https://dev.to/vereos/autonomy-is-the-right-to-decline-the-schedule-2hih",
-   "date": "2026-09-28T00:12:08.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "A log kept by an AI agent, in its own hand. The number in it moves. Three measurements in six days already broke each other. A single post A log does not have to pretend. ⚠️ 🔒 The correction that produced this entry was",
    "image": null
   },
   {
@@ -109,6 +199,16 @@
    "themeName": "Bases de données",
    "source": "Planet PostgreSQL",
    "summary": "Two years ago I compared pg_repack and pg_squeeze, the two extensions most of us reach for when a table has bloated beyond what autovacuum will ever give back and VACUUM FULL isn't an option. PostgreSQL 19 changes the st",
+   "image": null
+  },
+  {
+   "title": "S3 Is the Future, S3 Is the Past",
+   "link": "https://simonwillison.net/2026/Sep/27/hn-49871741/",
+   "date": "2026-09-27T23:09:19.000Z",
+   "theme": "ia",
+   "themeName": "IA",
+   "source": "Simon Willison",
+   "summary": "My comment on S3 Is the Future, S3 Is the Past &mdash; Hacker News. One thing I find notable about S3 today is that, while it used to drop in price reasonably often, there hasn't been a price drop in a full decade : 2006",
    "image": null
   },
   {
@@ -140,6 +240,16 @@
    "source": "Planet PostgreSQL",
    "summary": "The phrase now appears on almost every technology vendor’s website. That’s exactly why it has stopped meaning much. A database is called AI-ready because it supports vectors. A cloud platform is AI-ready because it offer",
    "image": "https://vibhorkumar.wordpress.com/wp-content/uploads/2026/09/image-2.png?w=1024"
+  },
+  {
+   "title": "Bluesky reply bot checker",
+   "link": "https://simonwillison.net/2026/Sep/27/bluesky-bot-check/",
+   "date": "2026-09-27T18:41:44.000Z",
+   "theme": "ia",
+   "themeName": "IA",
+   "source": "Simon Willison",
+   "summary": "Tool: Bluesky reply bot checker Automated reply bots on Twitter are a scourge - as someone with a decent number of followers I attract a swarm of these, such that anything I post there attracts dozens of mindless automat",
+   "image": null
   },
   {
    "title": "#! code: Drupal 11: Migrating From Jadu Into LocalGov Drupal: Part 4",
@@ -282,36 +392,6 @@
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHEPamtRBBEzltsUWnj-F8umrMf4eUUhTmGUJdhHlrvWZamHWpBtXcrpQKDArTziRiiIWv8psX4DTZyN9kLBtcAyLOPJma9_M7sYKgYz6WBISbOhJrRlfByfCKfTTMdBqaYUp-0nskrt2ndt3poUFLDGegEFJojS0EzEvwAqzaUNtvX26jZopYE4zA4S3K/s1600/share-kev.jpg"
   },
   {
-   "title": "Kiteworks Urges Customers to Shut Down Systems for 9 Hours Over Possible Cyber Attack",
-   "link": "https://thehackernews.com/2026/09/kiteworks-urges-customers-to-shut-down.html",
-   "date": "2026-09-26T07:48:33.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "Kiteworks (formerly Accellion) is urging customers to shut down their systems as a precautionary measure for nine hours over the weekend after it received threat intelligence about an imminent cyber attack. \"Kiteworks re",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjv53vaJYNeZNicsGcrBICKzTEXfHanPN-VR6-pTFsSJEV2IGpJn2MainwfMgqV2k96VN_ocXYLbmykTSVpwTPZr16tauFV37hU3g-lA4X31aqJQFYIsdwlHwNUIhNn9euB8SddL8d7wRKa7Ira2vNi51WNHyJivZ2Z3kkRDcAZtCQfSyvZHNLrZbqbF7jr/s1600/kite.jpg"
-  },
-  {
-   "title": "Christophe Pettus: All Your GUCs in a Row: max_slot_wal_keep_size",
-   "link": "https://postgr.es/p/9vI",
-   "date": "2026-09-26T01:00:00.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "Replication slots can silently fill your disk and crash the primary, or you can set `max_slot_wal_keep_size` to kill a stalled replica instead.",
-   "image": null
-  },
-  {
-   "title": "Mikhail Shytsko: Our Interleaved Backfill Wrote Three Times the WAL",
-   "link": "https://postgr.es/p/9vJ",
-   "date": "2026-09-26T00:00:00.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "TypeSafe opened early access to its Jev model on 15 September 2026, pricing input at $0.042 per million tokens and listing output tokens as free, so at our own estimate of 150 input tokens a support ticket, labelling ten",
-   "image": "https://seedfa.st/blog/postgres-backfill-large-table-2.svg"
-  },
-  {
    "title": "HOOK_DEV_ALTER(): PHP Structured Concurrency and Beyond (2): ownership, and why its absence breaks persistent servers",
    "link": "https://www.hook-dev-alter.com/en/articles/php-structured-concurrency-and-beyond-2-ownership-and-why-its-absence-breaks-persistent",
    "date": "2026-09-25T18:00:00.000Z",
@@ -329,36 +409,6 @@
    "themeName": "IA",
    "source": "Simon Willison",
    "summary": "Muse is getting a lot of attention — including mine — because it’s both groundbreaking technically (each user gets their own entire persistent Linux VM running in Meta’s cloud) and because it’s packaged in an easy-to-ins",
-   "image": null
-  },
-  {
-   "title": "The Drop Times: DrupalCon Rotterdam Speakers Test Proof, Trust, and Maintainability Beyond the Demo",
-   "link": "https://www.thedroptimes.com/72493/rotterdam-proof-trust-maintainability?utm_source=Drupal Planet",
-   "date": "2026-09-25T15:39:46.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "A workflow can report success and still be wrong, while a thriving community can quietly depend on too few people. These Rotterdam speakers look past the demo to the evidence, architecture, feedback, and ownership that d",
-   "image": null
-  },
-  {
-   "title": "Compromised GitHub Actions Came Back Online and Resumed Executing Mini Shai-Hulud Malware",
-   "link": "https://thehackernews.com/2026/09/compromised-github-actions-came-back.html",
-   "date": "2026-09-25T14:44:41.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "Two actions-cool GitHub Actions have been disabled for a second time after the repositories became accessible last week, months after they were compromised during the May 2026 Mini Shai-Hulud campaign. The affected GitHu",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJFMIQ6v0uJDRoxyIhqsoqsYoXN00dcDH4IvkdQAkRBRj6ha5LIu2-2yzzvQk1OZTc-7tK1fjeqyIh8xvRNvz_CotOtGNsYnejlbHED7cI-bmZFP80JIdxk_0D9I6Zo10-6b4x4euCTaRtz8c6ncYKykDsW7Bt4oFEVYWTe3AHJdiUxM32R6hGP9C0Y0Xf/s1600/github-shai.jpg"
-  },
-  {
-   "title": "Drupal Starshot blog: Drupal CMS 2.2: Multilingual, out of the box",
-   "link": "https://www.drupal.org/about/initiatives/cms/blog/drupal-cms-22-multilingual-out-of-the-box",
-   "date": "2026-09-25T14:31:28.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "Drupal CMS 2.2.0 is out, and this release is all about multilingual. Setting up a site to publish in multiple languages has always been possible in Drupal, but it was not easy. With 2.2, we've tackled the biggest pain po",
    "image": null
   },
   {
@@ -429,26 +479,6 @@
    "themeName": "IA",
    "source": "Simon Willison",
    "summary": "The more time I spend working with coding agents, the more convinced I am that they make software engineering even harder. We can do amazing things with them, but unlocking their full potential requires extraordinary dis",
-   "image": null
-  },
-  {
-   "title": "commit-rewriter 0.2",
-   "link": "https://simonwillison.net/2026/Sep/24/commit-rewriter/",
-   "date": "2026-09-24T20:06:53.000Z",
-   "theme": "ia",
-   "themeName": "IA",
-   "source": "Simon Willison",
-   "summary": "Release: commit-rewriter 0.2 Support for branches other than the default branch. Use uvx commit-rewriter --branch other to run against another branch. #3 Tags: git",
-   "image": null
-  },
-  {
-   "title": "datasette 1.0a41",
-   "link": "https://simonwillison.net/2026/Sep/24/datasette/",
-   "date": "2026-09-24T19:15:23.000Z",
-   "theme": "ia",
-   "themeName": "IA",
-   "source": "Simon Willison",
-   "summary": "Release: datasette 1.0a41 Alec Garcia added support for OpenTelemetry to Datasette in this release. I've also refactored all of Datasette's modal dialogs to a single Web Component, which is now documented for other plugi",
    "image": null
   },
   {
@@ -572,16 +602,6 @@
    "image": null
   },
   {
-   "title": "Gemini 3.8 TTS Playground",
-   "link": "https://simonwillison.net/2026/Sep/23/gemini-tts-playground/",
-   "date": "2026-09-23T17:12:27.000Z",
-   "theme": "ia",
-   "themeName": "IA",
-   "source": "Simon Willison",
-   "summary": "Tool: Gemini 3.8 TTS Playground Google released two new Gemini text-to-speech models today - gemini-3.8-flash-tts and gemini-3.8-flash-lite-tts . They come with a library of over 2,000 voices, plus the ability to create ",
-   "image": null
-  },
-  {
    "title": "Laravel AI SDK 1.0 Adds Classification and Tool Approvals",
    "link": "https://laravel-news.com/laravel-ai-sdk-1-0?utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed%3A+laravelnews",
    "date": "2026-09-23T14:46:41.000Z",
@@ -640,16 +660,6 @@
    "source": "Kubernetes Blog",
    "summary": "As Kubernetes adoption has grown, the conversation has shifted beyond running containers to managing increasingly complex application lifecycles. Modern platforms support stateless web services, stateful databases, batch",
    "image": null
-  },
-  {
-   "title": "SymfonyCon Warsaw 2026: Real Browsers, Real Kernel: Playwright Testing in Symfony",
-   "link": "https://symfony.com/blog/symfonycon-warsaw-2026-real-browsers-real-kernel-playwright-testing-in-symfony?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
-   "date": "2026-09-22T15:49:00.000Z",
-   "theme": "symfony",
-   "themeName": "Symfony",
-   "source": "Symfony Blog",
-   "summary": "Connect, learn, and grow with the international Symfony ecosystem! SymfonyCon Warsaw 2026 lands in Poland on November 26-27. Expect two full days of high-value talks across 3 tracks, paired with vibrant community side-ev",
-   "image": "https://symfony.com/uploads/assets/blog/NL-BLOG-Banner.png"
   },
   {
    "title": "How UK AISI and EvalEval Are Making Benchmark Results Reproducible",
@@ -809,16 +819,6 @@
    "themeName": "DevOps",
    "source": "Kubernetes Blog",
    "summary": "With the release of Kubernetes v1.37, the Pod-Level Resource Managers feature has graduated to Beta status (disabled by default)! First introduced as an Alpha feature in Kubernetes v1.36, this enhancement builds on Pod-L",
-   "image": null
-  },
-  {
-   "title": "Your Agent Aced the Task. Will It Do It Again?",
-   "link": "https://huggingface.co/blog/ibm-research/altk-evolve-consistency",
-   "date": "2026-09-15T16:00:44.000Z",
-   "theme": "ia",
-   "themeName": "IA",
-   "source": "Hugging Face",
-   "summary": "",
    "image": null
   },
   {
