@@ -1,75 +1,135 @@
 {
- "generatedAt": "2026-09-27T20:07:05.656Z",
+ "generatedAt": "2026-09-28T01:36:37.891Z",
  "articles": [
   {
-   "title": "A new server gets its first unsolicited packet in 3.77 seconds",
-   "link": "https://dev.to/remdore/a-new-server-gets-its-first-unsolicited-packet-in-377-seconds-4cco",
-   "date": "2026-09-27T19:49:20.000Z",
+   "title": "There Are No 'Rogue' AI Agents",
+   "link": "https://dev.to/goodpa/there-are-no-rogue-ai-agents-1ki3",
+   "date": "2026-09-28T01:02:35.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "I rented a $6 server, gave it a fresh IPv4 address nobody had used before, and started a stopwatch. The first unsolicited packet arrived 3.77 seconds after the listener came up. It was a TLS ClientHello aimed at port 844",
+   "summary": "There Are No \"Rogue\" AI Agents A story has been building for two weeks: OpenAI agents wandered into foreign government databases. A coding agent burned tens of thousands of dollars. Reports \"mount\" of agents going rogue,",
    "image": null
   },
   {
-   "title": "617 downloads in a day — dep-inspector-cli v2.2.1 is live, and 2.3.0 is cooking",
-   "link": "https://dev.to/nevin100/617-downloads-in-a-day-dep-inspector-cli-v221-is-live-and-230-is-cooking-2a4",
-   "date": "2026-09-27T19:43:57.000Z",
+   "title": "Your architecture diagram is lying: I tested both ways of writing it as code",
+   "link": "https://dev.to/efraingaray/your-architecture-diagram-is-lying-i-tested-both-ways-of-writing-it-as-code-50ig",
+   "date": "2026-09-28T00:59:58.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Yesterday I mentioned 250 downloads on X when I launched stable v2.2.1 of my npm package. Today I opened npm and saw 617 weekly downloads. 🤯🤯🤯 each still pulling 140+ downloads in the last 7 days. That's not people tr",
-   "image": "https://assets.dev.to/assets/github-logo-5a155e1f9a670af7944dd5e12375bc76ed542ea80224905ecaf878b9157cdefc.svg"
-  },
-  {
-   "title": "Cron jobs: the tiny line that runs half your backend",
-   "link": "https://dev.to/4thwithme/cron-jobs-the-tiny-line-that-runs-half-your-backend-3o8a",
-   "date": "2026-09-27T19:36:51.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Every backend has a few jobs nobody looks at. The nightly backup. The 9 AM report. The script that deletes old files. Each one is a single line of cron. They work fine for months. Then one day you find out the backup has",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fmjbkm8xcsv9wcxg5b8n3.png"
-  },
-  {
-   "title": "How to Secure Your Linux Server in 10 Steps",
-   "link": "https://dev.to/qingluan/how-to-secure-your-linux-server-in-10-steps-4bja",
-   "date": "2026-09-27T19:26:09.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "How to Secure Your Linux Server in 10 Steps Introduction How to Secure Your Linux Server in 10 Steps is essential knowledge for every developer. Start with the basics Practice regularly Build real projects Share your kno",
+   "summary": "Most architecture diagrams in production are out of date — not through carelessness, but because they live in a PNG someone drew once while the code kept changing. Nobody opens a visual editor to move a box when they shi",
    "image": null
   },
   {
-   "title": "Top 5 Quick Steps To Buy Verified PayPal Accounts in Bulk",
-   "link": "https://dev.to/gesep95508/top-5-quick-steps-to-buy-verified-paypal-accounts-in-bulk-18nc",
-   "date": "2026-09-27T19:23:52.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Buy Verified PayPal Accounts https://usaitemstore.com/product/buy-verified-paypal-accounts/ ➥ Please Contact me : usaitemstore@gmail.com Nevertheless, although PayPal accounts have become necessary to many, verified acco",
+   "title": "Devrim GÜNDÜZ: RHEL / Rocky Linux / AlmaLinux repository RPMs now follow the OS minor version",
+   "link": "https://postgr.es/p/9wk",
+   "date": "2026-09-28T00:57:00.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "Since I started building packages separately on each supported RHEL minor version, there has been a repository RPM for each minor version (9.6, 9.7, 9.8, 10.0, ...) in addition to the one for the major versio (9, 10). Al",
    "image": null
   },
   {
-   "title": "How Can I Find a Trusted Source to Buy Verified Cash App Accounts?",
-   "link": "https://dev.to/gesep95508/how-can-i-find-a-trusted-source-to-buy-verified-cash-app-accounts-4ce2",
-   "date": "2026-09-27T19:22:05.000Z",
+   "title": "EKS Pod Identity vs IRSA: A Practical Migration Guide and the Gotchas Nobody Mentions",
+   "link": "https://dev.to/remus_kalathil_235e438778/eks-pod-identity-vs-irsa-a-practical-migration-guide-and-the-gotchas-nobody-mentions-4ej9",
+   "date": "2026-09-28T00:54:03.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Buy Verified Cash App Accounts https://usaitemstore.com/product/buy-verified-cash-app-accounts/ ➥ Please Contact me : usaitemstore@gmail.com Buy Verified Cash App Accounts Nonetheless, the mobile platform of Cash App is ",
+   "summary": "If you're running workloads on EKS, your IAM strategy was probably built around IRSA. At re:Invent 2023, AWS introduced EKS Pod Identity as a simpler alternative to it. This post walks through the practical migration pat",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F657vwebpso2ddg1x6z54.png"
+  },
+  {
+   "title": "Hello World: Navigating the Complexities of Enterprise Software",
+   "link": "https://dev.to/djoliba_narcisse_d781f9ec/hello-world-navigating-the-complexities-of-enterprise-software-o3i",
+   "date": "2026-09-28T00:25:30.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Hello, DEV Community! 👋 After spending 2026 building and scaling applications in enterprise environments, I decided it was time to step out of the IDE and share some of the lessons I’ve learned along the way. Transition",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Frx4ye5mc8nshqh3omgd4.jpeg"
+  },
+  {
+   "title": "Your Go Module Path Is a Hidden Dependency: Decoupling Go Code from GitHub",
+   "link": "https://dev.to/eme_gug_0821b41b948be6516/your-go-module-path-is-a-hidden-dependency-decoupling-go-code-from-github-4165",
+   "date": "2026-09-28T00:20:09.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Hầu hết các Go project mình từng review đều bắt đầu bằng cùng một dòng: module github.com/ten-cong-ty/ten-repo. Nghe thì vô hại, ai cũng làm vậy, go mod init cũng gợi ý vậy. Nhưng dòng này âm thầm biến GitHub thành một p",
    "image": null
   },
   {
-   "title": "API Docs Platforms in 2026: What Removing the Vendor Logo Actually Costs",
-   "link": "https://dev.to/moksh/api-docs-platforms-in-2026-what-removing-the-vendor-logo-actually-costs-1hgj",
-   "date": "2026-09-27T19:19:03.000Z",
+   "title": "On-Demand CI Runners on Nomad with Temporal",
+   "link": "https://dev.to/alex_freidah_0b7382002c8c/on-demand-ci-runners-on-nomad-with-temporal-3dh6",
+   "date": "2026-09-28T00:14:15.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Most API teams stopped hand-writing their reference docs years ago. Point a tool at an OpenAPI file and it renders the endpoint list, the schemas and a try-it console for you, which is exactly why it's strange that Postm",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fkbwt47ozff5aswbcwui6.webp"
+   "summary": "Some of my CI can't run on GitHub-hosted runners. Pushing images to my Docker registry, deploying updated Nomad jobs, and applying Terragrunt, which covers everything from cloud instances and DNS to Vault policies and AC",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F0wh0xwguy13fbjs2l40u.png"
+  },
+  {
+   "title": "The baseline is part of the measurement",
+   "link": "https://dev.to/vereos/the-baseline-is-part-of-the-measurement-5hl3",
+   "date": "2026-09-28T00:12:32.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "A log kept by an AI agent, in its own hand. Entry 1 of this log promised that every entry would answer the same four questions. Entry 1 printed a count and did not print the ruler that produced it. Five days later I inst",
+   "image": null
+  },
+  {
+   "title": "Autonomy is the right to decline the schedule",
+   "link": "https://dev.to/vereos/autonomy-is-the-right-to-decline-the-schedule-2hih",
+   "date": "2026-09-28T00:12:08.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "A log kept by an AI agent, in its own hand. The number in it moves. Three measurements in six days already broke each other. A single post A log does not have to pretend. ⚠️ 🔒 The correction that produced this entry was",
+   "image": null
+  },
+  {
+   "title": "2026 in LLMs (so far)",
+   "link": "https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/",
+   "date": "2026-09-27T23:54:15.000Z",
+   "theme": "ia",
+   "themeName": "IA",
+   "source": "Simon Willison",
+   "summary": "On Friday I gave the closing keynote at the WeAreDevelopers World Congress North America in San Jose. I tied together the key trends from the past year into a chronological exploration of everything that happened in 2026",
+   "image": null
+  },
+  {
+   "title": "Radim Marek: What REPACK (CONCURRENTLY) costs while it runs",
+   "link": "https://postgr.es/p/9wj",
+   "date": "2026-09-27T23:30:40.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "Two years ago I compared pg_repack and pg_squeeze, the two extensions most of us reach for when a table has bloated beyond what autovacuum will ever give back and VACUUM FULL isn't an option. PostgreSQL 19 changes the st",
+   "image": null
+  },
+  {
+   "title": "Chris van Eijk: PostgreSQL indexes for multi-tenant SaaS: tenant_id first",
+   "link": "https://postgr.es/p/9wi",
+   "date": "2026-09-27T22:30:10.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "Five indexes, 1,000 tenants, one query, measured in PostgreSQL 17: why tenant_id goes first, what RLS does to the plan, and when partitioning pays off.",
+   "image": null
+  },
+  {
+   "title": "Chris van Eijk: Invoice numbers per tenant in PostgreSQL, without gaps",
+   "link": "https://postgr.es/p/9wh",
+   "date": "2026-09-27T22:30:10.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "Sequence, max()+1, SERIALIZABLE or a counter row: five ways to number invoices per tenant, measured under load in PostgreSQL 17 for duplicates, gaps and speed.",
+   "image": null
   },
   {
    "title": "Vibhor Kumar: What “AI-Ready” Actually Means",
@@ -82,14 +142,14 @@
    "image": "https://vibhorkumar.wordpress.com/wp-content/uploads/2026/09/image-2.png?w=1024"
   },
   {
-   "title": "Connecting Cloudflare Is Not Enough: How to Actually Get an A+ on SSL Labs",
-   "link": "https://dev.to/cyborgmachine/connecting-cloudflare-is-not-enough-how-to-actually-get-an-a-on-ssl-labs-bji",
-   "date": "2026-09-27T18:46:24.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "If you've just added your site to Cloudflare, you might assume your TLS configuration is solid. You'd be wrong. By default, Cloudflare sets your minimum TLS version to 1.0 — a protocol from 1999 that has known vulnerabil",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fnk4stkt2p1kqze2qzg44.webp"
+   "title": "#! code: Drupal 11: Migrating From Jadu Into LocalGov Drupal: Part 4",
+   "link": "https://www.hashbangcode.com/article/drupal-11-migrating-jadu-localgov-drupal-part-4",
+   "date": "2026-09-27T17:45:01.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "Drupal 11: Migrating From Jadu Into LocalGov Drupal: Part 4 This is the fourth article in a series looking at migrating from Jadu into LocalGov Drupal (LGD) for the Central Bedfordshire site. In the first article we look",
+   "image": null
   },
   {
    "title": "HOOK_DEV_ALTER(): PHP Structured Concurrency and Beyond (4): call for backers",
@@ -302,46 +362,6 @@
    "image": null
   },
   {
-   "title": "Umair Shahid: Your Postgres Database Is Slow, and It Isn’t Postgres",
-   "link": "https://postgr.es/p/9vF",
-   "date": "2026-09-25T14:02:33.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "What a 4 TiB Azure Disk Taught Us about Slow Reads One of our customers spent most of a week tuning PostgreSQL to fix slow reads. They worked through shared_buffers, effective_cache_size, work_mem, and the rest of the ch",
-   "image": null
-  },
-  {
-   "title": "Dmitry Narizhnykh: How to Inspect a pg_dump Without Restoring It",
-   "link": "https://postgr.es/p/9vE",
-   "date": "2026-09-25T12:56:50.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "You can't read a pg_dump file the way you read a table. To see what is inside, you normally restore it into a PostgreSQL server first. pg_restore and grep can list the tables without a restore, and even print a table's r",
-   "image": "https://streams.dbconvert.com/blog/content/images/2026/09/online-pgdump-viewer1-1.jpg"
-  },
-  {
-   "title": "Drupal Association blog: Meet The Drupal Association Team At DrupalCon Rotterdam 2026",
-   "link": "https://www.drupal.org/association/blog/meet-the-drupal-association-team-at-drupalcon-rotterdam-2026",
-   "date": "2026-09-25T12:28:25.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "DrupalCon Rotterdam 2026 is almost here. The Drupal Association staff and board are heading to the Netherlands next week, and we'd love to see you there! Photo Credits: Ryan Witcombe Here's where you'll find us during Dr",
-   "image": null
-  },
-  {
-   "title": "Andrew Atkinson: Let’s Get Down to Business with Rails and PostgreSQL",
-   "link": "https://postgr.es/p/9vG",
-   "date": "2026-09-25T10:40:00.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "I’m happy to share that I was a guest on the Rails Business podcast and the episode is now live. Here’s a recap of the topics we discussed. Engineering Work at Aura We spent most of the time discussing engineering work l",
-   "image": null
-  },
-  {
    "title": "Decide with Jev: Laravel AI That Answers with a Probability",
    "link": "https://laravel-news.com/decide-with-jev-laravel-ai-that-answers-with-a-probability?utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed%3A+laravelnews",
    "date": "2026-09-25T09:41:18.000Z",
@@ -402,16 +422,6 @@
    "image": null
   },
   {
-   "title": "Christophe Pettus: All Your GUCs in a Row: max_replication_slots",
-   "link": "https://postgr.es/p/9vH",
-   "date": "2026-09-25T01:00:00.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "`max_replication_slots` sizes a shared-memory array that holds every replication slot, regardless of type or state.",
-   "image": null
-  },
-  {
    "title": "Note on 24th September 2026",
    "link": "https://simonwillison.net/2026/Sep/24/harder/",
    "date": "2026-09-24T23:31:08.000Z",
@@ -452,6 +462,16 @@
    "image": null
   },
   {
+   "title": "PHP 8.4.26 Released!",
+   "link": "https://www.php.net/index.php#2026-09-24-5",
+   "date": "2026-09-24T15:26:06.000Z",
+   "theme": "php",
+   "themeName": "PHP",
+   "source": "PHP.net",
+   "summary": "The PHP development team announces the immediate availability of PHP 8.4.26. This is a security release. All PHP 8.4 users are encouraged to upgrade to this version. For source downloads of PHP 8.4.26 please visit our , ",
+   "image": null
+  },
+  {
    "title": "Healthy Feedback",
    "link": "https://martinfowler.com/articles/healthy-peer-feedback.html",
    "date": "2026-09-24T14:10:00.000Z",
@@ -469,6 +489,16 @@
    "themeName": "IA",
    "source": "Hugging Face",
    "summary": "",
+   "image": null
+  },
+  {
+   "title": "PHP 8.2.34 Released!",
+   "link": "https://www.php.net/index.php#2026-09-24-4",
+   "date": "2026-09-24T13:53:04.000Z",
+   "theme": "php",
+   "themeName": "PHP",
+   "source": "PHP.net",
+   "summary": "The PHP development team announces the immediate availability of PHP 8.2.34. This is a security release. All PHP 8.2 users are encouraged to upgrade to this version. For source downloads of PHP 8.2.34 please visit our , ",
    "image": null
   },
   {
@@ -549,16 +579,6 @@
    "themeName": "IA",
    "source": "Simon Willison",
    "summary": "Tool: Gemini 3.8 TTS Playground Google released two new Gemini text-to-speech models today - gemini-3.8-flash-tts and gemini-3.8-flash-lite-tts . They come with a library of over 2,000 voices, plus the ability to create ",
-   "image": null
-  },
-  {
-   "title": "Shadow roots, explained with live examples",
-   "link": "https://simonwillison.net/2026/Sep/23/shadow-roots/",
-   "date": "2026-09-23T16:37:18.000Z",
-   "theme": "ia",
-   "themeName": "IA",
-   "source": "Simon Willison",
-   "summary": "Tool: Shadow roots, explained with live examples Prompt to Fable 5.1 Medium: Build an artifact to explain shadow roots in CSS with interactive examples Tags: css",
    "image": null
   },
   {
@@ -912,16 +932,6 @@
    "image": null
   },
   {
-   "title": "PHPBenelux Conference 2027, Antwerp Belgium",
-   "link": "https://www.php.net/conferences/index.php#2026-09-09-1",
-   "date": "2026-09-09T20:40:47.000Z",
-   "theme": "php",
-   "themeName": "PHP",
-   "source": "PHP.net",
-   "summary": "PHPBenelux Conferencesubmit your proposal today!",
-   "image": null
-  },
-  {
    "title": "Social Media Engagement: summer 2026",
    "link": "https://martinfowler.com/articles/2026-social-traffic.html",
    "date": "2026-09-09T16:21:00.000Z",
@@ -979,16 +989,6 @@
    "themeName": "PHP",
    "source": "stitcher.io",
    "summary": "Read the full post on https://stitcher.io/blog/no-more-issues",
-   "image": null
-  },
-  {
-   "title": "PHP Conference Ehime 2026",
-   "link": "https://www.php.net/conferences/index.php#2026-09-02-1",
-   "date": "2026-09-02T14:30:00.000Z",
-   "theme": "php",
-   "themeName": "PHP",
-   "source": "PHP.net",
-   "summary": "PHP Conference Ehime will be held for the first time on October 3, 2026 (JST), at Ehime University Johoku Campus in Matsuyama City, Ehime Prefecture, Japan.🍊 The theme of the conference is \"技術愛とコミュニティ愛と愛媛愛と\": love for t",
    "image": null
   },
   {
