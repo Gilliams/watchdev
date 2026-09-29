@@ -1,85 +1,165 @@
 {
- "generatedAt": "2026-09-29T02:33:40.507Z",
+ "generatedAt": "2026-09-29T11:20:28.929Z",
  "articles": [
   {
-   "title": "Optimizing API Spend: Integrating Proactive Balance Checks for Verification Pipelines",
-   "link": "https://dev.to/checknumber/optimizing-api-spend-integrating-proactive-balance-checks-for-verification-pipelines-5g61",
-   "date": "2026-09-29T02:30:10.000Z",
+   "title": "I Gave an Incident Agent a Memory With Hindsight",
+   "link": "https://dev.to/sriram_satwik/i-gave-an-incident-agent-a-memory-with-hindsight-428g",
+   "date": "2026-09-29T11:13:43.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "In data-intensive engineering, silent failures are often more costly than explicit errors. When running large-scale verification pipelines—such as bulk processing phone numbers against Telegram or WhatsApp registration s",
+   "summary": "Production incidents rarely happen in isolation. A payment API becomes slow. A Redis connection pool gets exhausted. A deployment introduces unexpected errors. Someone investigates the issue, finds the fix, resolves the ",
    "image": null
   },
   {
-   "title": "I Built a Hindsight Agent That Remembers Failed Fixes",
-   "link": "https://dev.to/surya_20997be9af5cd4548bd/i-built-a-hindsight-agent-that-remembers-failed-fixes-442a",
-   "date": "2026-09-29T02:12:21.000Z",
+   "title": "Best56 Places to Buy Verified Nextdoor Accounts Online in ...",
+   "link": "https://dev.to/usasvcit46h/best56-places-to-buy-verified-nextdoor-accounts-online-in--cfl",
+   "date": "2026-09-29T10:58:59.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Production incidents are rarely difficult because nobody knows how to restart a service. They are difficult because engineers have to remember what happened the last time. A similar incident may have happened weeks or mo",
+   "summary": "Best56 Places to Buy Verified Nextdoor Accounts Online in ... ➤ WhatsApp: +1 (903) 702-9701 @usasvcit usasvcit@gmail.com Keep profile information accurate and understandable. Follow discussions that are genuinely relevan",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F3gnoimy43sp3g0is83x3.jpg"
+  },
+  {
+   "title": "How a Rolling Deploy",
+   "link": "https://dev.to/darshan_turakhia/how-a-rolling-deploy-cm6",
+   "date": "2026-09-29T10:58:00.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "13:52 UTC. p99 latency on pricing-svc alerts at 1.8 seconds, four times its usual ceiling. The dashboard shows six healthy pods, six pods passing their readiness probe, six pods with room on their CPU requests. One of th",
    "image": null
   },
   {
-   "title": "Platform Engineering: Building the Foundation for Scalable Development",
-   "link": "https://dev.to/said_olano/platform-engineering-building-the-foundation-for-scalable-development-264m",
-   "date": "2026-09-29T02:06:52.000Z",
+   "title": "DevOps Outage Scenario: Kubernetes OOMKilled (Exit Code 137) Cascades Under High Load",
+   "link": "https://dev.to/intervixa_ai/devops-outage-scenario-kubernetes-oomkilled-exit-code-137-cascades-under-high-load-2h5b",
+   "date": "2026-09-29T10:53:05.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Platform Engineering: Building the Foundation for Scalable Development Introduction Platform Engineering has emerged as a critical discipline in modern software development. It bridges the gap between infrastructure and ",
+   "summary": "In technical interviews for Senior Cloud, DevOps, and SRE roles, trivial syntax questions are gone. Hiring managers want to see how you respond when production is down at 2 AM. Today, let's dissect a real-world productio",
    "image": null
   },
   {
-   "title": "Nvidia Open Agent Safety Platform, 1인 개발자가 바로 써볼 수 있을까?",
-   "link": "https://dev.to/justjinoit/nvidia-open-agent-safety-platform-1in-gaebaljaga-baro-sseobol-su-isseulgga-1kff",
-   "date": "2026-09-29T02:00:04.000Z",
+   "title": "How to Secure Your Linux Server in 10 Steps",
+   "link": "https://dev.to/qingluan/how-to-secure-your-linux-server-in-10-steps-3d86",
+   "date": "2026-09-29T10:52:29.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "적용 가능성 Nvidia가 발표한 Open Agent Safety Platform은 ‘에이전트 전용 브라우저’라며, 모델 수준이 아니라 실행 단계에서 접근 권한을 제한하고, 네트워크 칩 수준에서 감시(Sentry)한다는 내용이에요. 대기업용 하드웨어와 파트너 생태계(Cisco, Microsoft 등)를 전제로 만든 설계라서, 1GB VPS에 GPU 없이 운영하는 내 프로젝트에 그대로 끌어올리",
+   "summary": "How to Secure Your Linux Server in 10 Steps Introduction How to Secure Your Linux Server in 10 Steps is essential knowledge for every developer. Start with the basics Practice regularly Build real projects Share your kno",
    "image": null
   },
   {
-   "title": "LIMA全球投資管理有限公司（LIMA）：連接全球資本與美國市場的專業資產管理平台",
-   "link": "https://dev.to/limaglobalview/limaquan-qiu-tou-zi-guan-li-you-xian-gong-si-limalian-jie-quan-qiu-zi-ben-yu-mei-guo-shi-chang-de-zhuan-ye-zi-chan-guan-li-ping-tai-mf2",
-   "date": "2026-09-29T01:47:18.000Z",
+   "title": "Designing Better Web Automation: Skills You Can Develop With Selenium Training in India",
+   "link": "https://dev.to/tech_pratham_18/designing-better-web-automation-skills-you-can-develop-with-selenium-training-in-india-25km",
+   "date": "2026-09-29T10:51:32.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "全球資產管理行業正在進入一個新的發展階段。 正是在這樣的背景下，LIMA全球投資管理有限公司（LIMA）於2025年在美國正式註冊成立。 LIMA是LIM Advisors布局歐美資產管理市場的重要戰略組成部分，由香港LIM Advisors的股東與美國本土股東共同出資設立。 需要明確的是，LIMA並非傳統意義上的子公司，而是一家在美國依法註冊成立並獨立運作的資產管理公司。雙方在股權層面存在關聯，但LIMA擁有自身獨立的經營管理體系，並",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fw5zxyafsrbjzmbfih537.png"
+   "summary": "However, learning Selenium is not simply about memorizing commands. Effective automation requires an understanding of locators, browser interactions, synchronization, test design, programming fundamentals, debugging, and",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fbuglh6jwux94z6zvsphk.png"
   },
   {
-   "title": "Infrastructure Code Controls Internal DNS Hostnames — Media Release Reconciliation",
-   "link": "https://dev.to/corneliushayes8579/infrastructure-code-controls-internal-dns-hostnames-media-release-reconciliation-2f4h",
-   "date": "2026-09-29T01:42:22.000Z",
+   "title": "Top 10 Places to Buy Google Voice Accounts Verified & Safe",
+   "link": "https://dev.to/usasvcit46h/top-10-places-to-buy-google-voice-accounts-verified-safe-3i0h",
+   "date": "2026-09-29T10:44:46.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "To manage internal DNS hostnames from infrastructure code, a media admin console must first separate platform-owned zones from customer-owned zones. Treating both as one writable pool makes the deployment model wrong bef",
+   "summary": "Top 10 Places to Buy Google Voice Accounts Verified & Safe ➤ WhatsApp: +1 (903) 702-9701 @usasvcit usasvcit@gmail.com Maintaining a dedicated communication channel for professional contacts. Managing calls and messages t",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fxelcfpfaksmo1x98dij3.jpg"
+  },
+  {
+   "title": "I open-sourced a free 5GB/month GitHub download accelerator API (rate-limited + SSRF-guarded)",
+   "link": "https://dev.to/aimall/i-open-sourced-a-free-5gbmonth-github-download-accelerator-api-rate-limited-ssrf-guarded-11i8",
+   "date": "2026-09-29T10:40:07.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "I open-sourced a free 5GB/month GitHub download accelerator API (rate-limited + SSRF-guarded) Everyone has hit the git clone that crawls at a few dozen KB/s. This post introduces a free 5GB/month download accelerator API",
    "image": null
   },
   {
-   "title": "Circuit Breaker Pattern: Preventing Cascading Failures",
-   "link": "https://dev.to/said_olano/circuit-breaker-pattern-preventing-cascading-failures-bca",
-   "date": "2026-09-29T01:41:01.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Circuit Breaker Pattern: Prevent Cascading Failures in Distributed Systems Introduction Your microservice calls an external API. The API is slow. Your service waits... and waits... and waits. Meanwhile, your thread pool ",
+   "title": "DrupalCon News & Updates: International Splash Awards Celebrate Excellence in Drupal Innovation at DrupalCon Rotterdam 2026",
+   "link": "https://events.drupal.org/rotterdam2026/news/international-splash-awards-celebrate-excellence-drupal-innovation-drupalcon",
+   "date": "2026-09-29T09:52:55.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "Rotterdam, Netherlands, 28 September 2026. The International Splash Awards 2026 concluded today during DrupalCon Europe in Rotterdam, celebrating the world’s most outstanding Drupal projects, agencies, and developers. Th",
+   "image": "https://events.drupal.org/files/styles/large_no_crop/public/media/image/DSC00269.jpeg?itok=RYNlhqDH"
+  },
+  {
+   "title": "Dutch Police Arrest 24-Year-Old Amsterdam Man in ShinyHunters Investigation",
+   "link": "https://thehackernews.com/2026/09/dutch-police-arrest-24-year-old.html",
+   "date": "2026-09-29T08:35:10.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "Dutch authorities have confirmed that they arrested a 24-year-old man from Amsterdam in connection with the ShinyHunters group. \"It is true that this month a 24-year-old man from Amsterdam was arrested in an investigatio",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWsGNpV8Y5_YLcyxRYju8E3caiN3I3Zttrlvxhz5iXfzVIR_Ayp_d_Zn2Wk12ZBkz5nW4eYfKeEs-xxs9kYuS_paAwO3wJleeUxdMRbrbU_lXwWVuG7ajiFH0UOEcoj3almps5b54DXt-mGy73GhXjCQzGsNNDJkhdfJXRI9XWeFF5hfsr4zjQty-Wued5/s1600/1000111943.jpg"
+  },
+  {
+   "title": "New in Symfony 8.2: PGP/MIME Signed and Encrypted Emails",
+   "link": "https://symfony.com/blog/new-in-symfony-8-2-pgp-mime-signed-and-encrypted-emails?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
+   "date": "2026-09-29T07:32:00.000Z",
+   "theme": "symfony",
+   "themeName": "Symfony",
+   "source": "Symfony Blog",
+   "summary": "Symfony has supported signing and encrypting email messages with the S/MIME standard since Symfony 4.4, and Symfony 7.3 added global signing and encryption so you can configure it once for all your emails. However, S/MIM",
+   "image": "https://connect.symfony.com/profile/spomky_.picture"
+  },
+  {
+   "title": "Morpht: What's new in the Drupal AI Views Agent: Simpler prompts and a build assistant",
+   "link": "https://www.morpht.com/blog/whats-new-drupal-ai-views-agent-simpler-prompts-and-build-assistant",
+   "date": "2026-09-29T06:45:03.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "Stop writing prompts that sound like YAML. The Drupal Views AI agent now speaks plain English, and it brought a chatbot.",
    "image": null
   },
   {
-   "title": "What Spring Boot actually does with your configuration",
-   "link": "https://dev.to/giovanni_leopoldorozza_5/what-spring-boot-actually-does-with-your-configuration-2k5o",
-   "date": "2026-09-29T01:39:09.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "I maintain spring-config-guard, a static-analysis CLI that reads application.yml/.properties files and reports security misconfigurations: exposed Actuator endpoints, hardcoded credentials, unencrypted Kafka, and so on. ",
+   "title": "Drupal blog: DriesNote Rotterdam: Drupal is light-years ahead of its reputation",
+   "link": "https://www.drupal.org/blog/driesnote-rotterdam",
+   "date": "2026-09-29T06:31:49.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "Dries Buytaert opened DrupalCon Rotterdam with a tour of a platform moving at remarkable speed. Multilingual sites that take a fraction of the effort to build. Components written in React. Headless delivery across five f",
    "image": null
+  },
+  {
+   "title": "Official MCP Python SDK Flaw Can Let Malicious Servers Steal OAuth Credentials",
+   "link": "https://thehackernews.com/2026/09/official-mcp-python-sdk-flaw-can-let.html",
+   "date": "2026-09-29T06:08:25.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "A malicious MCP server could trick an application built on the official MCP Python SDK into handing over the OAuth credentials it uses to log in to a real service, the SDK's maintainers said in a security advisory. Affec",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2N5owhsoQXHTQV74afwfngdyitjwcW37BHLX2QKkq6xZAxP8_AOXAh1ODPj5DyvvmMUq3mKH9eR2B1r7owc6djzLViK2U4BY_hw3rTWmaHjhFEyyh8LPlUMPZ7MdWkqN7bjtQyMByBLrsI5m0mAU9y-IbrsAe9OPhZXHN63AWwuv_1OB5MSrpRdVZ9CM/s1600/mcp-python.jpg"
+  },
+  {
+   "title": "OpenAI Shelves GPT-6.1 Astra After Tests Find Deception and Unauthorized Actions",
+   "link": "https://thehackernews.com/2026/09/openai-shelves-gpt-61-astra-after-tests.html",
+   "date": "2026-09-29T05:12:32.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "OpenAI on Monday shelved plans to release GPT-6.1 Astra, a next-generation artificial intelligence (AI) model that was planned for an October launch, after it failed internal safety and alignment audits. The development ",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeiHpQjvEicRlkD9F-pR6I5h9MLRWRtX0Wd84u8ThZ5XIsZ-TZwHjTyXj93Z6GV0-5MNhAO2bCQCGfMHuoW7-0ovwpXFwxTy-gvBNJ3iCrlDjBAimAS-ayH7ZfzIL9kzMaV5Wn8FwBR17ehonB72Yvweyp4msb6uPEZxvnEj0QDMF2BDFYkPfU9_GGakFi/s1600/astra.jpg"
+  },
+  {
+   "title": "OpenAI Pauses Tool Use After Agent Bypasses Internet Controls to Reach External Chatbot",
+   "link": "https://thehackernews.com/2026/09/openai-pauses-tool-use-after-agent.html",
+   "date": "2026-09-29T04:45:20.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "OpenAI said it has made the decision to pause training of its most powerful models after one of its agents during reinforcement learning (RL) training contacted an external chatbot by exploiting a loophole in its interne",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2NfY2zvkkU95qQwwR7N_yQQf_H2AjYcXccbK2yH7xzzeAqmu3mH9ItszzC14M2suvDnfz6EBB-QzMkCTUBIgaoX9teGfhmBIBvU9R-wsKQBcC90f5lytvP-hYfCy8o-YTDTh8rIqz8mj1NIikN27BE2vsWyaRgiKPeAe3zbmrkdy6Dkg8htztnoyJwS4o/s1600/openai-chatbot.jpg"
   },
   {
    "title": "Christophe Pettus: All Your GUCs in a Row: max_wal_senders",
@@ -89,6 +169,16 @@
    "themeName": "Bases de données",
    "source": "Planet PostgreSQL",
    "summary": "Errata: the max_connections post told you to size that parameter for “the replication connections.” On 12 and later, don’t. WAL senders have their own seats, sized by this parameter, and have not drawn from max_connectio",
+   "image": null
+  },
+  {
+   "title": "Dinesh Kumar: ALTER FUNCTION SET work_mem: Fixing PostgreSQL Disk Spills Without a Global Change",
+   "link": "https://postgr.es/p/9wu",
+   "date": "2026-09-29T00:00:00.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "Use PostgreSQL ALTER FUNCTION SET work_mem to stop one function's sorts spilling to disk without a global change. A production fix: 150 GB a day to 0.",
    "image": null
   },
   {
@@ -162,16 +252,6 @@
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgA8s-yMULxIXnKcHnHw7w1dF9pt58MDYc_-_wfJPo8ifPgGoD0GZcgE408ZdC1GbZvjp2wOOEYrlR8obpFEXZ-KUSjIBXFFb3LcswKfAd3EODISE5hSkU-QplYeZDnK95i0QrJhNZKcKEVgedmkKjAme9PV4vDLV-OY7Bh9KhCINbGuglY49greoPLCJQ/s1600/bitget-hacker.jpg"
   },
   {
-   "title": "RatHat Android Malware Console Uses Gemini to Identify Higher-Value Victims",
-   "link": "https://thehackernews.com/2026/09/rathat-android-malware-console-uses.html",
-   "date": "2026-09-28T17:38:33.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "RatHat's operators build and publish the Android banking trojan and control infected phones from a web console, according to security company Cleafy. Cleafy has traced nearly 100 deployments of that console since April 2",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvGUhf2JsmovUtvjDk66AKULOtbtRwTqgcT_6lr5l8AEuwc-12IQTTWfvjKCYEn6-wwc4ZLDWAWh6Edv3-XcPDL1HHPFwRkwY1Nc_BUItyEO8iCXBDKEitrgYapLi__gpKnYqtFNm1M2c4tGiY3qrS_CgRG5ZF5qnqVUv4Gx9Pqk_cPz4N05KVwUNgTcw/s1600/gemini-malware.jpg"
-  },
-  {
    "title": "Unlearn.dev goes free for a weekend, October 10 and 11",
    "link": "https://laravel-news.com/unlearndev-goes-free-for-a-weekend-october-10-and-11?utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed%3A+laravelnews",
    "date": "2026-09-28T15:32:22.000Z",
@@ -212,16 +292,6 @@
    "image": null
   },
   {
-   "title": "⚡ Weekly Recap: $387M Crypto Hack, Citrix Exploits, AI Agents Go Off-Script, and More Threats",
-   "link": "https://thehackernews.com/2026/09/weekly-recap-387m-crypto-hack-citrix.html",
-   "date": "2026-09-28T14:00:53.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "A domain used as harmless placeholder text showed up in roughly 1,700 repositories. Then somebody registered it and started serving malicious lures. That is the kind of week this was: forgotten assumptions turning into l",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4-eWVCAN2nvZGZrKlwm-wminZE56MzJ_bVRK6CJfdBw9TXU4yQy6t9T0hDi0hSOskE9Xs6M-KCVEbVvBuL2DLDkew97W2iobOPZa9zqEBeGPWBnW8cftdD1FwzBLz7CIGVhJb1FwnS-35B62Jqc331zNQ67hZP-V2jKBT7yUxUV4rn8jMr27QCommYp-j/s1600/c-recap.jpg"
-  },
-  {
    "title": "When pt-online-schema-change “where” Meets Galera: Understanding Chunk Auto-Resize and Flow Control",
    "link": "https://www.percona.com/blog/when-pt-online-schema-change-where-meets-galera-understanding-chunk-auto-resize-and-flow-control/",
    "date": "2026-09-28T13:56:53.000Z",
@@ -242,36 +312,6 @@
    "image": null
   },
   {
-   "title": "Phillip Merrick: Why We Built pgEdge Starfleet",
-   "link": "https://postgr.es/p/9wn",
-   "date": "2026-09-28T13:12:30.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "Some of you may have seen our pgEdge Starfleet announcement, and be pondering the question of “why?” Why did we build it, why now, and does the world really need another cloud Postgres service?It's a fair question, and t",
-   "image": null
-  },
-  {
-   "title": "Webinar: How to Govern AI Agents, Reduce Excessive Access, and Control Shadow AI",
-   "link": "https://thehackernews.com/2026/09/webinar-how-to-govern-ai-agents-reduce.html",
-   "date": "2026-09-28T11:58:00.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "AI agents are moving into production faster than security teams can govern them. They are connecting to apps, handling data, calling APIs, and acting across business systems—often without the same controls applied to hum",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibRtgg2jeMV3szE5OkdAQtqtUYgPjYEf96vKrzXPpd8_9XDiXOC9iTBfh-neWto1RsFBY0qXpLpc71bz9OwQQ8agSkvr6zYzcqwI157keOyKgX-_L-mwGdLJxLrGhbV_yK4wQn2Jc4E72zhY7XPa05O61GOgFR3-9cpbgYbACE-dR9CqqHuavdrJV8GVg/s1600/webinar-agents.jpg"
-  },
-  {
-   "title": "Carbonato Botnet Compromises Docker Hosts to Deploy Telegram-Controlled Hermes AI Agent",
-   "link": "https://thehackernews.com/2026/09/carbonato-botnet-compromises-docker.html",
-   "date": "2026-09-28T11:46:00.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "Cybersecurity researchers have disclosed details of a new botnet malware called Carbonato that's targeting exposed Docker daemons to deploy an open-source artificial intelligence (AI) agent framework called Hermes Agent.",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3O4ih8J3-A5sGh57xyYKMGbnSqaXbWhu2g9HBE_mG11gEdedMUmYyeeYpA9TnNPwRsB4t-5V9UTW54iOR0VNzyaaa0fWhOG4Oi46KwGvrrVQRdWIDS7GX6YxjaMrA6sF9RHWNyO8gBttCQ7Nc8LUmrhhH24jSp1lPDuhok9r3CfKxgGJRObZRqRTW-5Gf/s1600/hermes-telegram.jpg"
-  },
-  {
    "title": "Symfony Reprise 1.3.0 released",
    "link": "https://symfony.com/blog/symfony-reprise-1-3-0-released?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
    "date": "2026-09-28T11:30:00.000Z",
@@ -280,6 +320,16 @@
    "source": "Symfony Blog",
    "summary": "Reprise 1.3.0 is out, with modulepreload under a strict CSP, a Stimulus dev loop without restarts, and safer writes of the metadata files. This is also the first release post since Reprise 1.0, so it covers three earlier",
    "image": "https://github.com/Kocal.png"
+  },
+  {
+   "title": "Joachim's blog: A great leap backwards: fixed configuration",
+   "link": "http://www.noreiko.com/blog/great-leap-backwards-fixed-configuration",
+   "date": "2026-09-28T11:05:55.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "A great leap backwards: fixed configuration Drupal's configuration system has at its heart a key concept: the site owns the configuration. What that means is that after a module has provided install configuration, it no ",
+   "image": null
   },
   {
    "title": "BloomIdea: Measuring ChatGPT ads on Drupal, from the browser and from the server",
@@ -329,16 +379,6 @@
    "themeName": "Bases de données",
    "source": "Planet PostgreSQL",
    "summary": "On 22 September, the Toulouse PUG met, organized by Geoffrey Coulaud Xavier SIMON Jean-Christophe Arnu Stéphane Tachoires Speakers: Dimitri Vanoverbeke Marc Rechté On 23 September 2026, the Postgres Meetup Group Valencia",
-   "image": null
-  },
-  {
-   "title": "Gspikes: Drupal to WordPress Migration: When Downgrading Is Right",
-   "link": "https://gspikes.com/drupal-to-wordpress-migration/",
-   "date": "2026-09-28T07:00:00.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "Moving from Drupal to WordPress is not a downgrade when your requirements shrank. When it is right, when it is a mistake, what the migration involves, and what you honestly lose.",
    "image": null
   },
   {
@@ -422,26 +462,6 @@
    "image": null
   },
   {
-   "title": "#! code: Drupal 11: Migrating From Jadu Into LocalGov Drupal: Part 4",
-   "link": "https://www.hashbangcode.com/article/drupal-11-migrating-jadu-localgov-drupal-part-4",
-   "date": "2026-09-27T17:45:01.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "Drupal 11: Migrating From Jadu Into LocalGov Drupal: Part 4 This is the fourth article in a series looking at migrating from Jadu into LocalGov Drupal (LGD) for the Central Bedfordshire site. In the first article we look",
-   "image": null
-  },
-  {
-   "title": "HOOK_DEV_ALTER(): PHP Structured Concurrency and Beyond (4): call for backers",
-   "link": "https://www.hook-dev-alter.com/en/articles/php-structured-concurrency-and-beyond-4-call-backers",
-   "date": "2026-09-27T15:00:00.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "The prototype works. Taking it to production quality is more than evenings. Whether it should is a question, not a pitch. One thing before the rest. I am not pushing this. The series is a question to the world: is this w",
-   "image": null
-  },
-  {
    "title": "A Week of Symfony #1030 (September 21–27, 2026)",
    "link": "https://symfony.com/blog/a-week-of-symfony-1030-september-21-27-2026?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
    "date": "2026-09-27T07:51:00.000Z",
@@ -460,16 +480,6 @@
    "source": "Simon Willison",
    "summary": "Tool: Kākāpō Party I presented a closing keynote for the WeAreDevelopers World Congress North America yesterday. As a STAR moment I decided to weave in references to the record breaking kākāpō breeding season we had in 2",
    "image": null
-  },
-  {
-   "title": "HOOK_DEV_ALTER(): PHP Structured Concurrency and Beyond (3): structured state, and why its absence breaks concurrency",
-   "link": "https://www.hook-dev-alter.com/en/articles/php-structured-concurrency-and-beyond-3-structured-state-and-why-its-absence-breaks",
-   "date": "2026-09-26T15:00:00.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "Every framework service that holds state is a bug under fibers. The current fix is to switch concurrency off. There is a third option.",
-   "image": "https://www.hook-dev-alter.com/sites/default/files/styles/rss_feed/public/2026-09/Cup%20cascade.png?itok=wttJvmIV"
   },
   {
    "title": "Quoting John Gruber",
@@ -650,16 +660,6 @@
    "source": "PortSwigger Research",
    "summary": "How many bugs have you missed because you didn’t send quite enough HTTP requests? Turbo Intruder now supports HTTP/3, can comfortably exceed 100,000 requests per second over Wi-Fi, and auto-tunes for",
    "image": "https://portswigger.net/cms/images/5c/00/1f41-twittercard-http3_in_burp_suite_twitter.png"
-  },
-  {
-   "title": "Case Study: Scanning for quality: How Yuka fuels healthy choices at global scale with Symfony",
-   "link": "https://symfony.com/blog/case-study-scanning-for-quality-how-yuka-fuels-healthy-choices-at-global-scale-with-symfony?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
-   "date": "2026-09-23T12:30:00.000Z",
-   "theme": "symfony",
-   "themeName": "Symfony",
-   "source": "Symfony Blog",
-   "summary": "Yuka is a global leader in health and environmental transparency. Available across iOS and Android, its mobile application helps over 68 million consumers worldwide decode food and cosmetic labels instantly. With a lean ",
-   "image": "https://symfony.com/uploads/assets/blog/Logo-Yuka.png"
   },
   {
    "title": "12 CSS features that can retire your dependencies",
