@@ -1,14 +1,94 @@
 {
- "generatedAt": "2026-09-28T22:31:07.747Z",
+ "generatedAt": "2026-09-29T02:33:40.507Z",
  "articles": [
   {
-   "title": "My Google AI API 500 errors stopped being scary when I stopped retrying the whole workflow",
-   "link": "https://dev.to/lars_winstand/my-google-ai-api-500-errors-stopped-being-scary-when-i-stopped-retrying-the-whole-workflow-ko1",
-   "date": "2026-09-28T22:10:33.000Z",
+   "title": "Optimizing API Spend: Integrating Proactive Balance Checks for Verification Pipelines",
+   "link": "https://dev.to/checknumber/optimizing-api-spend-integrating-proactive-balance-checks-for-verification-pipelines-5g61",
+   "date": "2026-09-29T02:30:10.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "I knew something was wrong when one flaky Gemini call turned into: 3 duplicate HubSpot updates 1 duplicate Jira issue 4 Slack messages and a very annoyed ops channel At first it looked like a normal \"Google AI API is thr",
+   "summary": "In data-intensive engineering, silent failures are often more costly than explicit errors. When running large-scale verification pipelines—such as bulk processing phone numbers against Telegram or WhatsApp registration s",
+   "image": null
+  },
+  {
+   "title": "I Built a Hindsight Agent That Remembers Failed Fixes",
+   "link": "https://dev.to/surya_20997be9af5cd4548bd/i-built-a-hindsight-agent-that-remembers-failed-fixes-442a",
+   "date": "2026-09-29T02:12:21.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Production incidents are rarely difficult because nobody knows how to restart a service. They are difficult because engineers have to remember what happened the last time. A similar incident may have happened weeks or mo",
+   "image": null
+  },
+  {
+   "title": "Platform Engineering: Building the Foundation for Scalable Development",
+   "link": "https://dev.to/said_olano/platform-engineering-building-the-foundation-for-scalable-development-264m",
+   "date": "2026-09-29T02:06:52.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Platform Engineering: Building the Foundation for Scalable Development Introduction Platform Engineering has emerged as a critical discipline in modern software development. It bridges the gap between infrastructure and ",
+   "image": null
+  },
+  {
+   "title": "Nvidia Open Agent Safety Platform, 1인 개발자가 바로 써볼 수 있을까?",
+   "link": "https://dev.to/justjinoit/nvidia-open-agent-safety-platform-1in-gaebaljaga-baro-sseobol-su-isseulgga-1kff",
+   "date": "2026-09-29T02:00:04.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "적용 가능성 Nvidia가 발표한 Open Agent Safety Platform은 ‘에이전트 전용 브라우저’라며, 모델 수준이 아니라 실행 단계에서 접근 권한을 제한하고, 네트워크 칩 수준에서 감시(Sentry)한다는 내용이에요. 대기업용 하드웨어와 파트너 생태계(Cisco, Microsoft 등)를 전제로 만든 설계라서, 1GB VPS에 GPU 없이 운영하는 내 프로젝트에 그대로 끌어올리",
+   "image": null
+  },
+  {
+   "title": "LIMA全球投資管理有限公司（LIMA）：連接全球資本與美國市場的專業資產管理平台",
+   "link": "https://dev.to/limaglobalview/limaquan-qiu-tou-zi-guan-li-you-xian-gong-si-limalian-jie-quan-qiu-zi-ben-yu-mei-guo-shi-chang-de-zhuan-ye-zi-chan-guan-li-ping-tai-mf2",
+   "date": "2026-09-29T01:47:18.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "全球資產管理行業正在進入一個新的發展階段。 正是在這樣的背景下，LIMA全球投資管理有限公司（LIMA）於2025年在美國正式註冊成立。 LIMA是LIM Advisors布局歐美資產管理市場的重要戰略組成部分，由香港LIM Advisors的股東與美國本土股東共同出資設立。 需要明確的是，LIMA並非傳統意義上的子公司，而是一家在美國依法註冊成立並獨立運作的資產管理公司。雙方在股權層面存在關聯，但LIMA擁有自身獨立的經營管理體系，並",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fw5zxyafsrbjzmbfih537.png"
+  },
+  {
+   "title": "Infrastructure Code Controls Internal DNS Hostnames — Media Release Reconciliation",
+   "link": "https://dev.to/corneliushayes8579/infrastructure-code-controls-internal-dns-hostnames-media-release-reconciliation-2f4h",
+   "date": "2026-09-29T01:42:22.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "To manage internal DNS hostnames from infrastructure code, a media admin console must first separate platform-owned zones from customer-owned zones. Treating both as one writable pool makes the deployment model wrong bef",
+   "image": null
+  },
+  {
+   "title": "Circuit Breaker Pattern: Preventing Cascading Failures",
+   "link": "https://dev.to/said_olano/circuit-breaker-pattern-preventing-cascading-failures-bca",
+   "date": "2026-09-29T01:41:01.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Circuit Breaker Pattern: Prevent Cascading Failures in Distributed Systems Introduction Your microservice calls an external API. The API is slow. Your service waits... and waits... and waits. Meanwhile, your thread pool ",
+   "image": null
+  },
+  {
+   "title": "What Spring Boot actually does with your configuration",
+   "link": "https://dev.to/giovanni_leopoldorozza_5/what-spring-boot-actually-does-with-your-configuration-2k5o",
+   "date": "2026-09-29T01:39:09.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "I maintain spring-config-guard, a static-analysis CLI that reads application.yml/.properties files and reports security misconfigurations: exposed Actuator endpoints, hardcoded credentials, unencrypted Kafka, and so on. ",
+   "image": null
+  },
+  {
+   "title": "Christophe Pettus: All Your GUCs in a Row: max_wal_senders",
+   "link": "https://postgr.es/p/9wt",
+   "date": "2026-09-29T01:00:00.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "Errata: the max_connections post told you to size that parameter for “the replication connections.” On 12 and later, don’t. WAL senders have their own seats, sized by this parameter, and have not drawn from max_connectio",
    "image": null
   },
   {
@@ -22,46 +102,6 @@
    "image": null
   },
   {
-   "title": "Day 52: Undo Rolls Forward, and the Disk Already Mounted Is the One Not to Trust",
-   "link": "https://dev.to/ndcodes/day-52-undo-rolls-forward-and-the-disk-already-mounted-is-the-one-not-to-trust-32bb",
-   "date": "2026-09-28T22:03:38.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Day 52 of DevOps, Day 2 of Azure. Both tasks today were about commands that do something a little different from what their names suggest. kubectl rollout undo sounds like a rewind. It is not one; it rolls forward to an ",
-   "image": null
-  },
-  {
-   "title": "Knight Capital: How One Forgotten Server Lost $440 Million in 45 Minutes",
-   "link": "https://dev.to/vladut02/knight-capital-how-one-forgotten-server-lost-440-million-in-45-minutes-3jd1",
-   "date": "2026-09-28T21:51:50.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "On August 1st, 2012, Knight Capital lost more than $400 million in about 45 minutes. It wasn't a hack or a bad bet. It was old code that nobody remembered was still running on one of eight servers. Everything below comes",
-   "image": null
-  },
-  {
-   "title": "flow warping for adaptive shutter angle synthesis: engineering sub-frame temporal coherence in shadow's hailuo h3 24fps motion pipeline",
-   "link": "https://dev.to/biffer_rowley_4cdbf203087/flow-warping-for-adaptive-shutter-angle-synthesis-engineering-sub-frame-temporal-coherence-in-5al7",
-   "date": "2026-09-28T21:45:29.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "When we first switched the Hailuo H3 generation stack to native 24fps output, every clip looked like security camera footage. The base diffusion model was producing frames with effectively zero exposure time, so anything",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fdn5pvmj4e02czmj0y4si.jpg"
-  },
-  {
-   "title": "The job hunter learned from every rejection — and none of it could change what it showed",
-   "link": "https://dev.to/elenarevicheva/the-job-hunter-learned-from-every-rejection-and-none-of-it-could-change-what-it-showed-37da",
-   "date": "2026-09-28T21:30:04.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Originally published at aideazz.xyz — cross-posted here with canonical link. A field note from the AIdeazz AI Lab — a real incident on a live production system, written up from the logs. September 28, 2026. A job-discove",
-   "image": null
-  },
-  {
    "title": "Jacob Rockowitz: Vibing Drupal: Tale 1 - Using AI to build and contribute a module",
    "link": "https://www.jrockowitz.com/blog/vibing-drupal-building-a-module",
    "date": "2026-09-28T21:25:02.000Z",
@@ -70,36 +110,6 @@
    "source": "Drupal Planet",
    "summary": "Introduction I use AI every day to accomplish a variety of tasks. I'd like to share three tales about building, maintaining, and contributing to different Drupal modules. My goal is to discuss how I use AI and what I use",
    "image": null
-  },
-  {
-   "title": "Who Calls Me, Not Whom I Call",
-   "link": "https://dev.to/anton_brilliantov/who-calls-me-not-whom-i-call-1lm0",
-   "date": "2026-09-28T21:10:41.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Outgoing links are what a service claims. Incoming links are what actually happened. 👋 Hi, I'm Anton - a software engineer working mostly in PHP/Symfony and Go, currently carving a live PHP monolith into Go services. Th",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F903yllydwd8cqx9lyy6z.png"
-  },
-  {
-   "title": "Unix and Linux System Administration Handbook by Evi Nemeth, Garth Snyder, Trent Hein, Ben Whaley, Dan Mackin — Developer Book Review",
-   "link": "https://dev.to/devbookreader/unix-and-linux-system-administration-handbook-by-evi-nemeth-garth-snyder-trent-hein-ben-whaley-4i1n",
-   "date": "2026-09-28T21:04:41.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Unix and Linux System Administration Handbook by Evi Nemeth, Garth Snyder, Trent Hein, Ben Whaley, Dan Mackin is one of those books that keeps showing up on every developer's recommended reading list — and for good reaso",
-   "image": null
-  },
-  {
-   "title": "hailuo h3 kinematics-aware 24fps shutter blur synthesis: engineering deterministic motion vectors in shadow's render scheduler",
-   "link": "https://dev.to/biffer_rowley_4cdbf203087/hailuo-h3-kinematics-aware-24fps-shutter-blur-synthesis-engineering-deterministic-motion-vectors-4ab0",
-   "date": "2026-09-28T21:01:52.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "A few weeks ago our team ran into a wall. Hailuo's h3 video model was generating gorgeous frames at 24fps, but when we stitched them into Shadow's playback pipeline, motion looked like it had been filmed through honey. T",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fxaiufl4iv3xkkswkurjt.jpg"
   },
   {
    "title": "Apple Patches CoreGraphics Flaw Possibly Exploited in Targeted Attacks",
@@ -399,16 +409,6 @@
    "themeName": "IA",
    "source": "Simon Willison",
    "summary": "My comment on S3 Is the Future, S3 Is the Past &mdash; Hacker News. One thing I find notable about S3 today is that, while it used to drop in price reasonably often, there hasn't been a price drop in a full decade : 2006",
-   "image": null
-  },
-  {
-   "title": "Chris van Eijk: PostgreSQL indexes for multi-tenant SaaS: tenant_id first",
-   "link": "https://postgr.es/p/9wi",
-   "date": "2026-09-27T22:30:10.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "Five indexes, 1,000 tenants, one query, measured in PostgreSQL 17: why tenant_id goes first, what RLS does to the plan, and when partitioning pays off.",
    "image": null
   },
   {
