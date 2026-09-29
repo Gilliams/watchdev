@@ -1,50 +1,20 @@
 {
- "generatedAt": "2026-09-29T11:20:28.929Z",
+ "generatedAt": "2026-09-29T21:22:36.604Z",
  "articles": [
   {
-   "title": "I Gave an Incident Agent a Memory With Hindsight",
-   "link": "https://dev.to/sriram_satwik/i-gave-an-incident-agent-a-memory-with-hindsight-428g",
-   "date": "2026-09-29T11:13:43.000Z",
+   "title": "Should You Really Run MCP Servers on Your Own Machine?",
+   "link": "https://dev.to/anehme/should-you-really-run-mcp-servers-on-your-own-machine-h92",
+   "date": "2026-09-29T21:20:03.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Production incidents rarely happen in isolation. A payment API becomes slow. A Redis connection pool gets exhausted. A deployment introduces unexpected errors. Someone investigates the issue, finds the fix, resolves the ",
-   "image": null
-  },
-  {
-   "title": "Best56 Places to Buy Verified Nextdoor Accounts Online in ...",
-   "link": "https://dev.to/usasvcit46h/best56-places-to-buy-verified-nextdoor-accounts-online-in--cfl",
-   "date": "2026-09-29T10:58:59.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Best56 Places to Buy Verified Nextdoor Accounts Online in ... ➤ WhatsApp: +1 (903) 702-9701 @usasvcit usasvcit@gmail.com Keep profile information accurate and understandable. Follow discussions that are genuinely relevan",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F3gnoimy43sp3g0is83x3.jpg"
-  },
-  {
-   "title": "How a Rolling Deploy",
-   "link": "https://dev.to/darshan_turakhia/how-a-rolling-deploy-cm6",
-   "date": "2026-09-29T10:58:00.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "13:52 UTC. p99 latency on pricing-svc alerts at 1.8 seconds, four times its usual ceiling. The dashboard shows six healthy pods, six pods passing their readiness probe, six pods with room on their CPU requests. One of th",
-   "image": null
-  },
-  {
-   "title": "DevOps Outage Scenario: Kubernetes OOMKilled (Exit Code 137) Cascades Under High Load",
-   "link": "https://dev.to/intervixa_ai/devops-outage-scenario-kubernetes-oomkilled-exit-code-137-cascades-under-high-load-2h5b",
-   "date": "2026-09-29T10:53:05.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "In technical interviews for Senior Cloud, DevOps, and SRE roles, trivial syntax questions are gone. Hiring managers want to see how you respond when production is down at 2 AM. Today, let's dissect a real-world productio",
-   "image": null
+   "summary": "Running an MCP server directly on your machine is probably the easiest way to get started. Install the package, start the process, connect your client, and you're ready. For development and experimentation, there is noth",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Friysw009qfrak0czi1dq.png"
   },
   {
    "title": "How to Secure Your Linux Server in 10 Steps",
-   "link": "https://dev.to/qingluan/how-to-secure-your-linux-server-in-10-steps-3d86",
-   "date": "2026-09-29T10:52:29.000Z",
+   "link": "https://dev.to/qingluan/how-to-secure-your-linux-server-in-10-steps-1o8n",
+   "date": "2026-09-29T21:07:53.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
@@ -52,33 +22,253 @@
    "image": null
   },
   {
-   "title": "Designing Better Web Automation: Skills You Can Develop With Selenium Training in India",
-   "link": "https://dev.to/tech_pratham_18/designing-better-web-automation-skills-you-can-develop-with-selenium-training-in-india-25km",
-   "date": "2026-09-29T10:51:32.000Z",
+   "title": "How We Automatically Upload Zoom Recordings to AWS S3",
+   "link": "https://dev.to/360works/how-we-automatically-upload-zoom-recordings-to-aws-s3-25j4",
+   "date": "2026-09-29T20:53:51.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "However, learning Selenium is not simply about memorizing commands. Effective automation requires an understanding of locators, browser interactions, synchronization, test design, programming fundamentals, debugging, and",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fbuglh6jwux94z6zvsphk.png"
+   "summary": "Originally published on the 360Works blog. I'm a software engineer at 360Works, and this is a tool we built for ourselves and then open sourced. TL;DR: We built a TypeScript command-line tool that downloads Zoom cloud re",
+   "image": null
   },
   {
-   "title": "Top 10 Places to Buy Google Voice Accounts Verified & Safe",
-   "link": "https://dev.to/usasvcit46h/top-10-places-to-buy-google-voice-accounts-verified-safe-3i0h",
-   "date": "2026-09-29T10:44:46.000Z",
+   "title": "🔍 Human Code Review Will Not Die Anytime Soon",
+   "link": "https://dev.to/zenika/human-code-review-will-not-die-anytime-soon-9h2",
+   "date": "2026-09-29T20:49:00.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "Top 10 Places to Buy Google Voice Accounts Verified & Safe ➤ WhatsApp: +1 (903) 702-9701 @usasvcit usasvcit@gmail.com Maintaining a dedicated communication channel for professional contacts. Managing calls and messages t",
-   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fxelcfpfaksmo1x98dij3.jpg"
+   "summary": "Initial thoughts 1. The stages collapsed. The job did not. 2. Give the agent a local or ephemeral box 3. Same-session tests are not a second opinion 4. A spike is not a shared default branch 5. Unassisted humans are slow",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fholxzgn90bj1mjf9kfml.jpg"
   },
   {
-   "title": "I open-sourced a free 5GB/month GitHub download accelerator API (rate-limited + SSRF-guarded)",
-   "link": "https://dev.to/aimall/i-open-sourced-a-free-5gbmonth-github-download-accelerator-api-rate-limited-ssrf-guarded-11i8",
-   "date": "2026-09-29T10:40:07.000Z",
+   "title": "29 Notable Cloud & DevOps Professionals from India to Follow in 2026",
+   "link": "https://dev.to/aws-builders/29-notable-cloud-devops-professionals-from-india-to-follow-in-2026-njn",
+   "date": "2026-09-29T20:36:01.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "I open-sourced a free 5GB/month GitHub download accelerator API (rate-limited + SSRF-guarded) Everyone has hit the git clone that crawls at a few dozen KB/s. This post introduces a free 5GB/month download accelerator API",
+   "summary": "India has one of the world's largest and fastest-growing cloud, DevOps, Kubernetes, and cloud-native communities. There is no single official organization that maintains a definitive ranking of India's \"Top 50 Cloud Engi",
+   "image": null
+  },
+  {
+   "title": "The Hidden Architecture of Firebase: CI/CD Pipelines",
+   "link": "https://dev.to/tejas_ayyagari_a4f6bcc063/the-hidden-architecture-of-firebase-cicd-pipelines-4bb",
+   "date": "2026-09-29T20:07:42.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "If you are writing boilerplate tutorials, this analysis is not for you. This is specifically for Platform Teams who are actively fighting AWS NAT Gateway billing shocks in production environments. Everyone is migrating t",
+   "image": null
+  },
+  {
+   "title": "Production Reliability vs Observability",
+   "link": "https://dev.to/parsa4873fe3aa/production-reliability-vs-code-review-4f4b",
+   "date": "2026-09-29T20:00:00.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Observability tells you what is happening inside a running system. Production reliability asks a different question: What does this change mean for production? The two are closely related, but they operate at different p",
+   "image": null
+  },
+  {
+   "title": "Cloud computing concepts: scaling, serverless, HA and VPCs explained",
+   "link": "https://dev.to/axrisi/cloud-computing-concepts-scaling-serverless-ha-and-vpcs-explained-2aa0",
+   "date": "2026-09-29T19:46:44.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "Cloud computing is easier to learn as a handful of architecture ideas than as a catalogue of three hundred product names. Every production backend on AWS, Google Cloud or Azure is built from the same eleven cloud computi",
+   "image": null
+  },
+  {
+   "title": "Drupal blog: Celebrating Excellence: the Women in Drupal Awards Shine a Spotlight on Women Shaping the Future of Open Source",
+   "link": "https://www.drupal.org/blog/celebrating-excellence-the-women-in-drupal-awards-shine-a-spotlight-on-women-shaping-the-future-of",
+   "date": "2026-09-29T18:44:04.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "The Women in Drupal Awards returned this year to celebrate the outstanding achievements of women making remarkable contributions to the global Drupal community. Presented during DrupalCon Rotterdam 2026, the awards recog",
+   "image": null
+  },
+  {
+   "title": "French Tax Data Theft Using Stolen Staff Passwords Went Undetected for Seven Weeks",
+   "link": "https://thehackernews.com/2026/09/french-tax-data-theft-using-stolen.html",
+   "date": "2026-09-29T17:47:01.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "An attacker used stolen passwords of staff at France's tax administration to take tax data on hundreds of thousands of taxpayers and businesses in June and July. Neither the tax administration nor France's national cyber",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9h550xeoGqzMnMqY6B6Ejo9xeSvbx4fnnu1OmLWvhYAvYeLNB1zeik8F8yYB82oW685qieusoRaI27P68ugA34Vg0720ZZdLfQUJtuIjxkUYRgq_hQtivtsopRYYoddpwb4mICLERqQrVKtZv5EHg78rU14dlQmgevB0KsOR0ePvG4E8cpqKB1TyliaE/s1600/france.jpg"
+  },
+  {
+   "title": "New Spectre-v2 BTR Attack Leaks Linux Memory Despite Existing Defenses",
+   "link": "https://thehackernews.com/2026/09/new-spectre-v2-btr-attack-leaks-linux.html",
+   "date": "2026-09-29T17:20:17.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "A group of academics from VUSec and Scuola Superiore Sant'Anna have disclosed details of a new Spectre CPU vulnerability variant that affects Just-In-Time (JIT) engines present in web browsers, language runtimes, and the",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCNHT9zDz8oOamcA5EH8a3KGAtk9R9bE_UxGY_uPThgxZJu9vX-YG1olbgiX5WBVdwDd52LpDfSyryC6GZ45tUi2bKLe_aWnbj0Ir3WQZeGYF8Vr7U7icoPn4tcuwfpOZagVfry-KG5_jzLPb-fbPiFBlv142UOgqAPpC193t6BslvCE1l1XWo2z5_mFYV/s1600/linux-intel.jpg"
+  },
+  {
+   "title": "Russia's Star Blizzard Targets 100+ Organizations With Fake Event Invites to Deliver Backdoor",
+   "link": "https://thehackernews.com/2026/09/russias-star-blizzard-targets-100.html",
+   "date": "2026-09-29T17:20:08.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "Russian state hackers known as Star Blizzard have been using fake event invitations to trick people into installing a backdoor on their Windows computers, according to Microsoft. The campaigns, aimed at people and organi",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQDuuJUT-WU7XzUYYoKEDtFKt7QAra8I4G0ptQRyveku8G6fD6R0aSWw32hi-2fd0L28qUxjqJoTlQoJbLiBYH6NBOVYirQZ9LfH-UvD8JG5uiL_m4ZkBVnPLiArcivCsdMNegW1XGxFEzas4cwkzFVeY4r22qTqSp2U1Fo3Nw7urOlnWRKGFHW8pW91E/s1600/ms-invite.jpg"
+  },
+  {
+   "title": "Undpaul.de: Drupal CMS & Drupal AI: The Future of Content Management At DrupalCon Rotterdam",
+   "link": "https://www.undpaul.de/en/blog/2026/09/29/drupal-cms-drupal-ai-future-content-management-drupalcon-rotterdam",
+   "date": "2026-09-29T17:20:02.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "Today at DrupalCon Rotterdam, Dries Buytaert presented the future of Drupal CMS and Drupal AI. The key message: Working with content is becoming dramatically easier, more flexible, and more intelligent for editors, marke",
+   "image": null
+  },
+  {
+   "title": "OpenAI DevDay 2026 live blog",
+   "link": "https://simonwillison.net/2026/Sep/29/openai-devday-2026-live-blog/",
+   "date": "2026-09-29T15:55:13.000Z",
+   "theme": "ia",
+   "themeName": "IA",
+   "source": "Simon Willison",
+   "summary": "I'm at OpenAI DevDay today, in Fort Mason, San Francisco. Same as last year I'll be live blogging the keynote and some other notes during the day. OpenAI gave me a free ticket and a seat in the \"creator\" area for the key",
+   "image": null
+  },
+  {
+   "title": "Valkey Memory Optimization, Version by Version and Encoding: How Many Bytes Did Each Release Actually Save?",
+   "link": "https://www.percona.com/blog/valkey-memory-optimization/",
+   "date": "2026-09-29T15:33:33.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Percona Blog",
+   "summary": "Introduction This RAM/Memory reduction is most useful for Valkey 9.1 environments that are key string heavy. They are used extensively in caching, sessions/authentication, real-time apps, ecomm, Ad tech/martech, and gami",
+   "image": "https://www.percona.com/wp-content/uploads/2026/09/unnamed-3.png"
+  },
+  {
+   "title": "NVIDIA Kumo Tabular Sets a New Accuracy-Efficiency Frontier for Tabular Prediction",
+   "link": "https://huggingface.co/blog/nvidia/kumo-tabular",
+   "date": "2026-09-29T15:30:38.000Z",
+   "theme": "ia",
+   "themeName": "IA",
+   "source": "Hugging Face",
+   "summary": "",
+   "image": null
+  },
+  {
+   "title": "Laravel Release Cycle: Versions, Support Policy, and Dates",
+   "link": "https://laravel-news.com/laravel-releases?utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed%3A+laravelnews",
+   "date": "2026-09-29T15:13:20.000Z",
+   "theme": "laravel",
+   "themeName": "Laravel",
+   "source": "Laravel News",
+   "summary": "How Laravel releases work: one major version a year, weekly minor releases, 18 months of bug fixes, and support dates for Laravel 10 through 14. The post Laravel Release Cycle: Versions, Support Policy, and Dates appeare",
+   "image": "https://picperf.io/https://laravelnews.s3.amazonaws.com/featured-images/release-process-v2.png"
+  },
+  {
+   "title": "Kiteworks Fixes Critical Flaw Found During Nine-Hour Precautionary Shutdown",
+   "link": "https://thehackernews.com/2026/09/kiteworks-fixes-critical-flaw-found.html",
+   "date": "2026-09-29T14:13:20.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "Kiteworks on Monday said it worked with federal intelligence authorities over the weekend as it identified and addressed a critical security vulnerability during the scheduled precautionary shutdown. \"During the shutdown",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjv9oZ7uWtniIGlzNM3FXdS2v4WjdHi8ajTw0evMWbzhC9ihnkOwrxAqV7sgJou4SMDrJo2z5uDOQPRX1Bb0Hx1P1Str7iZQ4wssATmqsb6o0IfOPafzmnX6UXgkweBDB_QKqBVJZsNdMibEvAykjIzluSiJEnxnhFehzw-q2bhZ7heCFv97on69dZMjPrb/s1600/kiteworks.jpg"
+  },
+  {
+   "title": "Symfony 8.1.8 released",
+   "link": "https://symfony.com/blog/symfony-8-1-8-released?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
+   "date": "2026-09-29T14:10:27.000Z",
+   "theme": "symfony",
+   "themeName": "Symfony",
+   "source": "Symfony Blog",
+   "summary": "Symfony 8.1.8 has just been released. Read the Symfony upgrade guide to learn more about upgrading Symfony and use the SymfonyInsight upgrade reports to detect the code you will need to change in your project. Tip…",
+   "image": null
+  },
+  {
+   "title": "Symfony 7.4.20 released",
+   "link": "https://symfony.com/blog/symfony-7-4-20-released?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
+   "date": "2026-09-29T14:07:35.000Z",
+   "theme": "symfony",
+   "themeName": "Symfony",
+   "source": "Symfony Blog",
+   "summary": "Symfony 7.4.20 has just been released. Read the Symfony upgrade guide to learn more about upgrading Symfony and use the SymfonyInsight upgrade reports to detect the code you will need to change in your project. Tip…",
+   "image": null
+  },
+  {
+   "title": "Symfony 6.4.47 released",
+   "link": "https://symfony.com/blog/symfony-6-4-47-released?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
+   "date": "2026-09-29T14:04:38.000Z",
+   "theme": "symfony",
+   "themeName": "Symfony",
+   "source": "Symfony Blog",
+   "summary": "Symfony 6.4.47 has just been released. Read the Symfony upgrade guide to learn more about upgrading Symfony and use the SymfonyInsight upgrade reports to detect the code you will need to change in your project. Tip…",
+   "image": null
+  },
+  {
+   "title": "101 Malicious npm Packages Add Developers' WhatsApp Accounts to Groups Without Consent",
+   "link": "https://thehackernews.com/2026/09/101-malicious-npm-packages-add.html",
+   "date": "2026-09-29T13:45:10.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "Cybersecurity researchers have identified a cluster of 101 npm packages that are used to trap developers into a WhatsApp group subscriber campaign dubbed PhantomSub. \"The malicious packages abuse the 'Baileys' WhatsApp o",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhUmW5o4XCEsBlPE2MKecTG-IHCrk1WHeLajiNnRTpGtT-DDhpYVID3Pon7cseFiJN24GulDnjR7TPRe6h-kQEuJBPRl87atgBytMvKbiRV4h_DHWtxQEtogyy3U-aAD6ErNCrYiOQV-tHvHcw_P4W8z37PpR-jo70sePvtLIvMwKx7MJuE8Fazhyphenhyphen7_KI5/s1600/npm-whatsapp.jpg"
+  },
+  {
+   "title": "Devrim GÜNDÜZ: Rust extensions started landing PostgreSQL RPM repository",
+   "link": "https://postgr.es/p/9ww",
+   "date": "2026-09-29T13:44:00.000Z",
+   "theme": "database",
+   "themeName": "Bases de données",
+   "source": "Planet PostgreSQL",
+   "summary": "After trying not to add any Rust packages to the PostgreSQL RPM repository, I finally bit the bullet and pushed pgrx and postgresql_anonymizer to the RPM repos, along with packaging guidelines: https://github.com/pgdg-pa",
+   "image": null
+  },
+  {
+   "title": "Bliki: Sensible Default",
+   "link": "https://martinfowler.com/bliki/SensibleDefault.html",
+   "date": "2026-09-29T13:43:00.000Z",
+   "theme": "patterns",
+   "themeName": "Design Patterns",
+   "source": "Martin Fowler",
+   "summary": "A Sensible Default is a practice that, absent some overriding context, should be used when carrying out a certain kind of task. In software development such sensible defaults might include things like “use version contro",
+   "image": null
+  },
+  {
+   "title": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
+   "link": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
+   "date": "2026-09-29T13:07:00.000Z",
+   "theme": "ia",
+   "themeName": "IA",
+   "source": "Hugging Face",
+   "summary": "",
+   "image": null
+  },
+  {
+   "title": "Omega8.cc: No Removal Van",
+   "link": "https://omega8.cc/blog/no-removal-van",
+   "date": "2026-09-29T12:48:00.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "Most Drupal 7 sites keep the crossing to modern Drupal parked for some day, and some day has a habit of never arriving, because the crossing as we all learned it wants a second machine, a dump shipped across, credentials",
+   "image": "https://omega8.cc/images/a/b/c/e/0/abce0cf3d13c6939aad4686478d2aec2bcb2ef12-no-removal-van-anime-halo.png"
+  },
+  {
+   "title": "Fragments: September 29",
+   "link": "https://martinfowler.com/fragments/2026-09-29.html",
+   "date": "2026-09-29T12:41:00.000Z",
+   "theme": "patterns",
+   "themeName": "Design Patterns",
+   "source": "Martin Fowler",
+   "summary": "Simon Willison: The more time I spend working with coding agents, the more convinced I am that they make software engineering even harder We can do amazing things with them, but unlocking their full potential requires ex",
    "image": null
   },
   {
@@ -100,6 +290,16 @@
    "source": "The Hacker News",
    "summary": "Dutch authorities have confirmed that they arrested a 24-year-old man from Amsterdam in connection with the ShinyHunters group. \"It is true that this month a 24-year-old man from Amsterdam was arrested in an investigatio",
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWsGNpV8Y5_YLcyxRYju8E3caiN3I3Zttrlvxhz5iXfzVIR_Ayp_d_Zn2Wk12ZBkz5nW4eYfKeEs-xxs9kYuS_paAwO3wJleeUxdMRbrbU_lXwWVuG7ajiFH0UOEcoj3almps5b54DXt-mGy73GhXjCQzGsNNDJkhdfJXRI9XWeFF5hfsr4zjQty-Wued5/s1600/1000111943.jpg"
+  },
+  {
+   "title": "Specbee: Tired of adding Webform fields one by one? AI Webform Generator builds Drupal forms from a single sentence and checks every AI output first.",
+   "link": "https://www.specbee.com/blogs/ai-webform-generator-drupal-webforms",
+   "date": "2026-09-29T08:08:34.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "Tired of adding Webform fields one by one? AI Webform Generator builds Drupal forms from a single sentence and checks every AI output first.",
+   "image": null
   },
   {
    "title": "New in Symfony 8.2: PGP/MIME Signed and Encrypted Emails",
@@ -152,14 +352,14 @@
    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeiHpQjvEicRlkD9F-pR6I5h9MLRWRtX0Wd84u8ThZ5XIsZ-TZwHjTyXj93Z6GV0-5MNhAO2bCQCGfMHuoW7-0ovwpXFwxTy-gvBNJ3iCrlDjBAimAS-ayH7ZfzIL9kzMaV5Wn8FwBR17ehonB72Yvweyp4msb6uPEZxvnEj0QDMF2BDFYkPfU9_GGakFi/s1600/astra.jpg"
   },
   {
-   "title": "OpenAI Pauses Tool Use After Agent Bypasses Internet Controls to Reach External Chatbot",
-   "link": "https://thehackernews.com/2026/09/openai-pauses-tool-use-after-agent.html",
-   "date": "2026-09-29T04:45:20.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "OpenAI said it has made the decision to pause training of its most powerful models after one of its agents during reinforcement learning (RL) training contacted an external chatbot by exploiting a loophole in its interne",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2NfY2zvkkU95qQwwR7N_yQQf_H2AjYcXccbK2yH7xzzeAqmu3mH9ItszzC14M2suvDnfz6EBB-QzMkCTUBIgaoX9teGfhmBIBvU9R-wsKQBcC90f5lytvP-hYfCy8o-YTDTh8rIqz8mj1NIikN27BE2vsWyaRgiKPeAe3zbmrkdy6Dkg8htztnoyJwS4o/s1600/openai-chatbot.jpg"
+   "title": "Elastic Bridge: Eloquent-Style Queries for Elasticsearch and OpenSearch",
+   "link": "https://laravel-news.com/elastic-bridge?utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed%3A+laravelnews",
+   "date": "2026-09-29T04:03:08.000Z",
+   "theme": "laravel",
+   "themeName": "Laravel",
+   "source": "Laravel News",
+   "summary": "Elastic Bridge brings fluent Elasticsearch and OpenSearch queries to Laravel, with model-style documents, aggregations, pagination, and testing fakes. The post Elastic Bridge: Eloquent-Style Queries for Elasticsearch and",
+   "image": "https://picperf.io/https://laravelnews.s3.amazonaws.com/featured-images/Elastic-Bridge-LN.png"
   },
   {
    "title": "Christophe Pettus: All Your GUCs in a Row: max_wal_senders",
@@ -182,6 +382,16 @@
    "image": null
   },
   {
+   "title": "Cheppers: ExperienceKit: Web Accessibility at Scale - Audit Components Once, Not Pages Forever",
+   "link": "https://cheppers.com/post/experiencekit-web-accessibility-at-scale---audit-components-once-not-pages-forever",
+   "date": "2026-09-29T00:00:00.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "Every university web team and public-sector digital lead eventually has to answer one question, usually in a meeting where the numbers get uncomfortable: how do we make ten thousand pages accessible, and keep them that w",
+   "image": null
+  },
+  {
    "title": "Claude Sonnet 5.5",
    "link": "https://simonwillison.net/2026/Sep/28/claude-sonnet-5-5/",
    "date": "2026-09-28T22:07:38.000Z",
@@ -192,26 +402,6 @@
    "image": null
   },
   {
-   "title": "Jacob Rockowitz: Vibing Drupal: Tale 1 - Using AI to build and contribute a module",
-   "link": "https://www.jrockowitz.com/blog/vibing-drupal-building-a-module",
-   "date": "2026-09-28T21:25:02.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "Introduction I use AI every day to accomplish a variety of tasks. I'd like to share three tales about building, maintaining, and contributing to different Drupal modules. My goal is to discuss how I use AI and what I use",
-   "image": null
-  },
-  {
-   "title": "Apple Patches CoreGraphics Flaw Possibly Exploited in Targeted Attacks",
-   "link": "https://thehackernews.com/2026/09/apple-patches-coregraphics-flaw.html",
-   "date": "2026-09-28T19:18:01.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "Apple has released security updates to address a vulnerability in older versions of iOS, iPadOS, and macOS that it said may have been exploited in targeted attacks. The vulnerability, tracked as CVE-2026-86950, refers to",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhO5I5gnKOqAs0ZCjgQnQirUHdSjRqGZRMp-Fioy684EzZWuQm72wSrCW1hWZEYlvvOXoCtkQyr3sB48AoZ71PM6tMCsz_AGZmEYZz8u2AbrH1gpjutU-mFtDQpuJcI_pKEG9q4-cZEo7T3Yp7hyphenhyphen4_MCZvloRnVKszE7rjTDUKZBaH1eQ47-K0fPno50T3S/s1600/apple-0day.jpg"
-  },
-  {
    "title": "Quoting @joedaroo",
    "link": "https://simonwillison.net/2026/Sep/28/joedaroo/",
    "date": "2026-09-28T19:11:42.000Z",
@@ -220,36 +410,6 @@
    "source": "Simon Willison",
    "summary": "To say that we were surprised at the jump and suddenness of the capabilities of our models when it came to “cyber” or “swarming” or “message boards” or anything else related to the incidents is an understatement. Securit",
    "image": null
-  },
-  {
-   "title": "Hackers Use NeedyMantis to Maintain Long-Term Access in Breached Networks",
-   "link": "https://thehackernews.com/2026/09/hackers-use-needymantis-to-maintain.html",
-   "date": "2026-09-28T18:35:42.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "Hackers have used a malware family called NeedyMantis to maintain long-term access to networks they had already breached, Microsoft said in a technical analysis. The malware has been seen in a small number of targeted in",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJgqNtFBBtX_6em5nY1VC9Q4M6HMG7gzxiQspFHsQRfQgm3LK5kTsHi-9SbwEx8kaeVv7BtKGFq3u1SmTGFEOe0z78fxFCxRFVEb09v0FMZ5tT-FNl7sUBnsGPPpDlAaQh4E_CSQQnwFakxNll2AvKiBvidb9ljEatmOzdJV4T4z8r5lmYG3DINHy-wR0/s1600/hackers.jpg"
-  },
-  {
-   "title": "IAM for AI agents: A Practical Enterprise Framework",
-   "link": "https://thehackernews.com/2026/09/iam-for-ai-agent.html",
-   "date": "2026-09-28T18:20:38.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "What is IAM for AI agents? AI agents authenticate, invoke tools, and act across enterprise systems with delegated authority. IAM for AI Agents is the identity-control architecture that governs those actors. This guide co",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5iI5XAgqXDB1IvqmdWgs2QFGVb5cAbMuJgwtgpKwvRtamF2xs9Od5F4Xwv7JhH8HC0yDOUx1ErLjZaeOBSu8mkCR3ewFb3x3VTV-IFbfXwUR2Pzoqf6_JKFq9de2wf1enmkMSK8M5QU2FBGovMkMkhLzI2qV90LuQYTgdMW-ymc5zxrv_yieHXBUr4Ck/s1600/OR.jpg"
-  },
-  {
-   "title": "Bitget Says Attacker Exploited Third-Party Security Product Flaw to Steal $388M",
-   "link": "https://thehackernews.com/2026/09/bitget-says-attacker-exploited-third.html",
-   "date": "2026-09-28T17:42:18.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "The attacker who stole about $388 million from the cryptocurrency exchange Bitget gained access through a vulnerability in a third-party security product the exchange used, Bitget said on Monday. The attacker exploited t",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgA8s-yMULxIXnKcHnHw7w1dF9pt58MDYc_-_wfJPo8ifPgGoD0GZcgE408ZdC1GbZvjp2wOOEYrlR8obpFEXZ-KUSjIBXFFb3LcswKfAd3EODISE5hSkU-QplYeZDnK95i0QrJhNZKcKEVgedmkKjAme9PV4vDLV-OY7Bh9KhCINbGuglY49greoPLCJQ/s1600/bitget-hacker.jpg"
   },
   {
    "title": "Unlearn.dev goes free for a weekend, October 10 and 11",
@@ -282,16 +442,6 @@
    "image": "https://www.percona.com/wp-content/uploads/2026/09/image2.png"
   },
   {
-   "title": "The Drop Times: Rotterdam Puts Drupal’s Biggest Bets to the Test",
-   "link": "https://www.thedroptimes.com/newsletter/rotterdam-puts-drupals-biggest-bets-test?utm_source=Drupal Planet",
-   "date": "2026-09-28T14:06:07.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "Perhaps the most revealing thing about DrupalCon Rotterdam is that its programme does not tell one tidy story. Drupal is preparing to discuss its transformation into a production-ready Agentic CMS while another session a",
-   "image": null
-  },
-  {
    "title": "When pt-online-schema-change “where” Meets Galera: Understanding Chunk Auto-Resize and Flow Control",
    "link": "https://www.percona.com/blog/when-pt-online-schema-change-where-meets-galera-understanding-chunk-auto-resize-and-flow-control/",
    "date": "2026-09-28T13:56:53.000Z",
@@ -322,26 +472,6 @@
    "image": "https://github.com/Kocal.png"
   },
   {
-   "title": "Joachim's blog: A great leap backwards: fixed configuration",
-   "link": "http://www.noreiko.com/blog/great-leap-backwards-fixed-configuration",
-   "date": "2026-09-28T11:05:55.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "A great leap backwards: fixed configuration Drupal's configuration system has at its heart a key concept: the site owns the configuration. What that means is that after a module has provided install configuration, it no ",
-   "image": null
-  },
-  {
-   "title": "BloomIdea: Measuring ChatGPT ads on Drupal, from the browser and from the server",
-   "link": "https://bloomidea.com/en/blog/measuring-chatgpt-ads-drupal-browser-and-server",
-   "date": "2026-09-28T10:28:02.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "Since September, advertisers in Europe can buy ads inside ChatGPT, and the Ads Manager asks for two things before it can tell you whether they work: a measurement pixel in the browser and, ideally, conversions sent from ",
-   "image": null
-  },
-  {
    "title": "Holo4: powering generalist computer-use agents",
    "link": "https://huggingface.co/blog/Hcompany/holo4",
    "date": "2026-09-28T09:44:05.000Z",
@@ -349,16 +479,6 @@
    "themeName": "IA",
    "source": "Hugging Face",
    "summary": "",
-   "image": null
-  },
-  {
-   "title": "Drupal Association blog: Drupal's Got Talent at DrupalCon Orlando 2027!",
-   "link": "https://www.drupal.org/association/blog/drupals-got-talent-at-drupalcon-orlando-2027",
-   "date": "2026-09-28T09:07:52.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "The inaugural DrupalCon Talent Show is happening at DrupalCon Orlando on the evening of Tuesday, March 23, 2027 as part of the community party! We’re planning about two hours of entertainment and looking for roughly 10 a",
    "image": null
   },
   {
@@ -432,16 +552,6 @@
    "image": null
   },
   {
-   "title": "Radim Marek: What REPACK (CONCURRENTLY) costs while it runs",
-   "link": "https://postgr.es/p/9wj",
-   "date": "2026-09-27T23:30:40.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Planet PostgreSQL",
-   "summary": "Two years ago I compared pg_repack and pg_squeeze, the two extensions most of us reach for when a table has bloated beyond what autovacuum will ever give back and VACUUM FULL isn't an option. PostgreSQL 19 changes the st",
-   "image": null
-  },
-  {
    "title": "S3 Is the Future, S3 Is the Past",
    "link": "https://simonwillison.net/2026/Sep/27/hn-49871741/",
    "date": "2026-09-27T23:09:19.000Z",
@@ -482,16 +592,6 @@
    "image": null
   },
   {
-   "title": "Quoting John Gruber",
-   "link": "https://simonwillison.net/2026/Sep/25/john-gruber/",
-   "date": "2026-09-25T17:22:01.000Z",
-   "theme": "ia",
-   "themeName": "IA",
-   "source": "Simon Willison",
-   "summary": "Muse is getting a lot of attention — including mine — because it’s both groundbreaking technically (each user gets their own entire persistent Linux VM running in Meta’s cloud) and because it’s packaged in an easy-to-ins",
-   "image": null
-  },
-  {
    "title": "Decide with Jev: Laravel AI That Answers with a Probability",
    "link": "https://laravel-news.com/decide-with-jev-laravel-ai-that-answers-with-a-probability?utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed%3A+laravelnews",
    "date": "2026-09-25T09:41:18.000Z",
@@ -510,36 +610,6 @@
    "source": "Symfony Blog",
    "summary": "Contributed by Fabien Potencier A CMS often lets each site customize how content fields are displayed. The default theme…",
    "image": "https://github.com/fabpot.png"
-  },
-  {
-   "title": "New in Symfony 8.2: Faster Messenger Workers",
-   "link": "https://symfony.com/blog/new-in-symfony-8-2-faster-messenger-workers?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
-   "date": "2026-09-25T07:07:00.000Z",
-   "theme": "symfony",
-   "themeName": "Symfony",
-   "source": "Symfony Blog",
-   "summary": "Parallel Message Processing Contributed by Nicolas Grekas in #63650…",
-   "image": "https://connect.symfony.com/profile/nicolas-grekas.picture"
-  },
-  {
-   "title": "Memoize Tagged Cache Reads in Laravel",
-   "link": "https://laravel-news.com/laravel-tagged-memoized-cache?utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed%3A+laravelnews",
-   "date": "2026-09-25T02:21:03.000Z",
-   "theme": "laravel",
-   "themeName": "Laravel",
-   "source": "Laravel News",
-   "summary": "Use Cache::memo()->tags() in Laravel to read tagged cache values once per request and serve repeat lookups from memory, with writes and flushes kept in sync. The post Memoize Tagged Cache Reads in Laravel appeared first ",
-   "image": "https://picperf.io/https://laravelnews.s3.amazonaws.com/featured-images/laravel-cache-memoized-tags.png"
-  },
-  {
-   "title": "JetBrains Air: Run AI Coding Agents in JetBrains IDEs",
-   "link": "https://laravel-news.com/jetbrains-air?utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed%3A+laravelnews",
-   "date": "2026-09-25T02:20:50.000Z",
-   "theme": "laravel",
-   "themeName": "Laravel",
-   "source": "Laravel News",
-   "summary": "JetBrains Air runs Claude Agent, Codex, Junie, and other AI coding agents in PhpStorm and other JetBrains IDEs, with team automations and AI cost controls. The post JetBrains Air: Run AI Coding Agents in JetBrains IDEs a",
-   "image": "https://picperf.io/https://laravelnews.s3.amazonaws.com/featured-images/jetbrains-air-featured.png"
   },
   {
    "title": "Fragments: September 24",
@@ -592,16 +662,6 @@
    "image": null
   },
   {
-   "title": "SymfonyCon Warsaw 2026: PHP’s Type System Dissected",
-   "link": "https://symfony.com/blog/symfonycon-warsaw-2026-php-s-type-system-dissected?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
-   "date": "2026-09-24T12:30:00.000Z",
-   "theme": "symfony",
-   "themeName": "Symfony",
-   "source": "Symfony Blog",
-   "summary": "Looking to supercharge your PHP and Symfony expertise? SymfonyCon Warsaw 2026 is coming to Poland on November 26-27! Join developers from across the globe for two days packed with insight, featuring 3 parallel tracks and",
-   "image": "https://symfony.com/uploads/assets/blog/NL-BLOG-Banner.png"
-  },
-  {
    "title": "PHP 8.5.11 Released!",
    "link": "https://www.php.net/index.php#2026-09-24-3",
    "date": "2026-09-24T11:40:51.000Z",
@@ -629,26 +689,6 @@
    "themeName": "PHP",
    "source": "PHP.net",
    "summary": "The PHP team is pleased to announce the first release candidate of PHP 8.6.0, RC2. It is not a typo: a mistake was made while packaging RC1, so RC2 was released instead. For a full explanation, please see this . This con",
-   "image": null
-  },
-  {
-   "title": "New in Symfony 8.2: Provider-Hosted Email Templates and Tracking Control",
-   "link": "https://symfony.com/blog/new-in-symfony-8-2-provider-hosted-email-templates-and-tracking-control?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
-   "date": "2026-09-24T07:27:00.000Z",
-   "theme": "symfony",
-   "themeName": "Symfony",
-   "source": "Symfony Blog",
-   "summary": "Provider-Hosted Templates Contributed by Florent Blaison and Nicolas…",
-   "image": "https://connect.symfony.com/profile/Orkin.picture"
-  },
-  {
-   "title": "How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
-   "link": "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp",
-   "date": "2026-09-23T18:41:40.000Z",
-   "theme": "ia",
-   "themeName": "IA",
-   "source": "Hugging Face",
-   "summary": "",
    "image": null
   },
   {
@@ -719,16 +759,6 @@
    "themeName": "DevOps",
    "source": "Kubernetes Blog",
    "summary": "Kubernetes v1.37 promotes the PersistentVolumeClaimUnusedSinceTime feature gate to Beta (enabled by default). With this feature, the PersistentVolumeClaim (PVC) protection controller adds an Unused condition to each PVC,",
-   "image": null
-  },
-  {
-   "title": "Pruning LLMs Like a Physicist: Block Removal as an Ising Optimization Problem",
-   "link": "https://huggingface.co/blog/MultiverseComputingCAI/pruning-llms-like-a-physicist-block-removal-as-an",
-   "date": "2026-09-21T13:44:34.000Z",
-   "theme": "ia",
-   "themeName": "IA",
-   "source": "Hugging Face",
-   "summary": "",
    "image": null
   },
   {
@@ -852,16 +882,6 @@
    "image": null
   },
   {
-   "title": "Performance improvements in Percona Server 8.4.11-11",
-   "link": "https://www.percona.com/blog/performance-improvements-in-percona-server-8-4-11-11/",
-   "date": "2026-09-15T11:52:54.000Z",
-   "theme": "database",
-   "themeName": "Bases de données",
-   "source": "Percona Blog",
-   "summary": "Focusing on Percona Server 8.4.11-11 My previous post (Performance Progression of Percona Server for MySQL 8.4) did a brief review of the performance changes in Percona Server for MySQL 8.4 released in 2026. I recommend ",
-   "image": "https://www.percona.com/wp-content/uploads/2026/08/graph-8g.png"
-  },
-  {
    "title": "Kubernetes Changed Block Tracking API - Beta Differences",
    "link": "https://kubernetes.io/blog/2026/09/14/csi-changed-block-tracking-beta/",
    "date": "2026-09-14T18:30:00.000Z",
@@ -950,26 +970,6 @@
    "source": "Frontend Focus",
    "summary": "🚀 Frontend Focus #​757 — September 9, 2026 | Read on the web New Things You Should Know About HTML in 2026 — HTML moves a bit slower than CSS and JavaScript, but there's plenty of new features to keep up with. Chris run",
    "image": "https://res.cloudinary.com/cpress/image/upload/w_1280,e_sharpen:60,q_auto/u72fk6nihuuzxi8gvc7t.jpg"
-  },
-  {
-   "title": "Fragments: September  8",
-   "link": "https://martinfowler.com/fragments/2026-09-08.html",
-   "date": "2026-09-08T15:22:00.000Z",
-   "theme": "patterns",
-   "themeName": "Design Patterns",
-   "source": "Martin Fowler",
-   "summary": "Christian Catalini says we’re in a situation where we are vastly reducing the cost of generating things, but not the cost of verifying them:. This explains why the first major AI products appeared in chat, image generati",
-   "image": null
-  },
-  {
-   "title": "Do you even need a presentation?",
-   "link": "https://martinfowler.com/articles/never-send-slides/need-presentation.html",
-   "date": "2026-09-08T13:42:00.000Z",
-   "theme": "patterns",
-   "themeName": "Design Patterns",
-   "source": "Martin Fowler",
-   "summary": "Like me, Sumeet Gayathri Moghe is tired of poor presentations with bad slide decks. He's started to write a series of posts on how to avoid these calamities, beginning with a post that questions whether a presentation is",
-   "image": null
   },
   {
    "title": "No need",
