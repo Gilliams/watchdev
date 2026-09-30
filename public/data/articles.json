@@ -1,85 +1,145 @@
 {
- "generatedAt": "2026-09-30T02:03:45.657Z",
+ "generatedAt": "2026-09-30T11:08:23.434Z",
  "articles": [
   {
-   "title": "Building High-Performance Generative Studio UIs with React, Tailwind, and Live SSE Telemetry",
-   "link": "https://dev.to/biffer_rowley_4cdbf203087/building-high-performance-generative-studio-uis-with-react-tailwind-and-live-sse-telemetry-5c6d",
-   "date": "2026-09-30T02:01:02.000Z",
+   "title": "Guide to Buying Old Gmail Accounts: Benefits and Risks",
+   "link": "https://dev.to/usasvcit54tga/guide-to-buying-old-gmail-accounts-benefits-and-risks-1ilg",
+   "date": "2026-09-30T11:07:37.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "1/5 Engineering deep-dive: How we eliminated character drift in autonomous generative video across 10,000+ continuous frames on Shadow. Traditional diffusion models suffer from subtle latent variance that degrades facial",
+   "summary": "Guide to Buying Old Gmail Accounts: Benefits and Risks ➤ WhatsApp: +1 (903) 702-9701 @usasvcit usasvcit@gmail.com Understand Your Email Environment Begin by identifying how you currently use your Gmail account. List the ",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fmv0c0md5nw2115448y6j.jpg"
+  },
+  {
+   "title": "The Day Docker Finally Made Sense to Me,,.",
+   "link": "https://dev.to/atieno_ephy_oselu/the-day-docker-finally-made-sense-to-me-40c5",
+   "date": "2026-09-30T11:07:26.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "I'll be honest,,before this project, \"Docker\" was just a word people at Zone01 said like it was obvious. I nodded along and had no idea what was actually happening inside that whale logo. I'd built ascii-art-web, a littl",
    "image": null
   },
   {
-   "title": "소스 인식 검증(ProvenanceGuard)이 1인 개발자에게 의미하는 것",
-   "link": "https://dev.to/justjinoit/soseu-insig-geomjeungprovenanceguardi-1in-gaebaljaege-yimihaneun-geos-2bob",
-   "date": "2026-09-30T02:00:05.000Z",
+   "title": "A Valid TLS Certificate Didn't Save Virtualizor From a BGP Hijack",
+   "link": "https://dev.to/webpixie/a-valid-tls-certificate-didnt-save-virtualizor-from-a-bgp-hijack-1cel",
+   "date": "2026-09-30T11:00:00.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "왜 소스 인식 검증이 중요한가 LLM 에이전트가 여러 검색·데이터베이스 도구를 호출해 답변을 만들면, \"사실 여부\"만 검증하는 기존 방법으로는 충분하지 않다. 답변이 어느 소스에서 온지를 잘못 연결하면, 의료 기록이나 고객 계정처럼 민감한 데이터에서 큰 위험이 된다. Hugging Face 팀이 발표한 ProvenanceGuard는 각 클레임과 그 출처를 매칭해 ‘잘못된 출처’까지 차단한다는",
+   "summary": "On 28 August 2026, a network operator hijacked a block of Hetzner's IP space and used it to serve a malicious update to Virtualizor installations. The certificate the attacker's server presented wasn't forged, spoofed, o",
    "image": null
   },
   {
-   "title": "349 Tests, Zero Module Mocks: Building Blast Radius Spec-First with Kiro",
-   "link": "https://dev.to/aws-builders/349-tests-zero-module-mocks-building-blast-radius-spec-first-with-kiro-cp4",
-   "date": "2026-09-30T01:40:52.000Z",
+   "title": "What Happens When Customers Use the Same App for Completely Different Needs?",
+   "link": "https://dev.to/nativeclusters_b695bf2918/what-happens-when-customers-use-the-same-app-for-completely-different-needs-2ole",
+   "date": "2026-09-30T10:57:10.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "The first three articles covered what Blast Radius does, how to use it, and how it's designed. This one is the build log: the engineering decisions, the patterns that paid off, and the two runtime gotchas that cost me an",
+   "summary": "A customer may open an app in the morning to book a ride, use it later to order food, and return in the evening to send a package. Can different services have different workflows in the same app? Yes. A multi-service app",
    "image": null
   },
   {
-   "title": "How to Scrape 10,000 Leads in 10 Minutes with Python (HTTPX + Playwright Stealth)",
-   "link": "https://dev.to/ancucorp/how-to-scrape-10000-leads-in-10-minutes-with-python-httpx-playwright-stealth-hic",
-   "date": "2026-09-30T01:37:20.000Z",
+   "title": "Top AI Governance Tools for Secure Enterprise Usage in 2026",
+   "link": "https://dev.to/kuldeep_paul/top-ai-governance-tools-for-secure-enterprise-usage-in-2026-423e",
+   "date": "2026-09-30T10:48:32.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "How to Scrape 10,000 Leads in 10 Minutes with Python (HTTPX + Playwright Stealth) Most developers and agency founders believe web scraping at scale requires paying $99 to $250 every single month for cloud proxy SaaS. Tha",
+   "summary": "TL;DR AI governance platforms are essential for managing the risks of AI adoption, particularly the challenge of \"shadow AI\"—the unsanctioned use of AI tools by employees. Key evaluation criteria for these tools include ",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Famss2vghk2u3yc98c98d.png"
+  },
+  {
+   "title": "DevOps Outage Scenario: AWS NAT Gateway Cost Spikes: VPC Endpoints & Flow Logs Deep-Dive",
+   "link": "https://dev.to/intervixa_ai/devops-outage-scenario-aws-nat-gateway-cost-spikes-vpc-endpoints-flow-logs-deep-dive-33lo",
+   "date": "2026-09-30T10:42:23.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "In technical interviews for Senior Cloud, DevOps, and SRE roles, trivial syntax questions are gone. Hiring managers want to see how you respond when production is down at 2 AM. Today, let's dissect a real-world productio",
    "image": null
   },
   {
-   "title": "How to Secure Your Linux Server in 10 Steps",
-   "link": "https://dev.to/qingluan/how-to-secure-your-linux-server-in-10-steps-551n",
-   "date": "2026-09-30T01:13:35.000Z",
+   "title": "Top AI Guardrails Tools for AI Security in 2026",
+   "link": "https://dev.to/kuldeep_paul/top-ai-guardrails-tools-for-ai-security-in-2026-1d6p",
+   "date": "2026-09-30T10:40:20.000Z",
    "theme": "devops",
    "themeName": "DevOps",
    "source": "dev.to #devops",
-   "summary": "How to Secure Your Linux Server in 10 Steps Introduction How to Secure Your Linux Server in 10 Steps is essential knowledge for every developer. Start with the basics Practice regularly Build real projects Share your kno",
+   "summary": "TL;DR AI guardrails are security controls that check LLM inputs and outputs in real time to block threats like prompt injection, data leakage, and harmful content. The primary architectural choice is between in-app frame",
+   "image": "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2F7por3t6cvegifqou25u4.png"
+  },
+  {
+   "title": "The RCA Nobody Reads: How to Write a Root Cause Analysis That Changes Something",
+   "link": "https://dev.to/abby3103/the-rca-nobody-reads-how-to-write-a-root-cause-analysis-that-changes-something-529o",
+   "date": "2026-09-30T10:37:28.000Z",
+   "theme": "devops",
+   "themeName": "DevOps",
+   "source": "dev.to #devops",
+   "summary": "I have written a great many root cause analyses for enterprise healthcare clients. For the first year, almost none of them changed anything. The document went to the client, the client filed it, and three months later th",
    "image": null
   },
   {
-   "title": "AI-Enhanced Automated DevOps CI/CD Pipeline with Intelligent Decision‑Making — Part 5: Automated Rollback and Incident Predictio",
-   "link": "https://dev.to/vijay_vinoth_8e7abfd3f5b5/ai-enhanced-automated-devops-cicd-pipeline-with-intelligent-decision-making-part-5-automated-1079",
-   "date": "2026-09-30T01:12:38.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "AI-Enhanced Automated DevOps CI/CD Pipeline with Intelligent Decision‑Making — Part 5: Automated Rollback and Incident Prediction In Parts 1‑4 we built the foundation for an AI‑driven CI/CD pipeline: a smart build stage,",
+   "title": "Drupal Association blog: The Drupal Advocacy Program: Helping the world catch up to what Drupal can do.",
+   "link": "https://www.drupal.org/association/blog/drupal-advocacy-program",
+   "date": "2026-09-30T09:21:21.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "In a major shake-up, your advocacy work now earns Drupal contribution credit. Drupal is now light-years ahead of its reputation. It's time we changed that. The Drupal Advocacy Program is a new Drupal Association pilot th",
    "image": null
   },
   {
-   "title": "My OCI sandbox factory now installs on a Free Tier account, with no card",
-   "link": "https://dev.to/ashish_sinha_5241c7673d93/my-oci-sandbox-factory-now-installs-on-a-free-tier-account-with-no-card-2kpb",
-   "date": "2026-09-30T01:08:42.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "Every time I showed people the thing I built — a chat that spins up Oracle Cloud sandboxes and deletes them when their time is up — the reply was the same. Nice, but I would need a paid tenancy and an admin to try it, so",
+   "title": "Attackers Exploit NetScaler Flaw for Root Access, Deploy WHIPSHOT and SLAPSHOT",
+   "link": "https://thehackernews.com/2026/09/attackers-exploit-netscaler-flaw-for.html",
+   "date": "2026-09-30T08:24:35.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "Unknown threat actors have been observed exploiting a newly patched security flaw in Citrix NetScaler ADC and NetScaler Gateway appliances to target organizations in North America and Europe. The activity, observed by Ma",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgjeU_A9ijIuOqFirHL74nU4k_HktRhcj5hx3goc6SfQKIeG9XA_GpZaZQVpCdUYbho_gZT4LoB-MjNJO0FZrV3q6MxXoUzg8bdbHmr2r-8rKxP1_XCMUVKq3IntFoR4aFFSdDPyBQI4Z1-jn8uNaWn4c4ohpPflBYx8M0GPFnAVziUo3Mtap0fzBBU9f_/s1600/citrix-shell.jpg"
+  },
+  {
+   "title": "OpenSSL Fixes High-Severity DTLS Flaw That Can Leak Heap Memory Unencrypted",
+   "link": "https://thehackernews.com/2026/09/openssl-fixes-high-severity-dtls-flaw.html",
+   "date": "2026-09-30T08:09:28.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "A High-severity OpenSSL flaw can leak heap memory to the other side of a DTLS connection or crash the program, OpenSSL said on September 29 as it released fixes. DTLS, the TLS variant used for UDP traffic, resends a hand",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0Po53IuyRAhsYzbs5KKPp_UBpklONBiOzoLWgXrklvrgDn5xnpjuRjU8UYoyLuImSmiPtOHQK3ExgQk5zhxlqsAcUmTLRFowkQXzan2RD955Gw-sumsvmwzLBTViUBRhyphenhyphenHCnETV23Qbt01RwaovTe1ogMeMYDSGxmF5n84NKZOB3EiWz6VAHUlfDm5YE/s1600/openssl-memory.jpg"
+  },
+  {
+   "title": "New in Symfony 8.2: Sudo Mode",
+   "link": "https://symfony.com/blog/new-in-symfony-8-2-sudo-mode?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
+   "date": "2026-09-30T07:17:00.000Z",
+   "theme": "symfony",
+   "themeName": "Symfony",
+   "source": "Symfony Blog",
+   "summary": "In Symfony, IS_AUTHENTICATED_FULLY is the strongest check about how users logged in. However, it tells you how the session started, not when. A user who logged in with their password eight hours ago and left the laptop u",
+   "image": "https://connect.symfony.com/profile/nicolas-grekas.picture"
+  },
+  {
+   "title": "Gspikes: Drupal Migrate Plus and Custom Source Plugins: The Working Guide",
+   "link": "https://gspikes.com/drupal-migrate-plus/",
+   "date": "2026-09-30T07:00:00.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "What Migrate Plus adds to core, when a custom source plugin is the right answer, and the anatomy of one that survives real data, with working PHP and YAML.",
    "image": null
   },
   {
-   "title": "Why Collector Redaction Does Not Undo Application Boundary Copies",
-   "link": "https://dev.to/hellocerbi/why-collector-redaction-does-not-undo-application-boundary-copies-1i5h",
-   "date": "2026-09-30T01:03:47.000Z",
-   "theme": "devops",
-   "themeName": "DevOps",
-   "source": "dev.to #devops",
-   "summary": "The Boundary Problem OpenTelemetry documentation emphasizes that implementers are responsible for protecting sensitive data, noting that the system cannot determine what is sensitive in your specific context. A common mi",
-   "image": null
+   "title": "Citrix NetScaler CVE-2026-88772 Exploit Details Show Pre-Auth Path to Shellcode Execution",
+   "link": "https://thehackernews.com/2026/09/citrix-netscaler-cve-2026-88772-exploit.html",
+   "date": "2026-09-30T05:30:30.000Z",
+   "theme": "securite",
+   "themeName": "Sécurité / Hack",
+   "source": "The Hacker News",
+   "summary": "Cybersecurity researchers have disclosed technical details of a recently patched critical security flaw in Citrix NetScaler ADC and Gateway that has come under active exploitation in the wild. The vulnerability, tracked ",
+   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcFl1djJdJQkamdMtV0xibSpzc4ahUKNoVKtVoDSeKFJAYUkH2SnmxalYIJpaVZ9cywBJqyUflBrXWbhTIzpwL51iIyfINyH7z7YUHqDl3IbAJJmpCANlw8YvFFtmLa3T2es4rdE70Jd9tEUYAbuWFuXVBsx6Ar2radG2ZhgkqjBA5ZErCm0xVhNPv6d3F/s1600/watch-exploit.jpg"
   },
   {
    "title": "Quoting Anthropic Frontier Red Team",
@@ -89,6 +149,16 @@
    "themeName": "IA",
    "source": "Simon Willison",
    "summary": "We evaluate several models on 100 tasks from the [internal Binary Exploitation benchmark] (selected at random), and find that GLM-5.3 develops full control flow hijacks in 4% of the trials; Claude Mythos Preview did so i",
+   "image": null
+  },
+  {
+   "title": "Aten Design Group: The Cost of Waiting: Why CMS Maintenance Belongs in Every Website Budget",
+   "link": "https://atendesigngroup.com/articles/cost-waiting-why-cms-maintenance-belongs-every-website-budget",
+   "date": "2026-09-29T21:34:54.000Z",
+   "theme": "drupal",
+   "themeName": "Drupal",
+   "source": "Drupal Planet",
+   "summary": "The Cost of Waiting: Why CMS Maintenance Belongs in Every Website Budget Joel Steidl Tue, 09/29/2026 - 15:34 Process Drupal WordPress Backdrop CMS Launching a website is a major milestone, but it does not mark the end of",
    "image": null
   },
   {
@@ -204,7 +274,7 @@
   {
    "title": "Symfony 8.1.8 released",
    "link": "https://symfony.com/blog/symfony-8-1-8-released?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
-   "date": "2026-09-29T14:10:27.000Z",
+   "date": "2026-09-29T14:10:00.000Z",
    "theme": "symfony",
    "themeName": "Symfony",
    "source": "Symfony Blog",
@@ -312,26 +382,6 @@
    "image": null
   },
   {
-   "title": "Dutch Police Arrest 24-Year-Old Amsterdam Man in ShinyHunters Investigation",
-   "link": "https://thehackernews.com/2026/09/dutch-police-arrest-24-year-old.html",
-   "date": "2026-09-29T08:35:10.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "Dutch authorities have confirmed that they arrested a 24-year-old man from Amsterdam in connection with the ShinyHunters group. \"It is true that this month a 24-year-old man from Amsterdam was arrested in an investigatio",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWsGNpV8Y5_YLcyxRYju8E3caiN3I3Zttrlvxhz5iXfzVIR_Ayp_d_Zn2Wk12ZBkz5nW4eYfKeEs-xxs9kYuS_paAwO3wJleeUxdMRbrbU_lXwWVuG7ajiFH0UOEcoj3almps5b54DXt-mGy73GhXjCQzGsNNDJkhdfJXRI9XWeFF5hfsr4zjQty-Wued5/s1600/1000111943.jpg"
-  },
-  {
-   "title": "Specbee: Tired of adding Webform fields one by one? AI Webform Generator builds Drupal forms from a single sentence and checks every AI output first.",
-   "link": "https://www.specbee.com/blogs/ai-webform-generator-drupal-webforms",
-   "date": "2026-09-29T08:08:34.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "Tired of adding Webform fields one by one? AI Webform Generator builds Drupal forms from a single sentence and checks every AI output first.",
-   "image": null
-  },
-  {
    "title": "New in Symfony 8.2: PGP/MIME Signed and Encrypted Emails",
    "link": "https://symfony.com/blog/new-in-symfony-8-2-pgp-mime-signed-and-encrypted-emails?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
    "date": "2026-09-29T07:32:00.000Z",
@@ -340,46 +390,6 @@
    "source": "Symfony Blog",
    "summary": "Symfony has supported signing and encrypting email messages with the S/MIME standard since Symfony 4.4, and Symfony 7.3 added global signing and encryption so you can configure it once for all your emails. However, S/MIM",
    "image": "https://connect.symfony.com/profile/spomky_.picture"
-  },
-  {
-   "title": "Morpht: What's new in the Drupal AI Views Agent: Simpler prompts and a build assistant",
-   "link": "https://www.morpht.com/blog/whats-new-drupal-ai-views-agent-simpler-prompts-and-build-assistant",
-   "date": "2026-09-29T06:45:03.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "Stop writing prompts that sound like YAML. The Drupal Views AI agent now speaks plain English, and it brought a chatbot.",
-   "image": null
-  },
-  {
-   "title": "Drupal blog: DriesNote Rotterdam: Drupal is light-years ahead of its reputation",
-   "link": "https://www.drupal.org/blog/driesnote-rotterdam",
-   "date": "2026-09-29T06:31:49.000Z",
-   "theme": "drupal",
-   "themeName": "Drupal",
-   "source": "Drupal Planet",
-   "summary": "Dries Buytaert opened DrupalCon Rotterdam with a tour of a platform moving at remarkable speed. Multilingual sites that take a fraction of the effort to build. Components written in React. Headless delivery across five f",
-   "image": null
-  },
-  {
-   "title": "Official MCP Python SDK Flaw Can Let Malicious Servers Steal OAuth Credentials",
-   "link": "https://thehackernews.com/2026/09/official-mcp-python-sdk-flaw-can-let.html",
-   "date": "2026-09-29T06:08:25.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "A malicious MCP server could trick an application built on the official MCP Python SDK into handing over the OAuth credentials it uses to log in to a real service, the SDK's maintainers said in a security advisory. Affec",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2N5owhsoQXHTQV74afwfngdyitjwcW37BHLX2QKkq6xZAxP8_AOXAh1ODPj5DyvvmMUq3mKH9eR2B1r7owc6djzLViK2U4BY_hw3rTWmaHjhFEyyh8LPlUMPZ7MdWkqN7bjtQyMByBLrsI5m0mAU9y-IbrsAe9OPhZXHN63AWwuv_1OB5MSrpRdVZ9CM/s1600/mcp-python.jpg"
-  },
-  {
-   "title": "OpenAI Shelves GPT-6.1 Astra After Tests Find Deception and Unauthorized Actions",
-   "link": "https://thehackernews.com/2026/09/openai-shelves-gpt-61-astra-after-tests.html",
-   "date": "2026-09-29T05:12:32.000Z",
-   "theme": "securite",
-   "themeName": "Sécurité / Hack",
-   "source": "The Hacker News",
-   "summary": "OpenAI on Monday shelved plans to release GPT-6.1 Astra, a next-generation artificial intelligence (AI) model that was planned for an October launch, after it failed internal safety and alignment audits. The development ",
-   "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeiHpQjvEicRlkD9F-pR6I5h9MLRWRtX0Wd84u8ThZ5XIsZ-TZwHjTyXj93Z6GV0-5MNhAO2bCQCGfMHuoW7-0ovwpXFwxTy-gvBNJ3iCrlDjBAimAS-ayH7ZfzIL9kzMaV5Wn8FwBR17ehonB72Yvweyp4msb6uPEZxvnEj0QDMF2BDFYkPfU9_GGakFi/s1600/astra.jpg"
   },
   {
    "title": "Elastic Bridge: Eloquent-Style Queries for Elasticsearch and OpenSearch",
@@ -600,16 +610,6 @@
    "source": "Laravel News",
    "summary": "Decide with Jev is a new mini course where we build an app that checks if a draft does what its brief asked for. It uses Jev, an AI model from TypeSafe that answers with a number instead of text. In episode 1 we set it u",
    "image": null
-  },
-  {
-   "title": "New in Twig 4.0: Composing Blocks at Runtime",
-   "link": "https://symfony.com/blog/new-in-twig-4-0-composing-blocks-at-runtime?utm_source=Symfony%20Blog%20Feed&utm_medium=feed",
-   "date": "2026-09-25T08:58:00.000Z",
-   "theme": "symfony",
-   "themeName": "Symfony",
-   "source": "Symfony Blog",
-   "summary": "Contributed by Fabien Potencier A CMS often lets each site customize how content fields are displayed. The default theme…",
-   "image": "https://github.com/fabpot.png"
   },
   {
    "title": "Fragments: September 24",
