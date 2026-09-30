@@ -1,4 +1,5 @@
 {
+  "defaults": { "lang": "en", "maxPerFeed": 8, "maxAgeDays": 45 },
   "feeds": [
     { "theme": "php", "themeName": "PHP", "source": "PHP.net", "url": "https://www.php.net/feed.atom" },
     { "theme": "php", "themeName": "PHP", "source": "stitcher.io", "url": "https://stitcher.io/rss" },
@@ -11,6 +12,7 @@
     { "theme": "frontend", "themeName": "FrontEnd", "source": "Frontend Focus", "url": "https://frontendfoc.us/rss" },
     { "theme": "securite", "themeName": "Sécurité / Hack", "source": "The Hacker News", "url": "https://feeds.feedburner.com/TheHackersNews" },
     { "theme": "securite", "themeName": "Sécurité / Hack", "source": "PortSwigger Research", "url": "https://portswigger.net/research/rss" },
+    { "theme": "securite", "themeName": "Sécurité / Hack", "source": "CERT-FR (avis)", "url": "https://www.cert.ssi.gouv.fr/avis/feed/", "lang": "fr" },
     { "theme": "ia", "themeName": "IA", "source": "Simon Willison", "url": "https://simonwillison.net/atom/everything/" },
     { "theme": "ia", "themeName": "IA", "source": "Hugging Face", "url": "https://huggingface.co/blog/feed.xml" },
     { "theme": "threed", "themeName": "3D", "source": "Codrops", "url": "https://tympanus.net/codrops/feed/" },
@@ -19,6 +21,32 @@
     { "theme": "devops", "themeName": "DevOps", "source": "Kubernetes Blog", "url": "https://kubernetes.io/feed.xml" },
     { "theme": "devops", "themeName": "DevOps", "source": "dev.to #devops", "url": "https://dev.to/feed/tag/devops" },
     { "theme": "patterns", "themeName": "Design Patterns", "source": "Martin Fowler", "url": "https://martinfowler.com/feed.atom" },
-    { "theme": "drupal", "themeName": "Drupal", "source": "Drupal Planet", "url": "https://www.drupal.org/planet/rss.xml" }
+    { "theme": "drupal", "themeName": "Drupal", "source": "Drupal Planet", "url": "https://www.drupal.org/planet/rss.xml" },
+    { "theme": "divers", "themeName": "Divers", "source": "Korben", "url": "https://korben.info/feedfull.xml", "lang": "fr" },
+
+    { "theme": "actu-fr", "themeName": "Actu France", "source": "France Info", "url": "https://www.francetvinfo.fr/titres.rss", "lang": "fr", "maxAgeDays": 3, "maxPerFeed": 12, "digest": true },
+    { "theme": "actu-fr", "themeName": "Actu France", "source": "Le Monde — Une", "url": "https://www.lemonde.fr/rss/une.xml", "lang": "fr", "maxAgeDays": 3, "maxPerFeed": 12, "digest": true },
+    { "theme": "actu-fr", "themeName": "Actu France", "source": "Les Échos", "url": "https://services.lesechos.fr/rss/les-echos-economie-france.xml", "lang": "fr", "maxAgeDays": 3, "maxPerFeed": 8, "digest": true },
+    { "theme": "actu-fr", "themeName": "Actu France", "source": "Le Figaro — Actualité", "url": "https://www.lefigaro.fr/rss/figaro_actualites.xml", "lang": "fr", "maxAgeDays": 3, "maxPerFeed": 8, "digest": true },
+
+    { "theme": "actu-monde", "themeName": "Actu Monde", "source": "France 24 — Monde", "url": "https://www.france24.com/fr/monde/rss", "lang": "fr", "maxAgeDays": 3, "maxPerFeed": 10, "digest": true },
+    { "theme": "actu-monde", "themeName": "Actu Monde", "source": "RFI — Monde", "url": "https://www.rfi.fr/fr/monde/rss", "lang": "fr", "maxAgeDays": 3, "maxPerFeed": 10, "digest": true },
+    { "theme": "actu-monde", "themeName": "Actu Monde", "source": "Le Monde — International", "url": "https://www.lemonde.fr/international/rss_full.xml", "lang": "fr", "maxAgeDays": 3, "maxPerFeed": 10, "digest": true },
+    { "theme": "actu-monde", "themeName": "Actu Monde", "source": "BBC World", "url": "https://feeds.bbci.co.uk/news/world/rss.xml", "maxAgeDays": 3, "maxPerFeed": 10, "digest": true },
+    { "theme": "actu-monde", "themeName": "Actu Monde", "source": "The Guardian — World", "url": "https://www.theguardian.com/world/rss", "maxAgeDays": 3, "maxPerFeed": 8, "digest": true },
+    { "theme": "actu-monde", "themeName": "Actu Monde", "source": "Al Jazeera", "url": "https://www.aljazeera.com/xml/rss/all.xml", "maxAgeDays": 3, "maxPerFeed": 8, "digest": true },
+
+    { "theme": "geopolitique", "themeName": "Géopolitique", "source": "Courrier International", "url": "https://www.courrierinternational.com/feed/all/rss.xml", "lang": "fr", "maxAgeDays": 14, "digest": true },
+    { "theme": "geopolitique", "themeName": "Géopolitique", "source": "Le Grand Continent", "url": "https://legrandcontinent.eu/fr/feed/", "lang": "fr", "maxAgeDays": 21, "digest": true },
+    { "theme": "geopolitique", "themeName": "Géopolitique", "source": "IRIS", "url": "https://www.iris-france.org/feed/", "lang": "fr", "maxAgeDays": 21, "digest": true },
+    { "theme": "geopolitique", "themeName": "Géopolitique", "source": "Diploweb", "url": "https://www.diploweb.com/spip.php?page=backend", "lang": "fr", "maxAgeDays": 21 },
+    { "theme": "geopolitique", "themeName": "Géopolitique", "source": "ECFR", "url": "https://ecfr.eu/feed/", "maxAgeDays": 21 },
+    { "theme": "geopolitique", "themeName": "Géopolitique", "source": "War on the Rocks", "url": "https://warontherocks.com/feed/", "maxAgeDays": 21 },
+    { "theme": "geopolitique", "themeName": "Géopolitique", "source": "Foreign Policy", "url": "https://foreignpolicy.com/feed/", "maxAgeDays": 14 },
+    { "theme": "geopolitique", "themeName": "Géopolitique", "source": "Carnegie Endowment", "url": "https://carnegieendowment.org/rss/pubs.xml", "maxAgeDays": 21 },
+
+    { "theme": "trading", "themeName": "Marchés", "source": "Les Échos — Marchés", "url": "https://services.lesechos.fr/rss/les-echos-finance-marches.xml", "lang": "fr", "maxAgeDays": 7, "maxPerFeed": 10 },
+    { "theme": "trading", "themeName": "Marchés", "source": "CoinDesk", "url": "https://www.coindesk.com/arc/outboundfeeds/rss/", "maxAgeDays": 7, "maxPerFeed": 8 },
+    { "theme": "trading", "themeName": "Marchés", "source": "GamesIndustry.biz", "url": "https://www.gamesindustry.biz/feed", "maxAgeDays": 7, "maxPerFeed": 8 }
   ]
 }

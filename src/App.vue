@@ -10,7 +10,10 @@ const dueCount = computed(() => dueThemes(state).length)
   <nav class="sidebar">
     <div class="logo">🧠 Dev<span>Watch</span></div>
     <router-link class="nav-link" to="/">🏠 Tableau de bord</router-link>
-    <router-link class="nav-link" to="/veille">📡 Veille techno</router-link>
+    <router-link class="nav-link" to="/actu">☕ L'actu en 5 min</router-link>
+    <router-link class="nav-link" to="/veille/geopolitique">🌍 Géopolitique</router-link>
+    <router-link class="nav-link" to="/trading">📈 Marchés</router-link>
+    <router-link class="nav-link" to="/veille" active-class="" exact-active-class="router-link-active">📡 Veille techno</router-link>
     <router-link class="nav-link" to="/quiz">
       🎯 Quiz &amp; Révisions
       <span v-if="dueCount" class="badge orange">{{ dueCount }}</span>

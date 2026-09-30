@@ -13,7 +13,7 @@ const progressPath = join(root, 'progress/progress.json')
 const THEME_NAMES = {
   php: 'PHP', symfony: 'Symfony', sql: 'SQL', database: 'Bases de données & Doctrine',
   patterns: 'Design Patterns', devops: 'DevOps', securite: 'Sécurité / Hack',
-  laravel: 'Laravel', vuejs: 'VueJS', ia: 'IA',
+  laravel: 'Laravel', vuejs: 'VueJS', ia: 'IA', all: 'All'
 }
 
 if (!existsSync(progressPath)) {

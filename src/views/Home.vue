@@ -24,19 +24,58 @@ const totalReviews = computed(() =>
 )
 
 const articles = ref([])
+const digest = ref(null)
+const quotes = ref(null)
+
 onMounted(async () => {
-  try {
-    const res = await fetch(`${import.meta.env.BASE_URL}data/articles.json`)
-    if (res.ok) articles.value = (await res.json()).articles.slice(0, 5)
-  } catch { /* pas encore de flux généré */ }
+  const base = import.meta.env.BASE_URL
+  const [a, d, q] = await Promise.allSettled([
+    fetch(`${base}data/articles.json`).then((r) => (r.ok ? r.json() : null)),
+    fetch(`${base}data/digest.json`).then((r) => (r.ok ? r.json() : null)),
+    fetch(`${base}data/quotes.json`).then((r) => (r.ok ? r.json() : null)),
+  ])
+  if (a.status === 'fulfilled' && a.value) articles.value = a.value.articles.filter((x) => x.theme !== 'trading').slice(0, 5)
+  if (d.status === 'fulfilled') digest.value = d.value
+  if (q.status === 'fulfilled') quotes.value = q.value
 })
+
+const topics = computed(() =>
+  (digest.value?.sections || []).flatMap((s) => s.items.slice(0, 2).map((i) => i.title)).slice(0, 5)
+)
+
+function delta(v) {
+  if (!Number.isFinite(v)) return { text: '—', cls: 'flat' }
+  return { text: `${v >= 0 ? '+' : ''}${v.toFixed(2)} %`, cls: v > 0.05 ? 'up' : v < -0.05 ? 'down' : 'flat' }
+}
 </script>
 
 <template>
   <h1>Tableau de bord</h1>
-  <p class="subtitle">Ta veille, tes révisions et tes enquêtes SQL, au même endroit.</p>
+  <p class="subtitle">Ton actu, tes marchés, ta veille, tes révisions et tes enquêtes SQL, au même endroit.</p>
+
+  <!-- Bandeau marchés -->
+  <div v-if="quotes?.assets?.length" class="ticker">
+    <router-link v-for="a in quotes.assets" :key="a.id" to="/trading" class="ticker-item">
+      <span>{{ a.icon }} {{ a.ticker }}</span>
+      <span class="delta" :class="delta(a.changes.d1).cls">{{ delta(a.changes.d1).text }}</span>
+    </router-link>
+  </div>
 
   <div class="grid">
+    <div class="card">
+      <h2 style="margin-top: 0">☕ L'actu en {{ digest?.readingMinutes || 5 }} min</h2>
+      <template v-if="digest">
+        <p style="margin: 0 0 0.6rem">{{ digest.headline }}</p>
+        <ul class="small muted" style="margin: 0 0 0.8rem; padding-left: 1.1rem">
+          <li v-for="t in topics" :key="t">{{ t }}</li>
+        </ul>
+        <router-link to="/actu"><button class="primary">Lire le résumé</button></router-link>
+      </template>
+      <p v-else class="muted small">
+        Résumé pas encore généré — il arrive avec le prochain passage du workflow <code>veille.yml</code>.
+      </p>
+    </div>
+
     <div class="card">
       <h2 style="margin-top: 0">🔥 À réviser aujourd'hui</h2>
       <p v-if="!due.length && !neverTested.length" class="muted">

@@ -328,3 +328,81 @@ details.solution-details summary { cursor: pointer; color: var(--muted); }
   .sidebar .logo { padding: 0.3rem 0.6rem; }
   main.content { padding: 1.2rem; }
 }
+/* ===================================================================
+   À coller à la fin de src/styles.css
+   (marchés, résumé d'actu, drapeau FR sur les cards de veille)
+   =================================================================== */
+
+/* ---- Bandeau marchés (tableau de bord) ---- */
+.ticker {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.ticker-item:hover { border-color: var(--accent); text-decoration: none; }
+
+/* ---- Cards de cotation ---- */
+.quote-card .quote-price {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.2rem;
+  font-variant-numeric: tabular-nums;
+}
+.quote-card .quote-deltas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  border-top: 1px dashed var(--border);
+  padding-top: 0.6rem;
+  margin-top: 0.4rem;
+}
+.quote-card .quote-deltas > div { display: flex; flex-direction: column; gap: 0.1rem; }
+.quote-card.stale { opacity: 0.6; border-style: dashed; }
+
+.delta { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 0.95rem; }
+.delta.up { color: var(--green); }
+.delta.down { color: var(--red); }
+.delta.flat { color: var(--muted); }
+
+/* ---- Résumé d'actualité ---- */
+.digest-headline {
+  border-left: 3px solid var(--accent2);
+  font-size: 1.05rem;
+}
+.digest-item { max-width: 52rem; }
+.digest-item p { line-height: 1.65; }
+.digest-sources { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.digest-sources a {
+  border: 1px solid var(--border);
+  border-radius: 1.4rem;
+  padding: 0.05rem 0.6rem;
+  color: var(--muted);
+}
+.digest-sources a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+/* ---- Drapeau FR sur la vignette d'un article ---- */
+.article-card .thumb .lang-flag {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  font-size: 0.9rem;
+  background: rgba(13, 17, 23, 0.75);
+  border-radius: 0.3rem;
+  padding: 0.05rem 0.3rem;
+  line-height: 1.3;
+}

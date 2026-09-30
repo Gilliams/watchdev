@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Veille technologique, quiz de révision (courbe d'Ebbinghaus) et enquêtes SQL gamifiées",
+  "description": "Veille technologique, actu & géopolitique, marchés, quiz de révision (courbe d'Ebbinghaus) et enquêtes SQL gamifiées",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "fetch-feeds": "node scripts/fetch-feeds.mjs",
-    "send-reminders": "node scripts/send-reminders.mjs"
+    "send-reminders": "node scripts/send-reminders.mjs",
+    "fetch-quotes": "node scripts/fetch-quotes.mjs",
+    "build-digest": "node scripts/build-digest.mjs"
   },
   "dependencies": {
     "vue": "^3.4.21",
