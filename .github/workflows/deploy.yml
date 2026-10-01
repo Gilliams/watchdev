@@ -1,14 +1,19 @@
-name: Déploiement GitHub Pages
+name: Mise à jour et déploiement
 
+# Déclenché par le bouton « 🔄 Rafraîchir » de l'appli (workflow_dispatch via l'API GitHub),
+# à la main depuis l'onglet Actions, ou à chaque push de code.
+# Les données (veille, résumé, cotations) sont générées au build : plus aucun commit automatique.
 on:
   push:
     branches: [main]
+    paths-ignore: ['progress/**', 'README.md']
   workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  models: read # GitHub Models gratuit pour rédiger le résumé « 5 min »
 
 concurrency:
   group: pages
@@ -27,8 +32,30 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      # Dernières cotations publiées : valeur de repli si une source financière ne répond pas
+      - name: Récupérer les cotations précédentes
+        run: mkdir -p public/data && curl -sfL "${{ steps.pages.outputs.base_url }}/data/quotes.json" -o public/data/quotes.json || true
+
+      - name: Veille RSS
+        run: npm run fetch-feeds
+
+      - name: Résumé « actu en 5 min »
+        continue-on-error: true
+        run: npm run build-digest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DIGEST_MODEL: ${{ vars.DIGEST_MODEL }}
+
+      - name: Cotations
+        continue-on-error: true
+        run: npm run fetch-quotes
+        env:
+          CRYPTO_VS: ${{ vars.CRYPTO_VS || 'eur' }}
+
       - run: npm run build
-      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

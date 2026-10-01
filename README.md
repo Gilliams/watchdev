@@ -5,7 +5,7 @@ Application web personnelle qui concentre cinq outils :
 - **☕ L'actu en 5 min** — synthèse quotidienne France / International / Géopolitique, générée par Claude à partir des dépêches des dernières 30 h, avec les liens vers les sources.
 - **🌍 Géopolitique** — veille dédiée (Courrier International, Le Grand Continent, IRIS, Diploweb, ECFR, War on the Rocks, Foreign Policy, Carnegie).
 - **📈 Marchés** — Take-Two, CD Projekt, S&P 500, CAC 40, Bitcoin et Solana : cours et variations 24 h / 7 j / 1 an, sans aucune clé d'API.
-- **📡 Veille technologique** — agrégation automatique de flux RSS (PHP, Symfony, VueJS, Laravel, Sécurité, IA, FrontEnd, 3D, Bases de données, DevOps, Design Patterns, Drupal…) deux fois par jour via GitHub Actions, **articles francophones en tête**.
+- **📡 Veille technologique** — agrégation automatique de flux RSS (PHP, Symfony, VueJS, Laravel, Sécurité, IA, FrontEnd, 3D, Bases de données, DevOps, Design Patterns, Drupal…) à la demande (bouton « 🔄 Rafraîchir ») via GitHub Actions, **articles francophones en tête**.
 - **🎯 Quiz de révision** — 60+ questions back-end (niveau intermédiaire → expert) avec explications, pilotées par une **répétition espacée façon courbe d'Ebbinghaus** : un thème réussi à ≥ 80 % s'espace (1 → 3 → 7 → 14 → 30 → 60 → 120 jours), un thème raté (< 60 %) revient dès le lendemain.
 - **🕵️ Enquêtes SQL** — trois affaires criminelles à résoudre en vraies requêtes SQL (SQLite dans le navigateur via sql.js) : jointures, agrégations, jointures temporelles, CTE récursives. Indices progressifs si tu bloques, requêtes solutions commentées.
 
@@ -18,7 +18,7 @@ npm install
 npm run dev          # http://localhost:5173
 npm run fetch-feeds  # remplit public/data/articles.json avec la veille
 npm run fetch-quotes # remplit public/data/quotes.json avec les cotations
-npm run build-digest # remplit public/data/digest.json (nécessite ANTHROPIC_API_KEY)
+npm run build-digest # remplit public/data/digest.json (gratuit, sans clé)
 ```
 
 ## ☁️ Mise en ligne sur GitHub (une seule fois)
@@ -33,10 +33,9 @@ npm run build-digest # remplit public/data/digest.json (nécessite ANTHROPIC_API
 2. **Active GitHub Pages** : repo → *Settings* → *Pages* → *Source* : **GitHub Actions**.
    Le workflow `deploy.yml` construit et publie le site à chaque push.
    L'appli sera sur `https://<ton-pseudo>.github.io/devwatch/`.
-3. **Les données** (`update.yml`) sont rafraîchies deux fois par jour — 05:30 et 21:15 UTC — en un
-   seul job qui enchaîne veille RSS, résumé d'actu et cotations, puis commite `public/data/*.json`
-   (ce qui redéploie le site). Lancement manuel : onglet *Actions* → *Mise à jour quotidienne* →
-   *Run workflow*.
+3. **Les données** sont générées au build par `deploy.yml` (veille RSS → résumé → cotations → build → Pages),
+   sans aucun commit. Déclenchement : bouton **🔄 Rafraîchir** de l'appli (1 à 2 min), onglet *Actions*
+   → *Mise à jour et déploiement* → *Run workflow*, ou un push de code.
 
 ## 📧 Rappels par mail (Ebbinghaus)
 
@@ -55,7 +54,7 @@ Le workflow `reminders.yml` tourne chaque matin à 7 h (Paris) : il lit `progres
 
    Optionnel : une *variable* `APP_URL` avec l'URL de ton appli pour avoir le lien dans le mail.
 2. **Synchronise ta progression** : dans l'appli → *Paramètres* → renseigne owner/repo/branche
-   et un **token fine-grained** limité à ce repo (permission *Contents : Read and write*).
+   et un **token fine-grained** limité à ce repo (permissions *Contents : Read and write* et *Actions : Read and write* pour le bouton Rafraîchir).
    Après chaque quiz, la progression est poussée automatiquement dans `progress/progress.json`.
 3. Teste : onglet *Actions* → *Rappels Ebbinghaus par mail* → *Run workflow*.
 
@@ -92,22 +91,21 @@ Trois clés optionnelles par flux :
 
 ## ☕ Résumé « actu en 5 min »
 
-`build-digest.mjs` prend les articles `digest: true` de moins de 30 h, les envoie à Claude et
-demande un JSON strict (sections → items → indices des sources). Le script remappe ensuite les
-indices vers les vrais liens et recalcule le temps de lecture à partir du nombre de mots réel.
+Gratuit, sans clé d'API. `build-digest.mjs` prend les dépêches FR `digest: true` de moins de 30 h et :
 
-Secret à créer : `ANTHROPIC_API_KEY`
-(*Settings* → *Secrets and variables* → *Actions*). Variables optionnelles : `ANTHROPIC_MODEL`
-(défaut `claude-sonnet-5`), `DIGEST_MINUTES` (défaut 5).
+1. **les regroupe par sujet** en local (similarité TF-IDF titres + chapôs) ; un sujet couvert par
+   plusieurs rédactions remonte en tête et affiche « N médias » ;
+2. **les fait reformuler** par GitHub Models (palier gratuit, `GITHUB_TOKEN` du workflow avec
+   `models: read`, aucun secret à créer). En cas d'échec ou de quota atteint, le chapô de la dépêche
+   la plus représentative est utilisé : le résumé est toujours produit.
 
-Sans clé, le script sort en code 0 sans rien écrire : la veille RSS continue de tourner normalement.
-Coût indicatif : ~70 titres + chapôs par passage, 4 passages/jour.
+Variables optionnelles : `DIGEST_MODEL` (défaut `openai/gpt-4o-mini`), `DIGEST_NO_AI=1` pour le mode 100 % local.
 
 ## 📈 Cotations
 
 `fetch-quotes.mjs` n'utilise **aucune clé**. Trois sources en cascade :
 
-1. **CoinGecko** pour BTC et SOL (un seul appel, variations 24 h / 7 j / 1 an fournies).
+1. **CoinGecko** pour BTC et SOL (prix + variations, puis `market_chart` pour l'historique 1 an).
 2. **Yahoo Finance** `/v8/finance/chart` pour actions et indices (un appel = prix + historique 1 an,
    les variations sont recalculées côté script).
 3. **Stooq** (CSV) en filet de sécurité si Yahoo rate-limite.
@@ -116,20 +114,20 @@ Si les trois échouent pour un actif, la valeur précédente est conservée et m
 la page affiche « figé » plutôt que de se vider. Le workflow ne tombe jamais en échec pour une
 source indisponible.
 
+Chaque actif embarque `series` (clôtures quotidiennes sur 1 an) : l'onglet Marchés en tire des
+graphiques 1 M / 3 M / 6 M / 1 an, en SVG sans dépendance (`src/components/PriceChart.vue`).
+
 Devise des cryptos : variable de repo `CRYPTO_VS` (défaut `eur`).
 
 ## ⚙️ Workflow
 
-`update.yml` remplace `veille.yml` (à supprimer) et rend `markets.yml` inutile :
-veille RSS → résumé → cotations dans **un seul job**, **un seul commit**, **deux fois par jour**
-(05:30 et 21:15 UTC) — soit 2 déploiements Pages par jour.
+`deploy.yml` fait tout : veille RSS → résumé → cotations → build → déploiement Pages. Les JSON de
+`public/data/` ne sont plus commités (`.gitignore`) : plus de commits de bot, et le site affiche
+enfin les données fraîches (un commit poussé avec `GITHUB_TOKEN` ne redéclenche pas `deploy.yml`,
+donc l'ancien `update.yml` mettait à jour le repo sans republier le site).
 
-Le passage du matin intègre la clôture US de la veille, celui du soir se déclenche après la clôture
-de Wall Street. L'étape cotations est en `continue-on-error` : une source financière indisponible
-ne prive pas le site de sa veille ni de son résumé.
-
-Pour changer de rythme, seuls les deux `cron` sont à toucher ; `workflow_dispatch` reste disponible
-pour un rafraîchissement manuel.
+Pas de cron : le rafraîchissement se fait à la demande. Les pushes de `progress/**` (sync de la
+progression après un quiz) ne redéploient plus le site.
 
 ## ⚡ Optimisations de `fetch-feeds.mjs`
 
@@ -153,9 +151,9 @@ scripts/
   feeds.json        # Sources RSS par thème (personnalise librement)
   fetch-feeds.mjs   # Agrégateur RSS → public/data/articles.json
   fetch-quotes.mjs  # Cotations (CoinGecko / Yahoo / Stooq) → public/data/quotes.json
-  build-digest.mjs  # Résumé « actu en 5 min » via Claude → public/data/digest.json
+  build-digest.mjs  # Résumé « actu en 5 min » (regroupement local + GitHub Models) → public/data/digest.json
   send-reminders.mjs# Mail quotidien des thèmes dus
-.github/workflows/  # deploy.yml · update.yml · reminders.yml
+.github/workflows/  # deploy.yml (données + site) · reminders.yml (mail)
 ```
 
 ## ✍️ Personnaliser

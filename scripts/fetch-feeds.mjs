@@ -1,5 +1,5 @@
 // Agrège les flux RSS déclarés dans scripts/feeds.json vers public/data/articles.json
-// Lancé toutes les 6 h par .github/workflows/veille.yml (ou en local : npm run fetch-feeds)
+// Lancé par .github/workflows/deploy.yml (bouton « Rafraîchir » ou push), ou en local : npm run fetch-feeds
 //
 // Nouveautés :
 //  - `lang` par flux  -> les articles FR remontent en premier (tri lang puis date)
@@ -33,6 +33,11 @@ const parser = new Parser({
 
 function stripHtml(html = '') {
   return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
+}
+
+// Chapô complet pour le résumé « 5 min », coupé proprement sur un mot
+function clip(text, max = 400) {
+  return text.length <= max ? text : text.slice(0, text.lastIndexOf(' ', max)) + '…'
 }
 
 // Image de preview : enclosure RSS, media:content/thumbnail, ou premier <img> du contenu
@@ -119,7 +124,7 @@ async function main() {
           source: feed.source,
           lang: cfg.lang,
           digest: !!cfg.digest,
-          summary: stripHtml(item.contentSnippet || item.summary || item.content || '').slice(0, 220),
+          summary: clip(stripHtml(item.contentSnippet || item.summary || item.content || '')),
           image: extractImage(item),
         })
       }

@@ -54,7 +54,8 @@ function importJson(event) {
       Ta progression est poussée dans <code>progress/progress.json</code> de ton repo. C'est ce fichier
       que lit le workflow <code>reminders.yml</code> pour t'envoyer les rappels Ebbinghaus par mail.
       Crée un <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">token fine-grained</a>
-      limité à ce repo avec la permission <strong>Contents : Read and write</strong>.
+      limité à ce repo avec les permissions <strong>Contents : Read and write</strong> (progression) et
+      <strong>Actions : Read and write</strong> (bouton « 🔄 Rafraîchir »).
     </p>
     <div class="grid">
       <div>

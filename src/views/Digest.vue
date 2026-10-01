@@ -1,14 +1,12 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { loadData } from '../lib/data.js'
 
 const digest = ref(null)
 const loading = ref(true)
 
 onMounted(async () => {
-  try {
-    const res = await fetch(`${import.meta.env.BASE_URL}data/digest.json`)
-    if (res.ok) digest.value = await res.json()
-  } catch { /* pas encore de résumé généré */ }
+  digest.value = await loadData('digest')
   loading.value = false
 })
 
@@ -21,7 +19,7 @@ const ageHours = computed(() => {
 <template>
   <h1>☕ L'actu en {{ digest?.readingMinutes || 5 }} min</h1>
   <p class="subtitle">
-    Synthèse des dépêches France / International / Géopolitique des dernières 30 h, regroupées par sujet.
+    Les sujets des dernières 30 h, regroupés par événement : plus il y a de rédactions qui le couvrent, plus il remonte.
     <span v-if="digest">
       Générée {{ ageHours < 1 ? "il y a moins d'une heure" : `il y a ${ageHours} h` }}
       à partir de {{ digest.articleCount }} dépêches.
@@ -32,9 +30,8 @@ const ageHours = computed(() => {
 
   <div v-else-if="!digest" class="card">
     <p style="margin: 0">
-      Aucun résumé pour l'instant. Il est produit par <code>scripts/build-digest.mjs</code> dans le workflow
-      <code>veille.yml</code> — vérifie que le secret <code>ANTHROPIC_API_KEY</code> est bien défini, ou lance
-      <code>npm run build-digest</code> en local.
+      Aucun résumé pour l'instant. Clique sur « 🔄 Rafraîchir » (ou en local :
+      <code>npm run fetch-feeds &amp;&amp; npm run build-digest</code>).
     </p>
   </div>
 
@@ -44,13 +41,16 @@ const ageHours = computed(() => {
     </div>
 
     <p v-if="ageHours > 20" class="small" style="color: var(--orange)">
-      ⚠️ Ce résumé date de plus de 20 h — relance le workflow <code>Mise à jour quotidienne</code> pour le rafraîchir.
+      ⚠️ Ce résumé date de plus de 20 h — clique sur « 🔄 Rafraîchir ».
     </p>
 
     <section v-for="s in digest.sections" :key="s.title">
       <h2>{{ s.title }}</h2>
       <article v-for="(it, i) in s.items" :key="i" class="card digest-item">
-        <strong>{{ it.title }}</strong>
+        <div class="flex-between">
+          <strong>{{ it.title }}</strong>
+          <span v-if="it.coverage > 1" class="badge accent" :title="`Sujet repris par ${it.coverage} rédactions`">{{ it.coverage }} médias</span>
+        </div>
         <p style="margin: 0.4rem 0 0.6rem">{{ it.body }}</p>
         <div class="digest-sources small">
           <a v-for="src in it.sources" :key="src.link" :href="src.link" target="_blank" rel="noopener" :title="src.title">
@@ -61,8 +61,10 @@ const ageHours = computed(() => {
     </section>
 
     <p class="small muted mt">
-      Résumé produit automatiquement par {{ digest.model }} à partir des titres et chapôs des flux RSS :
-      recoupe toujours avec les sources avant de reprendre une information.
+      {{ digest.method === 'extractif'
+        ? 'Sélection automatique : chaque sujet est présenté par le chapô de la dépêche la plus représentative.'
+        : `Textes reformulés par ${digest.method} à partir des titres et chapôs.` }}
+      Recoupe avec les sources avant de reprendre une information.
     </p>
   </template>
 </template>

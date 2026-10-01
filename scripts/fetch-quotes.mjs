@@ -1,5 +1,6 @@
 // Cotations : TTWO, S&P 500, CAC 40, CD Projekt, Bitcoin, Solana -> public/data/quotes.json
-// Lancé par .github/workflows/markets.yml (ou en local : npm run fetch-quotes)
+// Lancé par .github/workflows/deploy.yml (ou en local : npm run fetch-quotes)
+// Chaque actif embarque `series` : [[timestamp_s, clôture], …] sur 1 an, pour les graphiques de l'onglet Marchés.
 //
 // Aucune clé d'API. Trois sources, essayées dans l'ordre, la première qui répond gagne :
 //   1. CoinGecko  (crypto, officiel, gratuit, sans clé)
@@ -43,6 +44,14 @@ export function closeAgo(series, days) {
   return found ?? series[0]?.close ?? null
 }
 
+// Série compacte pour le front : [ts en secondes, clôture arrondie], 1 an max
+export function compact(series) {
+  const since = Date.now() - 366 * 86400000
+  return series
+    .filter((p) => Number.isFinite(p.close) && p.ts >= since)
+    .map((p) => [Math.round(p.ts / 1000), Number(p.close.toPrecision(6))])
+}
+
 export function changesFromSeries(price, series) {
   const clean = series.filter((p) => Number.isFinite(p.close))
   const prev = clean.length > 1 ? clean[clean.length - 2].close : null
@@ -77,6 +86,14 @@ export async function fromCoinGecko(assets) {
   return out
 }
 
+// Historique quotidien 1 an (API publique : 365 jours max sans clé)
+export async function coinGeckoSeries(id) {
+  const json = await get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${VS_CURRENCY}&days=365&interval=daily`)
+  const series = (json.prices || []).map(([ts, close]) => ({ ts, close }))
+  if (series.length < 2) throw new Error('historique vide')
+  return series
+}
+
 /* ------------------------------------------------------------------- Yahoo */
 export async function fromYahoo(symbol) {
   const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=1y&interval=1d`
@@ -95,6 +112,7 @@ export async function fromYahoo(symbol) {
     currency: r.meta?.currency || null,
     asOf: r.meta?.regularMarketTime ? new Date(r.meta.regularMarketTime * 1000).toISOString() : new Date().toISOString(),
     changes: ch,
+    series: compact(series),
     source: 'yahoo',
   }
 }
@@ -118,6 +136,7 @@ export async function fromStooq(symbol) {
     currency: null,
     asOf: new Date(series[series.length - 1].ts).toISOString(),
     changes: changesFromSeries(price, series),
+    series: compact(series),
     source: 'stooq',
   }
 }
@@ -143,6 +162,20 @@ export async function main() {
     let quote = crypto[asset.coingecko] || null
     const tried = []
 
+    if (quote) {
+      try {
+        quote.series = compact(await coinGeckoSeries(asset.coingecko))
+      } catch (e) {
+        // Historique indisponible : on tente Yahoo juste pour la courbe
+        try {
+          quote.series = (await fromYahoo(asset.yahoo)).series
+        } catch {
+          quote.series = prevById[asset.id]?.series || []
+        }
+        tried.push(`coingecko-historique:${e.message}`)
+      }
+    }
+
     if (!quote && asset.yahoo) {
       try {
         quote = await fromYahoo(asset.yahoo)
@@ -164,7 +197,7 @@ export async function main() {
     if (quote) {
       assets.push({ ...base, ...quote, stale: false })
       const d1 = quote.changes.d1
-      console.log(`✔ ${asset.name.padEnd(22)} ${quote.price} ${quote.currency || ''} ${d1 == null ? '' : `(${d1.toFixed(2)} % j)`} [${quote.source}]`)
+      console.log(`✔ ${asset.name.padEnd(22)} ${quote.price} ${quote.currency || ''} ${d1 == null ? '' : `(${d1.toFixed(2)} % j)`} [${quote.source}, ${quote.series?.length || 0} pts]`)
     } else if (prevById[asset.id]) {
       assets.push({ ...prevById[asset.id], stale: true })
       errors.push(`${asset.id}: ${tried.join(' | ')}`)

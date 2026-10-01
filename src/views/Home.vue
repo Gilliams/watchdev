@@ -4,6 +4,7 @@ import { state } from '../stores/progress.js'
 import { THEMES, themeById, themeColor } from '../data/themes.js'
 import { dueThemes, themeStatus, masteryLabel } from '../lib/spaced.js'
 import { SQL_CASES } from '../data/sqlCases/index.js'
+import { loadData } from '../lib/data.js'
 
 const due = computed(() =>
   dueThemes(state)
@@ -28,15 +29,14 @@ const digest = ref(null)
 const quotes = ref(null)
 
 onMounted(async () => {
-  const base = import.meta.env.BASE_URL
-  const [a, d, q] = await Promise.allSettled([
-    fetch(`${base}data/articles.json`).then((r) => (r.ok ? r.json() : null)),
-    fetch(`${base}data/digest.json`).then((r) => (r.ok ? r.json() : null)),
-    fetch(`${base}data/quotes.json`).then((r) => (r.ok ? r.json() : null)),
-  ])
-  if (a.status === 'fulfilled' && a.value) articles.value = a.value.articles.filter((x) => x.theme !== 'trading').slice(0, 5)
-  if (d.status === 'fulfilled') digest.value = d.value
-  if (q.status === 'fulfilled') quotes.value = q.value
+  const [a, d, q] = await Promise.all([loadData('articles'), loadData('digest'), loadData('quotes')])
+  // « Derniers articles de veille » = veille techno uniquement, par date (l'actu a son propre résumé)
+  articles.value = (a?.articles || [])
+    .filter((x) => themeById(x.theme)?.group === 'tech')
+    .sort((x, y) => new Date(y.date) - new Date(x.date))
+    .slice(0, 5)
+  digest.value = d
+  quotes.value = q
 })
 
 const topics = computed(() =>
@@ -72,7 +72,7 @@ function delta(v) {
         <router-link to="/actu"><button class="primary">Lire le résumé</button></router-link>
       </template>
       <p v-else class="muted small">
-        Résumé pas encore généré — il arrive avec le prochain passage du workflow <code>veille.yml</code>.
+        Résumé pas encore généré — clique sur « 🔄 Rafraîchir ».
       </p>
     </div>
 
@@ -109,8 +109,7 @@ function delta(v) {
 
   <h2>📡 Derniers articles de veille</h2>
   <p v-if="!articles.length" class="muted small">
-    Aucun article pour l'instant — le flux se remplit automatiquement une fois le repo publié sur GitHub
-    (workflow <code>veille.yml</code>), ou lance <code>npm run fetch-feeds</code> en local.
+    Aucun article pour l'instant — clique sur « 🔄 Rafraîchir », ou lance <code>npm run fetch-feeds</code> en local.
   </p>
   <div v-for="a in articles" :key="a.link" class="card">
     <div class="flex-between">

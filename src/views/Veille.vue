@@ -3,6 +3,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { state } from '../stores/progress.js'
 import { themeColor, themeIcon, themeById, themesByGroup } from '../data/themes.js'
+import { loadData } from '../lib/data.js'
 
 const route = useRoute()
 
@@ -15,18 +16,15 @@ const search = ref('')
 const hideRead = ref(false)
 const frOnly = ref(false)
 
-const techThemes = themesByGroup('tech')
-const worldThemes = themesByGroup('monde')
+// /veille = veille techno uniquement ; /veille/<thème> reste dans le groupe de ce thème (ex : Géopolitique → Monde)
+const scope = themeById(route.params.theme)?.group || 'tech'
+const scopeThemes = themesByGroup(scope)
+const scopeIds = new Set(scopeThemes.map((t) => t.id))
 
 onMounted(async () => {
-  try {
-    const res = await fetch(`${import.meta.env.BASE_URL}data/articles.json`)
-    if (res.ok) {
-      const data = await res.json()
-      articles.value = data.articles
-      generatedAt.value = data.generatedAt
-    }
-  } catch { /* fichier absent en local avant le premier fetch */ }
+  const data = await loadData('articles')
+  articles.value = (data?.articles || []).filter((a) => scopeIds.has(a.theme))
+  generatedAt.value = data?.generatedAt || null
   loading.value = false
 })
 
@@ -59,21 +57,16 @@ function markReadOnOpen(link) {
 </script>
 
 <template>
-  <h1>{{ filter !== 'all' ? `${themeIcon(filter)} ${themeById(filter)?.name}` : '📡 Veille' }}</h1>
+  <h1>{{ filter !== 'all' ? `${themeIcon(filter)} ${themeById(filter)?.name}` : scope === 'tech' ? '📡 Veille techno' : '🌍 Actu & géopolitique' }}</h1>
   <p class="subtitle">
-    Flux RSS agrégés deux fois par jour par GitHub Actions, articles francophones en tête.
+    Flux RSS agrégés à chaque rafraîchissement, articles francophones en tête.
     <span v-if="generatedAt">Dernière mise à jour : {{ new Date(generatedAt).toLocaleString('fr-FR') }}</span>
   </p>
 
   <div class="flex" style="margin-bottom: 1.2rem">
     <select v-model="filter" style="max-width: 18rem">
       <option value="all">Tous les thèmes</option>
-      <optgroup label="Monde">
-        <option v-for="t in worldThemes" :key="t.id" :value="t.id">{{ t.icon }} {{ t.name }}</option>
-      </optgroup>
-      <optgroup label="Tech">
-        <option v-for="t in techThemes" :key="t.id" :value="t.id">{{ t.icon }} {{ t.name }}</option>
-      </optgroup>
+      <option v-for="t in scopeThemes" :key="t.id" :value="t.id">{{ t.icon }} {{ t.name }}</option>
     </select>
     <input type="text" v-model="search" placeholder="Rechercher un titre…" style="max-width: 20rem" />
     <label style="margin: 0; display: flex; align-items: center; gap: 0.4rem; cursor: pointer">
@@ -87,11 +80,9 @@ function markReadOnOpen(link) {
 
   <p v-if="loading" class="muted">Chargement…</p>
   <div v-else-if="!articles.length" class="card">
-    <p>Aucun article pour l'instant. Le fichier <code>public/data/articles.json</code> est généré :</p>
-    <ul>
-      <li>automatiquement toutes les 6 h par le workflow GitHub <code>veille.yml</code> une fois le repo poussé ;</li>
-      <li>ou manuellement avec <code>npm run fetch-feeds</code>.</li>
-    </ul>
+    <p style="margin: 0">
+      Aucun article pour l'instant. Clique sur « 🔄 Rafraîchir » (ou en local : <code>npm run fetch-feeds</code>).
+    </p>
   </div>
   <p v-else-if="!filtered.length" class="muted">Aucun article ne correspond aux filtres.</p>
 

@@ -1,24 +1,27 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { themeColor } from '../data/themes.js'
+import { loadData } from '../lib/data.js'
+import PriceChart from '../components/PriceChart.vue'
+
+const RANGES = [['1 M', 30], ['3 M', 90], ['6 M', 182], ['1 an', 365]]
+const range = ref(90)
+
+// Variation sur la période affichée, calculée depuis la série
+function periodChange(a) {
+  const since = Date.now() / 1000 - range.value * 86400
+  const p = (a.series || []).filter(([t]) => t >= since)
+  return p.length > 1 ? ((a.price - p[0][1]) / p[0][1]) * 100 : null
+}
 
 const quotes = ref(null)
 const articles = ref([])
 const loading = ref(true)
 
 onMounted(async () => {
-  const base = import.meta.env.BASE_URL
-  try {
-    const res = await fetch(`${base}data/quotes.json`)
-    if (res.ok) quotes.value = await res.json()
-  } catch { /* pas encore de cotations */ }
-  try {
-    const res = await fetch(`${base}data/articles.json`)
-    if (res.ok) {
-      const data = await res.json()
-      articles.value = data.articles.filter((a) => a.theme === 'trading').slice(0, 9)
-    }
-  } catch { /* pas encore de veille */ }
+  const [q, a] = await Promise.all([loadData('quotes'), loadData('articles')])
+  quotes.value = q
+  articles.value = (a?.articles || []).filter((x) => x.theme === 'trading').slice(0, 9)
   loading.value = false
 })
 
@@ -52,8 +55,8 @@ function delta(v) {
 <template>
   <h1>📈 Marchés</h1>
   <p class="subtitle">
-    Take-Two, CD Projekt, S&amp;P 500, CAC 40, Bitcoin et Solana. Cotations relevées deux fois par jour
-    par GitHub Actions — données de clôture ou différées, jamais du temps réel.
+    Take-Two, CD Projekt, S&amp;P 500, CAC 40, Bitcoin et Solana. Cotations relevées à chaque rafraîchissement —
+    données de clôture ou différées, jamais du temps réel.
     <span v-if="quotes?.generatedAt">Dernier relevé : {{ new Date(quotes.generatedAt).toLocaleString('fr-FR') }}.</span>
   </p>
 
@@ -61,8 +64,7 @@ function delta(v) {
 
   <div v-else-if="!quotes" class="card">
     <p style="margin: 0">
-      Aucune cotation pour l'instant. Le fichier <code>public/data/quotes.json</code> est généré par le workflow
-      <code>markets.yml</code>, ou en local avec <code>npm run fetch-quotes</code>.
+      Aucune cotation pour l'instant. Clique sur « 🔄 Rafraîchir » (ou en local : <code>npm run fetch-quotes</code>).
     </p>
   </div>
 
@@ -70,6 +72,10 @@ function delta(v) {
     <p v-if="staleCount" class="small" style="color: var(--orange)">
       ⚠️ {{ staleCount }} actif(s) affichent leur dernière valeur connue : la source n'a pas répondu au dernier relevé.
     </p>
+
+    <div class="range-picker" role="group" aria-label="Période des graphiques">
+      <button v-for="[label, d] in RANGES" :key="d" :class="{ active: range === d }" :aria-pressed="range === d" @click="range = d">{{ label }}</button>
+    </div>
 
     <template v-for="g in groups" :key="g.label">
       <h2>{{ g.label }}</h2>
@@ -81,11 +87,12 @@ function delta(v) {
           </div>
           <div class="quote-price">{{ price(a) }}</div>
           <div class="quote-deltas">
-            <div v-for="[label, v] in [['24 h', a.changes.d1], ['7 j', a.changes.d7], ['1 an', a.changes.y1]]" :key="label">
+            <div v-for="[label, v] in [['24 h', a.changes.d1], ['7 j', a.changes.d7], [RANGES.find((r) => r[1] === range)[0], periodChange(a) ?? (range === 365 ? a.changes.y1 : null)]]" :key="label">
               <span class="small muted">{{ label }}</span>
               <span class="delta" :class="delta(v).cls">{{ delta(v).text }}</span>
             </div>
           </div>
+          <PriceChart :series="a.series || []" :days="range" :currency="a.currency" />
           <div class="small muted mt">
             {{ a.source }} · {{ new Date(a.asOf).toLocaleString('fr-FR') }}
             <span v-if="a.stale"> · figé</span>
