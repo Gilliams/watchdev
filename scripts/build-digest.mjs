@@ -109,6 +109,7 @@ async function rewriteWithGithubModels(topics) {
   const res = await fetch('https://models.github.ai/inference/chat/completions', {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    signal: AbortSignal.timeout(60000),
     body: JSON.stringify({
       model: MODEL,
       temperature: 0.2,

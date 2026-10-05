@@ -152,4 +152,8 @@ async function main() {
 }
 
 // Exécuté seulement en ligne de commande : permet d'importer les helpers dans un test
-if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) await main()
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  await main()
+  // rss-parser ne ferme pas les sockets des flux en timeout / 403 : sans exit, Node reste bloqué
+  process.exit(0)
+}

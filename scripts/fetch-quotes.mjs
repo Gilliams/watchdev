@@ -29,7 +29,7 @@ export const ASSETS = [
 const VS_CURRENCY = process.env.CRYPTO_VS || 'eur'
 
 async function get(url, type = 'json') {
-  const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: '*/*' }, redirect: 'follow' })
+  const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: '*/*' }, redirect: 'follow', signal: AbortSignal.timeout(15000) })
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
   return type === 'json' ? res.json() : res.text()
 }

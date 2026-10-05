@@ -61,3 +61,4 @@ jobs:
           path: dist
       - id: deployment
         uses: actions/deploy-pages@v4
+    timeout-minutes: 15 # jamais un run bloqué 6 h
