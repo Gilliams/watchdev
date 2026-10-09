@@ -1,22 +1,18 @@
 <script setup>
 import { ref } from 'vue'
+import Icon from '../components/Icon.vue'
 import { state, exportProgress, importProgress } from '../stores/progress.js'
 import { pullProgress, pushProgress, syncConfigured } from '../lib/github.js'
 
 const message = ref('')
+const failed = ref(false)
 const busy = ref(false)
 
-async function doPull() {
+async function run(fn) {
   busy.value = true
-  const r = await pullProgress().catch((e) => ({ ok: false, message: e.message }))
-  message.value = (r.ok ? '✅ ' : '❌ ') + r.message
-  busy.value = false
-}
-
-async function doPush() {
-  busy.value = true
-  const r = await pushProgress().catch((e) => ({ ok: false, message: e.message }))
-  message.value = (r.ok ? '✅ ' : '❌ ') + r.message
+  const r = await fn().catch((e) => ({ ok: false, message: e.message }))
+  message.value = r.message
+  failed.value = !r.ok
   busy.value = false
 }
 
@@ -35,9 +31,11 @@ function importJson(event) {
   reader.onload = () => {
     try {
       importProgress(JSON.parse(reader.result))
-      message.value = '✅ Progression importée'
+      message.value = 'Progression importée.'
+      failed.value = false
     } catch {
-      message.value = '❌ Fichier JSON invalide'
+      message.value = "Fichier JSON invalide : il doit venir d'un export DevWatch."
+      failed.value = true
     }
   }
   reader.readAsText(file)
@@ -45,61 +43,78 @@ function importJson(event) {
 </script>
 
 <template>
-  <h1>⚙️ Paramètres</h1>
-  <p class="subtitle">Synchronisation GitHub et rappels par mail.</p>
+  <section class="page-hero">
+    <div>
+      <div class="kicker">Synchronisation · rappels · sauvegarde</div>
+      <h1 class="hero-title" style="margin-top: 18px">Para&shy;mètres<span class="dot">.</span></h1>
+    </div>
+    <p class="intro pretty">Ta progression vit dans ce navigateur. La synchroniser sur GitHub permet de recevoir les rappels du matin et d'utiliser le bouton « Rafraîchir ».</p>
+  </section>
 
-  <div class="card">
-    <h2 style="margin-top: 0">☁️ Synchronisation GitHub</h2>
-    <p class="small muted">
-      Ta progression est poussée dans <code>progress/progress.json</code> de ton repo. C'est ce fichier
-      que lit le workflow <code>reminders.yml</code> pour t'envoyer les rappels Ebbinghaus par mail.
-      Crée un <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">token fine-grained</a>
-      limité à ce repo avec les permissions <strong>Contents : Read and write</strong> (progression) et
-      <strong>Actions : Read and write</strong> (bouton « 🔄 Rafraîchir »).
-    </p>
-    <div class="grid">
-      <div>
-        <label>Propriétaire (owner)</label>
-        <input type="text" v-model="state.settings.githubOwner" placeholder="ton-pseudo-github" />
-        <label>Nom du repo</label>
-        <input type="text" v-model="state.settings.githubRepo" placeholder="devwatch" />
+  <section class="cells band">
+    <div class="block wide">
+      <h2 class="h">Synchronisation GitHub</h2>
+      <p class="p">
+        La progression est poussée dans <code class="code-inline">progress/progress.json</code> de ton repo ; le workflow
+        <code class="code-inline">reminders.yml</code> la lit pour t'envoyer les rappels. Crée un
+        <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" class="link">token fine-grained</a>
+        limité à ce repo, avec les permissions <strong>Contents : Read and write</strong> (progression) et
+        <strong>Actions : Read and write</strong> (bouton « Rafraîchir »).
+      </p>
+      <div class="form">
+        <label>Propriétaire (owner)<input v-model="state.settings.githubOwner" class="field" placeholder="ton-pseudo-github" /></label>
+        <label>Nom du repo<input v-model="state.settings.githubRepo" class="field" placeholder="watchdev" /></label>
+        <label>Branche<input v-model="state.settings.githubBranch" class="field" placeholder="main" /></label>
+        <label>Token (stocké uniquement dans ce navigateur)<input v-model="state.settings.githubToken" type="password" class="field" placeholder="github_pat_…" /></label>
       </div>
-      <div>
-        <label>Branche</label>
-        <input type="text" v-model="state.settings.githubBranch" placeholder="main" />
-        <label>Token (stocké uniquement dans TON navigateur)</label>
-        <input type="password" v-model="state.settings.githubToken" placeholder="github_pat_…" />
+      <div class="btns">
+        <button class="go acc" :disabled="!syncConfigured() || busy" @click="run(pushProgress)">Pousser la progression<Icon name="arrow-up-right" /></button>
+        <button class="btn-outline" style="height: 46px" :disabled="!syncConfigured() || busy" @click="run(pullProgress)">Récupérer la progression</button>
+      </div>
+      <p v-if="state.lastSync" class="small">Dernière synchronisation : {{ new Date(state.lastSync).toLocaleString('fr-FR') }}</p>
+    </div>
+
+    <div class="block">
+      <h2 class="h">Rappels par mail</h2>
+      <label>Ton adresse email<input v-model="state.settings.email" type="email" class="field" placeholder="toi@exemple.fr" /></label>
+      <p class="p">
+        L'adresse part avec <code class="code-inline">progress.json</code> lors de la synchronisation. Chaque matin, si des thèmes sont dus
+        ou jamais testés, tu reçois un récapitulatif. Le serveur SMTP se configure dans les <strong>secrets du repo GitHub</strong>
+        (voir le README), jamais dans le navigateur.
+      </p>
+    </div>
+
+    <div class="block">
+      <h2 class="h">Sauvegarde locale</h2>
+      <p class="p">Un fichier JSON avec tes thèmes et tes enquêtes, sans le token.</p>
+      <div class="btns">
+        <button class="btn-outline" style="height: 46px" @click="exportJson">Exporter en JSON</button>
+        <label class="btn-outline import">Importer un JSON<input type="file" accept=".json" class="sr" @change="importJson" /></label>
       </div>
     </div>
-    <div class="flex mt">
-      <button class="primary" :disabled="!syncConfigured() || busy" @click="doPush">⬆️ Pousser la progression</button>
-      <button :disabled="!syncConfigured() || busy" @click="doPull">⬇️ Récupérer la progression</button>
-    </div>
-    <p v-if="state.lastSync" class="small muted">Dernier sync : {{ new Date(state.lastSync).toLocaleString('fr-FR') }}</p>
-  </div>
+  </section>
 
-  <div class="card">
-    <h2 style="margin-top: 0">📧 Rappels par mail (courbe d'Ebbinghaus)</h2>
-    <label>Ton adresse email</label>
-    <input type="email" v-model="state.settings.email" placeholder="toi@exemple.fr" style="max-width: 320px" />
-    <p class="small muted mt">
-      L'email est embarqué dans <code>progress.json</code> lors du sync. Le workflow GitHub
-      <code>reminders.yml</code> tourne chaque matin : si des thèmes sont dus (ou jamais testés),
-      tu reçois un mail récapitulatif. La configuration SMTP se fait dans les
-      <strong>secrets du repo GitHub</strong> (voir le README) — jamais dans le navigateur.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2 style="margin-top: 0">💾 Sauvegarde locale</h2>
-    <div class="flex">
-      <button @click="exportJson">⬇️ Exporter en JSON</button>
-      <label class="btn" style="margin: 0; cursor: pointer">
-        ⬆️ Importer un JSON
-        <input type="file" accept=".json" @change="importJson" style="display: none" />
-      </label>
-    </div>
-  </div>
-
-  <p v-if="message" class="mt">{{ message }}</p>
+  <p v-if="message" class="msg" :class="{ failed }" aria-live="polite">{{ message }}</p>
 </template>
+
+<style scoped>
+.intro { font-size: 17px; line-height: 1.5; }
+.block { flex: 1 1 340px; padding: 36px var(--pad) 40px; display: flex; flex-direction: column; gap: 16px; }
+.block.wide { flex: 2 1 560px; }
+.h { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+.p { font-size: 15px; line-height: 1.55; color: var(--mut); max-width: 640px; }
+.p strong { color: var(--ink); }
+.link { color: var(--acc); font-weight: 600; }
+.form { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px 20px; }
+label { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 600; color: var(--mut); }
+label .field { width: 100%; }
+.btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.go { height: 46px; padding: 0 16px; display: flex; align-items: center; gap: 10px; border: 0; font-size: 14px; font-weight: 800; }
+.go.acc { background: var(--acc); color: var(--onacc); }
+.import { height: 46px; cursor: pointer; flex-direction: row; color: var(--ink); font-size: 13px; }
+.import:hover { color: var(--bg); }
+.sr { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.small { font-size: 12px; color: var(--mut); }
+.msg { padding: 16px var(--pad); font-size: 14px; font-weight: 600; border-bottom: 2px solid var(--rule); }
+.msg.failed { background: var(--acc); color: var(--onacc); }
+</style>

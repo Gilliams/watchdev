@@ -9,6 +9,7 @@ export const state = reactive({
   // { [caseId]: { solvedSteps: [indices], solved: bool, hintsUsed: n } }
   sqlCases: {},
   readArticles: [], // liens des articles marqués lus
+  readDigest: [], // titres des sujets de « L'actu en 5 min » marqués lus
   settings: {
     githubOwner: '',
     githubRepo: '',
@@ -27,6 +28,7 @@ export function loadProgress() {
       Object.assign(state.themes, saved.themes || {})
       Object.assign(state.sqlCases, saved.sqlCases || {})
       state.readArticles = saved.readArticles || []
+      state.readDigest = saved.readDigest || []
       Object.assign(state.settings, saved.settings || {})
       state.lastSync = saved.lastSync || null
     }

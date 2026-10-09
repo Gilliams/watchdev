@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DevWatch — Veille · Quiz · SQL</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
+  <title>DevWatch</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23201e1d'/><rect x='19' y='19' width='7' height='7' fill='%23ec3013'/></svg>" />
+  <script>
+    // Thème posé avant le rendu (même clé que les maquettes) pour éviter un flash
+    try { document.documentElement.dataset.theme = localStorage.getItem('dw-theme') || 'light' } catch (e) {}
+  </script>
 </head>
 <body>
   <div id="app"></div>

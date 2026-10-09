@@ -1,14 +1,25 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
+import Icon from '../components/Icon.vue'
 import { state } from '../stores/progress.js'
 import { caseById, checkAnswer } from '../data/sqlCases/index.js'
 import { conceptsFor } from '../data/sqlConcepts.js'
 import { createDatabase, runQuery, describeSchema } from '../lib/sqlEngine.js'
 import { pushQuietly } from '../lib/github.js'
+import { segs } from '../lib/format.js'
 
 const route = useRoute()
 const affaire = caseById(route.params.id)
+
+// Progression persistée (+ migration des sauvegardes sans champ notes)
+if (affaire) {
+  if (!state.sqlCases[affaire.id]) state.sqlCases[affaire.id] = { solvedSteps: [], solved: false, hintsUsed: 0, notes: '' }
+  else if (state.sqlCases[affaire.id].notes === undefined) state.sqlCases[affaire.id].notes = ''
+}
+const progress = computed(() => state.sqlCases[affaire.id])
+const step = computed(() => progress.value.solvedSteps.length)
+const cur = computed(() => affaire.steps[step.value] || {})
 
 const db = ref(null)
 const dbError = ref('')
@@ -16,23 +27,12 @@ const schema = ref([])
 const sql = ref('')
 const result = ref(null)
 const showSchema = ref(true)
-
-// Progression persistée (+ migration des sauvegardes sans champ notes)
-if (affaire) {
-  if (!state.sqlCases[affaire.id]) {
-    state.sqlCases[affaire.id] = { solvedSteps: [], solved: false, hintsUsed: 0, notes: '' }
-  } else if (state.sqlCases[affaire.id].notes === undefined) {
-    state.sqlCases[affaire.id].notes = ''
-  }
-}
-const progress = computed(() => state.sqlCases[affaire.id])
-const currentStep = computed(() => progress.value.solvedSteps.length)
-
 const answer = ref('')
-const answerFeedback = ref('')
-const shownHints = ref(0)
+const fb = ref('')
+const shown = ref(0)
 
 onMounted(async () => {
+  if (!affaire) return
   try {
     db.value = await createDatabase(affaire.setupSql)
     schema.value = describeSchema(db.value)
@@ -43,199 +43,238 @@ onMounted(async () => {
 onUnmounted(() => db.value?.close())
 
 function execute() {
-  if (!db.value || !sql.value.trim()) return
-  result.value = runQuery(db.value, sql.value)
+  if (db.value && sql.value.trim()) result.value = runQuery(db.value, sql.value)
 }
-
+function onSqlKey(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+    e.preventDefault()
+    execute()
+  }
+}
 function showHint() {
-  if (shownHints.value < 3) {
-    shownHints.value++
+  if (shown.value < 3) {
+    shown.value++
     progress.value.hintsUsed++
   }
 }
-
-function submitAnswer() {
-  const step = affaire.steps[currentStep.value]
-  answerFeedback.value = checkAnswer(step, answer.value) ? 'ok' : 'ko'
+function submit() {
+  fb.value = checkAnswer(cur.value, answer.value) ? 'ok' : 'ko'
 }
-
 function nextStep() {
-  progress.value.solvedSteps.push(currentStep.value)
+  progress.value.solvedSteps.push(step.value)
   if (progress.value.solvedSteps.length >= affaire.steps.length) {
     progress.value.solved = true
     pushQuietly()
   }
   answer.value = ''
-  answerFeedback.value = ''
-  shownHints.value = 0
+  fb.value = ''
+  shown.value = 0
 }
-
 function restart() {
   const notes = progress.value.notes
   state.sqlCases[affaire.id] = { solvedSteps: [], solved: false, hintsUsed: 0, notes }
   answer.value = ''
-  answerFeedback.value = ''
-  shownHints.value = 0
+  fb.value = ''
+  shown.value = 0
 }
 
-// Rendu markdown ultra-léger (** gras ** et `code`)
-function fmt(text) {
-  return text
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/\n\n/g, '</p><p>')
-}
+const story = computed(() => (affaire?.story || '').split('\n\n').map(segs))
+const doneSteps = computed(() => affaire.steps.slice(0, progress.value.solved ? affaire.steps.length : step.value))
+const barColor = (i) => (progress.value.solved || i < step.value ? 'var(--acc)' : i === step.value ? 'var(--ink)' : 'var(--hair)')
+const hintVerdict = computed(() => {
+  const h = progress.value.hintsUsed
+  return h === 0 ? 'sans-faute magistral !' : h <= 3 ? 'très propre.' : "l'important c'est d'apprendre."
+})
+const plain = (t) => String(t || '').replace(/\*\*/g, '')
 </script>
 
 <template>
-  <div v-if="!affaire">
-    <p>Enquête introuvable. <router-link to="/sql">← Retour</router-link></p>
-  </div>
-  <div v-else>
-    <router-link to="/sql" class="small">← Toutes les enquêtes</router-link>
-    <h1>{{ affaire.emoji }} {{ affaire.title }}</h1>
-    <p class="subtitle"><span class="badge purple">{{ affaire.level }}</span> · {{ affaire.skills }}</p>
+  <section v-if="!affaire" class="page-hero">
+    <div><router-link to="/sql" class="back">← Toutes les enquêtes</router-link><h1 class="c-title" style="margin-top: 20px">Enquête introuvable<span class="dot">.</span></h1></div>
+    <span></span>
+  </section>
 
-    <div class="card"><p v-html="'<p>' + fmt(affaire.story) + '</p>'" style="margin: 0"></p></div>
+  <template v-else>
+    <section class="c-head band">
+      <router-link to="/sql" class="back">← Toutes les enquêtes</router-link>
+      <div class="c-row">
+        <h1 class="c-title">{{ affaire.title }}<span class="dot">.</span></h1>
+        <div class="c-side">
+          <div class="c-tags"><span class="lvl">{{ affaire.level }}</span><span class="muted" style="font-size: 13px">{{ affaire.skills }}</span></div>
+          <div class="bars"><span v-for="(_, i) in affaire.steps" :key="i" :style="{ background: barColor(i) }"></span></div>
+          <span class="muted" style="font-size: 12px">
+            {{ progress.solved ? 'Enquête résolue' : `Étape ${step + 1} / ${affaire.steps.length}` }} · {{ progress.hintsUsed }} indice(s) utilisé(s)
+          </span>
+        </div>
+      </div>
+    </section>
 
-    <div v-if="dbError" class="error-box">{{ dbError }}</div>
-
-    <!-- Console SQL -->
-    <h2>💻 Console SQL</h2>
-    <p class="small muted" style="margin-top: -0.5rem">
-      Tu peux enchaîner plusieurs requêtes séparées par <code>;</code> — chaque SELECT affiche son propre tableau.
-    </p>
-    <div class="flex" style="align-items: flex-start">
-      <div style="flex: 1; min-width: 20rem">
+    <section class="cells band">
+      <div class="story">
+        <p v-for="(p, pi) in story" :key="pi" class="story-p"><template v-for="(s, si) in p" :key="si"><code v-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><strong v-else-if="s.kind === 'bold'" style="font-weight: 800">{{ s.t }}</strong><span v-else>{{ s.t }}</span></template></p>
+      </div>
+      <div class="notes">
+        <div class="kicker" style="color: var(--ink)">Carnet d'enquête</div>
         <textarea
-          class="sql-input"
-          v-model="sql"
-          placeholder="SELECT * FROM table1;&#10;SELECT * FROM table2;"
-          @keydown.ctrl.enter.prevent="execute"
+          v-model="progress.notes"
           spellcheck="false"
+          aria-label="Carnet d'enquête"
+          placeholder="Tes hypothèses, suspects, résultats intermédiaires… Sauvegardé automatiquement, il survit à la fermeture du navigateur."
         ></textarea>
-        <div class="flex mt">
-          <button class="primary" @click="execute" :disabled="!db">▶ Exécuter (Ctrl+Entrée)</button>
-          <button @click="showSchema = !showSchema">{{ showSchema ? 'Masquer' : 'Afficher' }} le schéma</button>
-        </div>
+      </div>
+    </section>
 
-        <div v-if="result" class="mt">
-          <div v-if="result.error" class="error-box">{{ result.error }}</div>
-          <p v-else-if="result.empty" class="muted small">Requête exécutée — aucun résultat à afficher.</p>
-          <template v-else>
-            <div v-for="(set, si) in result.sets" :key="si" :class="{ mt: si > 0 }">
-              <p v-if="result.sets.length > 1" class="small muted" style="margin: 0 0 0.3rem">
-                Résultat {{ si + 1 }} / {{ result.sets.length }}
-              </p>
-              <div class="table-scroll">
-                <table class="result-table">
-                  <thead><tr><th v-for="c in set.columns" :key="c">{{ c }}</th></tr></thead>
-                  <tbody>
-                    <tr v-for="(row, i) in set.rows" :key="i">
-                      <td v-for="(cell, j) in row" :key="j">{{ cell === null ? 'NULL' : cell }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="small muted" style="margin-top: 0.2rem">{{ set.rows.length }} ligne(s)</p>
+    <section class="cells band">
+      <div class="console">
+        <div class="con-head">
+          <h2 class="sub-h">Console SQL</h2>
+          <span class="db" :style="{ color: dbError ? 'var(--acc)' : 'var(--mut)' }">{{ dbError ? `Erreur : ${dbError}` : db ? 'Base SQLite chargée' : 'Chargement de la base…' }}</span>
+        </div>
+        <p class="muted" style="font-size: 13px">Tu peux enchaîner plusieurs requêtes séparées par <code class="mono">;</code> — chaque SELECT affiche son propre tableau.</p>
+        <textarea v-model="sql" class="sql" spellcheck="false" aria-label="Requête SQL" placeholder="SELECT * FROM …;" @keydown="onSqlKey"></textarea>
+        <div class="con-btns">
+          <button class="exec" :disabled="!db" @click="execute"><Icon name="play" :size="12" />Exécuter (Ctrl+Entrée)</button>
+          <button class="btn-outline" style="height: 44px; padding: 0 16px" @click="showSchema = !showSchema">{{ showSchema ? 'Masquer le schéma' : 'Afficher le schéma' }}</button>
+        </div>
+        <template v-if="result">
+          <div v-if="result.error" class="err">{{ result.error }}</div>
+          <p v-else-if="result.empty" class="muted" style="font-size: 13px">Requête exécutée — aucun résultat à afficher.</p>
+          <div v-for="(set, si) in result.sets || []" :key="si" class="set">
+            <span v-if="result.sets.length > 1" class="muted" style="font-size: 12px">Résultat {{ si + 1 }} / {{ result.sets.length }}</span>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th v-for="c in set.columns" :key="c">{{ c }}</th></tr></thead>
+                <tbody>
+                  <tr v-for="(row, ri) in set.rows" :key="ri"><td v-for="(cell, ci) in row" :key="ci">{{ cell === null ? 'NULL' : cell }}</td></tr>
+                </tbody>
+              </table>
             </div>
-          </template>
-        </div>
-      </div>
-
-      <div v-if="showSchema" class="card" style="width: 19rem; flex-shrink: 0; font-size: 0.82rem">
-        <strong>📋 Schéma</strong>
-        <div v-for="t in schema" :key="t.name" style="margin-top: 0.6rem">
-          <code>{{ t.name }}</code> <span class="muted">({{ t.count }} lignes)</span>
-          <div class="muted" style="padding-left: 0.8rem">
-            <div v-for="c in t.columns" :key="c.name">{{ c.name }} <em>{{ c.type }}</em></div>
+            <span class="muted" style="font-size: 12px">{{ set.rows.length }} ligne(s)</span>
           </div>
-        </div>
+        </template>
       </div>
-    </div>
+      <aside v-if="showSchema" class="schema">
+        <div class="kicker" style="color: var(--ink); margin-bottom: 10px">Schéma</div>
+        <button v-for="t in schema" :key="t.name" class="tbl" :title="`Afficher les 20 premières lignes de ${t.name}`" @click="sql = `SELECT * FROM ${t.name} LIMIT 20;`">
+          <span class="tbl-head"><span>{{ t.name }}</span><span class="tbl-c">{{ t.count }} lignes</span></span>
+          <span class="tbl-cols">{{ t.columns.map((c) => `${c.name} ${c.type}`).join(' · ') }}</span>
+        </button>
+      </aside>
+    </section>
 
-    <!-- Carnet d'enquête -->
-    <h2>📝 Carnet d'enquête</h2>
-    <textarea
-      class="notes-area"
-      v-model="progress.notes"
-      placeholder="Tes hypothèses, suspects, résultats intermédiaires… Sauvegardé automatiquement, il survit à la fermeture du navigateur."
-      spellcheck="false"
-    ></textarea>
-
-    <!-- Étapes de l'enquête -->
-    <h2>🧭 L'enquête</h2>
-
-    <div v-for="(step, i) in affaire.steps.slice(0, currentStep)" :key="i" class="card" style="opacity: 0.75">
-      <strong>✅ Étape {{ i + 1 }}</strong>
-      <p class="small">{{ step.question }}</p>
-      <div class="explanation small" v-html="fmt(step.explain)"></div>
-      <details class="small mt solution-details">
-        <summary>Voir la requête solution</summary>
-        <pre><code>{{ step.solutionQuery }}</code></pre>
-      </details>
-    </div>
-
-    <div v-if="!progress.solved" class="card" style="border-color: var(--accent)">
-      <strong>{{ affaire.steps[currentStep].final ? '🎯 Question finale' : `Étape ${currentStep + 1} / ${affaire.steps.length}` }}</strong>
-      <p>{{ affaire.steps[currentStep].question }}</p>
-
-      <details v-if="conceptsFor(affaire.steps[currentStep]).length" class="toolbox">
-        <summary>🧰 Boîte à outils SQL de cette étape ({{ conceptsFor(affaire.steps[currentStep]).length }} concepts)</summary>
-        <div v-for="c in conceptsFor(affaire.steps[currentStep])" :key="c.name" class="concept">
-          <span class="concept-name">{{ c.name }}</span>
-          <pre><code>{{ c.syntax }}</code></pre>
-          <p style="margin: 0.2rem 0">{{ c.desc }}</p>
-          <a :href="c.doc" target="_blank" rel="noopener" class="small">📖 Documentation</a>
-        </div>
+    <section class="inquiry">
+      <h2 class="sub-h" style="margin-bottom: 18px">L'enquête</h2>
+      <details v-for="(d, i) in doneSteps" :key="i" class="done">
+        <summary><span class="done-k">✓ Étape {{ i + 1 }}</span><span class="done-q">{{ plain(d.question) }}</span></summary>
+        <p class="done-ex"><template v-for="(s, si) in segs(d.explain)" :key="si"><code v-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><strong v-else-if="s.kind === 'bold'">{{ s.t }}</strong><span v-else>{{ s.t }}</span></template></p>
+        <pre class="code-block">{{ d.solutionQuery }}</pre>
       </details>
 
-      <div v-for="h in shownHints" :key="h" class="hint-box">
-        💡 <strong>Indice {{ h }}/3 :</strong> {{ affaire.steps[currentStep].hints[h - 1] }}
-      </div>
+      <div v-if="!progress.solved" class="current">
+        <span class="cur-l">{{ cur.final ? 'Question finale' : `Étape ${step + 1} / ${affaire.steps.length}` }}</span>
+        <p class="cur-q"><template v-for="(s, si) in segs(cur.question)" :key="si"><strong v-if="s.kind === 'bold'" style="color: var(--acc)">{{ s.t }}</strong><code v-else-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><span v-else>{{ s.t }}</span></template></p>
 
-      <div class="flex mt">
-        <input
-          type="text"
-          v-model="answer"
-          :placeholder="affaire.steps[currentStep].placeholder"
-          style="max-width: 20rem"
-          @keydown.enter="submitAnswer"
-          :disabled="answerFeedback === 'ok'"
-        />
-        <button class="primary" @click="submitAnswer" :disabled="answerFeedback === 'ok'">Vérifier</button>
-        <button v-if="shownHints < 3 && answerFeedback !== 'ok'" @click="showHint">
-          💡 Indice ({{ shownHints }}/3)
-        </button>
-      </div>
+        <details v-if="conceptsFor(cur).length" class="toolbox">
+          <summary>Boîte à outils SQL de cette étape — {{ conceptsFor(cur).length }} concept(s)</summary>
+          <div v-for="c in conceptsFor(cur)" :key="c.name" class="concept">
+            <span class="concept-n">{{ c.name }}</span>
+            <pre class="code-block">{{ c.syntax }}</pre>
+            <p>{{ c.desc }}</p>
+            <a :href="c.doc" target="_blank" rel="noopener" class="concept-doc">Documentation<Icon name="arrow-up-right" :size="12" /></a>
+          </div>
+        </details>
 
-      <p v-if="answerFeedback === 'ko'" class="small" style="color: var(--red)">
-        ❌ Ce n'est pas ça — continue de creuser (ou prends un indice).
-      </p>
-      <div v-if="answerFeedback === 'ok'">
-        <div class="explanation mt">✅ <span v-html="fmt(affaire.steps[currentStep].explain)"></span></div>
-        <p class="small muted" style="margin: 0.8rem 0 0.2rem">Une requête qui résout cette étape :</p>
-        <pre><code>{{ affaire.steps[currentStep].solutionQuery }}</code></pre>
-        <button class="success" @click="nextStep">
-          {{ currentStep + 1 >= affaire.steps.length ? '🏆 Clore l\'enquête' : 'Étape suivante →' }}
-        </button>
-      </div>
-    </div>
+        <div v-for="h in shown" :key="h" class="hint"><strong>Indice {{ h }}/3 :</strong> {{ cur.hints[h - 1] }}</div>
 
-    <div v-else class="card" style="border-color: var(--green)">
-      <p style="margin: 0">{{ affaire.conclusion }}</p>
-      <p class="small muted mt">Indices utilisés : {{ progress.hintsUsed }} — {{ progress.hintsUsed === 0 ? 'sans-faute magistral ! 🏅' : progress.hintsUsed <= 3 ? 'très propre.' : 'l\'important c\'est d\'apprendre. 😄' }}</p>
-
-      <h2>📚 Le corrigé complet, étape par étape</h2>
-      <div class="step-recap">
-        <div v-for="(step, i) in affaire.steps" :key="i">
-          <strong class="small">{{ step.final ? '🎯 Question finale' : `Étape ${i + 1}` }} — {{ step.question }}</strong>
-          <pre><code>{{ step.solutionQuery }}</code></pre>
+        <div class="answer-row">
+          <input v-model="answer" class="answer" :placeholder="cur.placeholder" :disabled="fb === 'ok'" aria-label="Ta réponse" @input="fb === 'ko' && (fb = '')" @keydown.enter="submit" />
+          <button class="verify" :disabled="fb === 'ok'" @click="submit">Vérifier</button>
+          <button v-if="shown < 3 && fb !== 'ok'" class="hint-btn" @click="showHint">Indice ({{ shown }}/3)</button>
+        </div>
+        <p v-if="fb === 'ko'" class="ko">Ce n'est pas ça — continue de creuser (ou prends un indice).</p>
+        <div v-if="fb === 'ok'" class="ok">
+          <p class="ok-ex"><template v-for="(s, si) in segs(cur.explain)" :key="si"><strong v-if="s.kind === 'bold'">{{ s.t }}</strong><code v-else-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><span v-else>{{ s.t }}</span></template></p>
+          <span class="muted" style="font-size: 13px">Une requête qui résout cette étape :</span>
+          <pre class="code-block">{{ cur.solutionQuery }}</pre>
+          <button class="next" @click="nextStep">{{ step + 1 >= affaire.steps.length ? "Clore l'enquête" : 'Étape suivante →' }}</button>
         </div>
       </div>
 
-      <button @click="restart">Rejouer l'enquête</button>
-    </div>
-  </div>
+      <div v-else class="closed">
+        <span class="closed-h">Affaire classée.</span>
+        <p class="closed-p">{{ affaire.conclusion }}</p>
+        <p class="closed-h2">Indices utilisés : {{ progress.hintsUsed }} — {{ hintVerdict }}</p>
+        <button class="replay" @click="restart">Rejouer l'enquête</button>
+      </div>
+    </section>
+  </template>
 </template>
+
+<style scoped>
+.back { color: var(--mut); font-size: 14px; font-weight: 600; }
+.c-head { padding: 28px var(--pad) 36px; }
+.c-row { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: flex-end; margin-top: 20px; }
+.c-title { flex: 2 1 520px; font-size: clamp(48px, 6.5vw, 96px); line-height: 0.92; letter-spacing: -0.05em; font-weight: 800; text-wrap: balance; }
+.c-side { flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px; }
+.c-tags { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.lvl { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 8px; background: var(--ink); color: var(--bg); }
+.bars { display: flex; gap: 4px; }
+.bars span { flex: 1; height: 8px; }
+
+.story { flex: 3 1 520px; padding: 36px clamp(20px, 3vw, 48px); display: flex; flex-direction: column; gap: 16px; }
+.story-p { font-size: 19px; line-height: 1.6; max-width: 760px; text-wrap: pretty; }
+.notes { flex: 2 1 340px; padding: 36px var(--pad); display: flex; flex-direction: column; gap: 12px; }
+.notes textarea { flex: 1; min-height: 200px; resize: vertical; padding: 14px; border: 2px solid var(--rule); background: var(--sf); color: var(--ink); font-size: 15px; line-height: 1.55; outline: none; }
+.notes textarea:focus { border-color: var(--ink); }
+
+.console { flex: 3 1 560px; min-width: 0; padding: 32px clamp(20px, 3vw, 48px); display: flex; flex-direction: column; gap: 14px; }
+.con-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.sub-h { font-size: clamp(32px, 3.6vw, 44px); letter-spacing: -0.035em; font-weight: 800; }
+.db { font-size: 12px; font-weight: 600; }
+.sql { min-height: 150px; resize: vertical; padding: 16px; border: 0; background: var(--code-bg); color: var(--code-ink); font: 500 15px/1.55 var(--mono); outline: none; caret-color: #ff563c; }
+.sql:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+.con-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.exec { height: 44px; padding: 0 18px; background: var(--acc); color: var(--onacc); border: 0; font-size: 14px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+.err { padding: 12px 14px; background: var(--acc); color: var(--onacc); font: 500 14px var(--mono); }
+.set { display: flex; flex-direction: column; gap: 6px; }
+.table-wrap { overflow: auto; max-height: 360px; border: 2px solid var(--rule); }
+table { border-collapse: collapse; width: 100%; font: 500 13px var(--mono); }
+th { position: sticky; top: 0; background: var(--ink); color: var(--bg); text-align: left; padding: 8px 12px; font-weight: 700; white-space: nowrap; }
+td { padding: 7px 12px; border-bottom: 1px solid var(--hair); white-space: nowrap; }
+.schema { flex: 1 1 280px; padding: 32px clamp(20px, 2.4vw, 32px); display: flex; flex-direction: column; gap: 4px; }
+.tbl { display: flex; flex-direction: column; gap: 4px; padding: 10px 0; border: 0; border-top: 1px solid var(--hair); background: transparent; color: var(--ink); text-align: left; }
+.tbl:hover { color: var(--acc); }
+.tbl-head { display: flex; justify-content: space-between; width: 100%; font: 700 14px var(--mono); }
+.tbl-c { font: 500 12px var(--font); color: var(--mut); }
+.tbl-cols { font: 500 12px/1.5 var(--mono); color: var(--mut); }
+
+.inquiry { padding: 36px clamp(20px, 3vw, 48px) 56px; display: flex; flex-direction: column; gap: 2px; }
+.done { border-top: 2px solid var(--rule); padding: 16px 0; opacity: 0.8; }
+.done summary { cursor: pointer; font-size: 16px; font-weight: 700; display: flex; gap: 12px; align-items: baseline; }
+.done-k { color: var(--acc); white-space: nowrap; }
+.done-q { font-weight: 500; }
+.done-ex { margin: 12px 0; font-size: 15px; line-height: 1.55; max-width: 820px; }
+.current { border: 2px solid var(--ink); padding: 28px clamp(20px, 2.4vw, 32px); display: flex; flex-direction: column; gap: 16px; margin-top: 12px; }
+.cur-l { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--acc); }
+.cur-q { font-size: clamp(22px, 2.4vw, 30px); line-height: 1.25; font-weight: 700; letter-spacing: -0.02em; max-width: 900px; }
+.toolbox { border-top: 2px solid var(--rule); border-bottom: 2px solid var(--rule); padding: 12px 0; }
+.toolbox summary { cursor: pointer; font-size: 14px; font-weight: 700; }
+.concept { display: flex; flex-direction: column; gap: 6px; padding: 14px 0; border-top: 1px solid var(--hair); font-size: 14px; line-height: 1.5; }
+.concept:first-of-type { border-top: 0; }
+.concept-n { font-weight: 800; }
+.concept-doc { display: inline-flex; gap: 6px; align-items: center; font-weight: 700; font-size: 13px; }
+.hint { padding: 12px 14px; background: var(--sf); border-left: 4px solid var(--acc); font-size: 15px; line-height: 1.5; }
+.answer-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.answer { flex: 1 1 220px; max-width: 340px; height: 48px; padding: 0 14px; border: 2px solid var(--ink); background: transparent; color: var(--ink); font-size: 16px; outline: none; }
+.verify { height: 48px; padding: 0 20px; background: var(--ink); color: var(--bg); border: 0; font-size: 14px; font-weight: 800; }
+.hint-btn { height: 48px; padding: 0 16px; background: transparent; color: var(--ink); border: 2px dashed var(--rule); font-size: 13px; font-weight: 600; }
+.ko { font-size: 14px; font-weight: 600; color: var(--acc); }
+.ok { display: flex; flex-direction: column; gap: 12px; border-top: 2px solid var(--rule); padding-top: 16px; }
+.ok-ex { font-size: 17px; line-height: 1.6; max-width: 820px; }
+.next { align-self: flex-start; height: 48px; padding: 0 20px; background: var(--acc); color: var(--onacc); border: 0; font-size: 14px; font-weight: 800; }
+.closed { background: var(--acc); color: var(--onacc); padding: 32px clamp(20px, 2.4vw, 36px); display: flex; flex-direction: column; gap: 14px; margin-top: 12px; }
+.closed-h { font-size: clamp(32px, 4vw, 52px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+.closed-p { font-size: 17px; line-height: 1.55; max-width: 820px; }
+.closed-h2 { font-size: 14px; font-weight: 600; }
+.replay { align-self: flex-start; height: 46px; padding: 0 18px; background: var(--onacc); color: var(--acc); border: 0; font-size: 14px; font-weight: 800; }
+</style>

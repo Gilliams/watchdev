@@ -161,6 +161,7 @@ export async function main() {
       title: w?.title || cleanTitle(t.rep.title),
       body: w?.body || t.rep.summary || '',
       coverage: t.sources,
+      date: new Date(t.latest).toISOString(),
       // Un seul lien par rédaction
       sources: [...new Map(t.articles.map((a) => [a.source, a])).values()].map((a) => ({ title: a.title, link: a.link, source: a.source, lang: a.lang })),
     }
