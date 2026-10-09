@@ -105,7 +105,7 @@ const stamp = computed(() => (generatedAt.value ? new Date(generatedAt.value).to
   <template v-else>
     <article class="cells band lead" :class="{ 'is-read': isRead(lead.link) }">
       <a :href="lead.link" target="_blank" rel="noopener" class="visual lead-visual" tabindex="-1" aria-hidden="true" @click="markRead(lead.link)">
-        <img v-if="lead.image" :src="lead.image" alt="" @error="$event.target.remove()" />
+        <img referrerpolicy="no-referrer" v-if="lead.image" :src="lead.image" alt="" @error="$event.target.remove()" />
       </a>
       <div class="lead-body">
         <div class="meta"><span class="label" :style="{ color: thCol(lead), fontSize: '12px' }">{{ thName(lead) }}</span><span>{{ lead.source }} · {{ dateShort(lead.date) }}</span><span style="font-weight: 700">{{ lead.lang === 'fr' ? 'FR' : 'EN' }}</span></div>
@@ -120,7 +120,7 @@ const stamp = computed(() => (generatedAt.value ? new Date(generatedAt.value).to
     <section v-if="rest.length" class="grid band">
       <article v-for="a in rest" :key="a.link" class="card" :class="{ 'is-read': isRead(a.link) }">
         <a :href="a.link" target="_blank" rel="noopener" class="visual card-visual" tabindex="-1" aria-hidden="true" @click="markRead(a.link)">
-          <img v-if="a.image" :src="a.image" alt="" loading="lazy" @error="$event.target.remove()" />
+          <img referrerpolicy="no-referrer" v-if="a.image" :src="a.image" alt="" loading="lazy" @error="$event.target.remove()" />
           <span class="lang">{{ a.lang === 'fr' ? 'FR' : 'EN' }}</span>
         </a>
         <div class="card-top">

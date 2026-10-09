@@ -132,7 +132,7 @@ const solved = computed(() => SQL_CASES.filter((c) => state.sqlCases[c.id]?.solv
     <div v-if="big" class="veille-grid">
       <article class="big" :class="{ 'is-read': isRead(big.link) }">
         <a :href="big.link" target="_blank" rel="noopener" class="visual big-visual" tabindex="-1" aria-hidden="true" @click="markRead(big.link)">
-          <img v-if="big.image" :src="big.image" alt="" loading="lazy" @error="$event.target.remove()" />
+          <img referrerpolicy="no-referrer" v-if="big.image" :src="big.image" alt="" loading="lazy" @error="$event.target.remove()" />
         </a>
         <div class="meta"><span class="label" style="color: var(--acct)">{{ big.themeName }}</span><span>{{ big.source }} · {{ dateShort(big.date) }}</span></div>
         <a :href="big.link" target="_blank" rel="noopener" class="big-h pretty" @click="markRead(big.link)">{{ big.title }}</a>
@@ -144,7 +144,7 @@ const solved = computed(() => SQL_CASES.filter((c) => state.sqlCases[c.id]?.solv
       <div class="smalls">
         <article v-for="a in smalls" :key="a.link" class="small-card" :class="{ 'is-read': isRead(a.link) }">
           <a :href="a.link" target="_blank" rel="noopener" class="visual small-visual" tabindex="-1" aria-hidden="true" @click="markRead(a.link)">
-            <img v-if="a.image" :src="a.image" alt="" loading="lazy" @error="$event.target.remove()" />
+            <img referrerpolicy="no-referrer" v-if="a.image" :src="a.image" alt="" loading="lazy" @error="$event.target.remove()" />
           </a>
           <div class="small-meta">
             <span class="label" :style="{ color: thCol(a) }">{{ a.themeName }}</span>

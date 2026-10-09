@@ -144,7 +144,7 @@ src/
   views/            # Home, Digest, Geopolitique, Trading, Veille, Quiz, QuizSession, Sql, SqlCase, Settings
   components/       # DwHeader (navigation), PriceChart, Icon
   styles.css        # Système « Modernist » : tokens clair/sombre, Archivo, filets 2 px
-  lib/scenes.js     # Pièces 3D three.js : <dw-globe>, <dw-ribbons>, <dw-wave>
+  lib/scenes.js     # Pièces 3D en canvas 2D : <dw-globe>, <dw-ribbons>, <dw-wave>
   data/regions.js   # Zones et lieux de la page Géopolitique (mots-clés)
   data/questions/   # Banques de questions par thème (ajoute les tiennes !)
   data/sqlCases/    # Les enquêtes SQL (schéma + données + étapes + indices)

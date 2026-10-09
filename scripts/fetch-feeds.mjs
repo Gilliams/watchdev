@@ -53,6 +53,95 @@ function extractImage(item) {
   return null
 }
 
+// ---- Image Open Graph (flux sans image : dev.to, CERT-FR, blogs…) ----
+// On lit la page de l'article jusqu'à </head> et on prend og:image / twitter:image.
+// Cache : les images trouvées au relevé précédent (public/data/articles.json) sont réutilisées,
+// et `noImage: true` évite de revisiter une page qui n'en a pas.
+const UA = 'Mozilla/5.0 (compatible; DevWatch/1.1; veille perso)'
+const OG_CONCURRENCY = 8
+const OG_TIMEOUT_MS = 8000
+const OG_BUDGET_MS = 60000 // au-delà, on garde les hachures : le build ne doit pas traîner
+const OG_MAX_CHARS = 300000
+
+const ENTITIES = { amp: '&', quot: '"', apos: "'", lt: '<', gt: '>', '#39': "'", '#x27': "'", '#x2F': '/', '#47': '/' }
+const decodeEntities = (s) => s.replace(/&(amp|quot|apos|lt|gt|#39|#x27|#x2F|#47);/gi, (m, k) => ENTITIES[k] ?? ENTITIES[k.toLowerCase()] ?? m)
+
+function attr(tag, name) {
+  const m = tag.match(new RegExp(`\\s${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s"'>]+))`, 'i'))
+  return m ? (m[1] ?? m[2] ?? m[3]) : null
+}
+
+export function parseOgImage(html, base) {
+  const metas = String(html).match(/<meta\b[^>]*>/gi) || []
+  for (const want of ['og:image:secure_url', 'og:image', 'og:image:url', 'twitter:image', 'twitter:image:src']) {
+    for (const tag of metas) {
+      const key = (attr(tag, 'property') || attr(tag, 'name') || '').toLowerCase()
+      const content = key === want && attr(tag, 'content')
+      if (!content) continue
+      try {
+        const u = new URL(decodeEntities(content.trim()), base)
+        if (/^https?:$/.test(u.protocol)) return u.href
+      } catch {}
+    }
+  }
+  return null
+}
+
+async function fetchOgImage(url) {
+  const res = await fetch(url, {
+    headers: { 'User-Agent': UA, Accept: 'text/html,application/xhtml+xml' },
+    redirect: 'follow',
+    signal: AbortSignal.timeout(OG_TIMEOUT_MS),
+  })
+  if (!res.ok || !/html/i.test(res.headers.get('content-type') || '')) {
+    res.body?.cancel().catch(() => {})
+    return { image: null, final: res.ok } // pas de HTML : inutile de réessayer
+  }
+  const reader = res.body.getReader()
+  const dec = new TextDecoder()
+  let html = ''
+  for (;;) {
+    const { done, value } = await reader.read()
+    if (done) break
+    html += dec.decode(value, { stream: true })
+    if (html.length > OG_MAX_CHARS || /<\/head>/i.test(html)) {
+      reader.cancel().catch(() => {})
+      break
+    }
+  }
+  return { image: parseOgImage(html, res.url || url), final: true }
+}
+
+function previousArticles(file) {
+  try {
+    return new Map(JSON.parse(readFileSync(file, 'utf8')).articles.map((a) => [a.link, a]))
+  } catch {
+    return new Map()
+  }
+}
+
+export async function fillImages(articles, prev) {
+  const todo = []
+  for (const a of articles) {
+    if (a.image || !a.link) continue
+    const p = prev.get(a.link)
+    if (p?.image) a.image = p.image
+    else if (p?.noImage) a.noImage = true
+    else todo.push(a)
+  }
+  const deadline = Date.now() + OG_BUDGET_MS
+  let found = 0
+  await mapPool(todo, OG_CONCURRENCY, async (a) => {
+    if (Date.now() > deadline) return
+    try {
+      const { image, final } = await fetchOgImage(a.link)
+      if (image) { a.image = image; found++ }
+      else if (final) a.noImage = true
+    } catch {} // timeout, 403… : on réessaiera au prochain relevé
+  })
+  console.log(`Images og:image : ${found} trouvée(s) sur ${todo.length} page(s) visitée(s)`)
+}
+
 // Clé de dédup : URL sans paramètres de tracking ni slash final
 const TRACKING = /^(utm_|fbclid|gclid|mc_|ref|ref_src|at_medium|at_campaign)/i
 export function dedupKey(link, title) {
@@ -140,6 +229,7 @@ async function main() {
 
   const outDir = join(root, 'public/data')
   mkdirSync(outDir, { recursive: true })
+  await fillImages(articles, previousArticles(join(outDir, 'articles.json')))
   writeFileSync(
     join(outDir, 'articles.json'),
     JSON.stringify({ generatedAt: new Date().toISOString(), articles }, null, 1)

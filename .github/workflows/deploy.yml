@@ -39,6 +39,10 @@ jobs:
       - name: Récupérer les cotations précédentes
         run: mkdir -p public/data && curl -sfL "${{ steps.pages.outputs.base_url }}/data/quotes.json" -o public/data/quotes.json || true
 
+      # Veille précédente : sert de cache pour les images og:image déjà trouvées
+      - name: Récupérer la veille précédente
+        run: curl -sfL "${{ steps.pages.outputs.base_url }}/data/articles.json" -o public/data/articles.json || true
+
       - name: Veille RSS
         run: npm run fetch-feeds
 
