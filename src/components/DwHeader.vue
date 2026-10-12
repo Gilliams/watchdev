@@ -1,20 +1,23 @@
 <script setup>
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import Icon from './Icon.vue'
 import { theme, toggleTheme } from '../lib/theme.js'
 import { refresh, triggerRefresh } from '../lib/refresh.js'
+import { readingMinutes } from '../lib/digest.js'
 
 const route = useRoute()
 
-const PAGES = [
+const PAGES = computed(() => [
   ['/', 'Tableau de bord', (p) => p === '/'],
-  ['/actu', "L'actu en 5 min", (p) => p === '/actu'],
+  ['/actu', `L'actu en ${readingMinutes.value} min`, (p) => p === '/actu'],
   ['/geopolitique', 'Géopolitique', (p) => p.startsWith('/geopolitique')],
   ['/trading', 'Marchés', (p) => p === '/trading'],
   ['/veille', 'Veille techno', (p) => p.startsWith('/veille')],
   ['/quiz', 'Quiz & Révisions', (p) => p.startsWith('/quiz')],
   ['/sql', 'Enquêtes SQL', (p) => p.startsWith('/sql')],
-]
+])
+const pctLabel = computed(() => `${Math.round(refresh.progress * 100)} %`)
 </script>
 
 <template>
@@ -47,7 +50,21 @@ const PAGES = [
       </button>
     </div>
   </header>
-  <p v-if="refresh.message" class="refresh-msg" :class="refresh.status" aria-live="polite">{{ refresh.message }}</p>
+  <div v-if="refresh.message" class="refresh-msg" :class="refresh.status">
+    <p aria-live="polite">
+      <span>{{ refresh.message }}</span>
+      <span v-if="refresh.status === 'running'" class="pct">{{ pctLabel }}</span>
+    </p>
+    <div
+      v-if="refresh.status !== 'error'"
+      class="bar"
+      role="progressbar"
+      aria-label="Progression du rafraîchissement"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      :aria-valuenow="Math.round(refresh.progress * 100)"
+    ><i :style="{ transform: `scaleX(${refresh.progress})` }" /></div>
+  </div>
 </template>
 
 <style scoped>
@@ -75,6 +92,11 @@ nav a.active { font-weight: 600; color: var(--ink); box-shadow: inset 0 -2px 0 v
 .square.outline:hover, .square.outline.on { background: var(--ink); color: var(--bg); }
 .spin { display: flex; animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.refresh-msg { padding: 8px var(--pad); font-size: 12px; font-weight: 600; color: var(--mut); border-bottom: 1px solid var(--hair); }
-.refresh-msg.error { color: var(--acc); }
+.refresh-msg { position: relative; border-bottom: 1px solid var(--hair); }
+.refresh-msg p { display: flex; justify-content: space-between; gap: 16px; padding: 8px var(--pad); font-size: 12px; font-weight: 600; color: var(--mut); }
+.refresh-msg .pct { font-variant-numeric: tabular-nums; color: var(--ink); }
+.refresh-msg.error p { color: var(--acc); }
+.bar { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--hair); }
+.bar i { display: block; height: 100%; background: var(--acc); transform-origin: left; transition: transform 0.6s ease-out; }
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
 </style>

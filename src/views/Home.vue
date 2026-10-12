@@ -6,18 +6,17 @@ import { THEMES, themeById } from '../data/themes.js'
 import { dueThemes } from '../lib/spaced.js'
 import { SQL_CASES } from '../data/sqlCases/index.js'
 import { loadData } from '../lib/data.js'
+import { digest, readingMinutes } from '../lib/digest.js'
 import { theme } from '../lib/theme.js'
 import { isRead, toggleRead, markRead } from '../lib/read.js'
 import { pad2, pct, deltaColor, money, dateShort, longDate, timeHM, sparkPoints } from '../lib/format.js'
 
 const articles = ref(null)
-const digest = ref(null)
 const quotes = ref(null)
 
 onMounted(async () => {
-  const [a, d, q] = await Promise.all([loadData('articles'), loadData('digest'), loadData('quotes')])
+  const [a, q] = await Promise.all([loadData('articles'), loadData('quotes')])
   articles.value = a
-  digest.value = d
   quotes.value = q
 })
 
@@ -96,7 +95,7 @@ const solved = computed(() => SQL_CASES.filter((c) => state.sqlCases[c.id]?.solv
       <dw-globe class="scene" :theme="theme"></dw-globe>
       <div class="globe-title">
         <span class="kicker" style="color: var(--acc)">À la une</span>
-        <span class="globe-h">L'actu en {{ digest?.readingMinutes || 5 }} min</span>
+        <span class="globe-h">L'actu en {{ readingMinutes }} min</span>
       </div>
       <div class="globe-foot">
         <span>Les sujets des dernières 30 h, regroupés par événement</span><span>Survole pour orienter le globe</span>

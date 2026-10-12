@@ -1,18 +1,11 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import Icon from '../components/Icon.vue'
 import { state } from '../stores/progress.js'
-import { loadData } from '../lib/data.js'
+import { digest, digestLoading as loading, readingMinutes } from '../lib/digest.js'
 import { theme } from '../lib/theme.js'
 import { pad2, longDate, hoursAgo } from '../lib/format.js'
 
-const digest = ref(null)
-const loading = ref(true)
-
-onMounted(async () => {
-  digest.value = await loadData('digest')
-  loading.value = false
-})
 
 const isRead = (key) => state.readDigest.includes(key)
 function toggle(key) {
@@ -56,7 +49,7 @@ function markAll() {
         <div class="kicker">
           {{ longDate(digest?.generatedAt || Date.now()) }}<template v-if="digest"> — générée {{ hoursAgo(digest.generatedAt) }} à partir de {{ digest.articleCount }} dépêches</template>
         </div>
-        <h1 class="hero-title" style="margin-top: 18px">L'actu<br />en {{ digest?.readingMinutes || 5 }} min<span class="dot">.</span></h1>
+        <h1 class="hero-title" style="margin-top: 18px">L'actu<br />en {{ readingMinutes }} min<span class="dot">.</span></h1>
       </div>
       <p class="hero-p pretty">Les sujets des dernières 30 h, regroupés par événement : plus il y a de rédactions qui le couvrent, plus il remonte.</p>
     </div>
