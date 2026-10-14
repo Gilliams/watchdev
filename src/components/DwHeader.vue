@@ -16,6 +16,7 @@ const PAGES = computed(() => [
   ['/veille', 'Veille techno', (p) => p.startsWith('/veille')],
   ['/quiz', 'Quiz & Révisions', (p) => p.startsWith('/quiz')],
   ['/sql', 'Enquêtes SQL', (p) => p.startsWith('/sql')],
+  ['/katas', 'Katas', (p) => p.startsWith('/katas')],
 ])
 const pctLabel = computed(() => `${Math.round(refresh.progress * 100)} %`)
 </script>
