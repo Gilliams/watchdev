@@ -10,6 +10,7 @@ import Quiz from './views/Quiz.vue'
 import QuizSession from './views/QuizSession.vue'
 import Sql from './views/Sql.vue'
 import SqlCase from './views/SqlCase.vue'
+import Katas from './views/Katas.vue'
 import Settings from './views/Settings.vue'
 
 export default createRouter({
@@ -34,6 +35,9 @@ export default createRouter({
     { path: '/quiz/:theme', component: QuizSession },
     { path: '/sql', component: Sql },
     { path: '/sql/:id', component: SqlCase },
+    { path: '/katas', component: Katas },
+    // Chargée à la demande : l'éditeur de code n'alourdit pas le reste du site
+    { path: '/katas/:id', component: () => import('./views/KataSession.vue') },
     { path: '/settings', component: Settings },
   ],
 })

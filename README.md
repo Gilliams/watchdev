@@ -8,6 +8,7 @@ Application web personnelle qui concentre cinq outils :
 - **📡 Veille technologique** — agrégation automatique de flux RSS (PHP, Symfony, VueJS, Laravel, Sécurité, IA, FrontEnd, 3D, Bases de données, DevOps, Design Patterns, Drupal…) à la demande (bouton « 🔄 Rafraîchir ») via GitHub Actions, **articles francophones en tête**.
 - **🎯 Quiz de révision** — 60+ questions back-end (niveau intermédiaire → expert) avec explications, pilotées par une **répétition espacée façon courbe d'Ebbinghaus** : un thème réussi à ≥ 80 % s'espace (1 → 3 → 7 → 14 → 30 → 60 → 120 jours), un thème raté (< 60 %) revient dès le lendemain.
 - **🕵️ Enquêtes SQL** — trois affaires criminelles à résoudre en vraies requêtes SQL (SQLite dans le navigateur via sql.js) : jointures, agrégations, jointures temporelles, CTE récursives. Indices progressifs si tu bloques, requêtes solutions commentées.
+- **🥋 Katas de design patterns** — Strategy, Decorator et Observer à pratiquer comme des katas : refactoriser un code existant, puis y ajouter une fonctionnalité que le pattern rend triviale. Vrai PHP 8.4 dans le navigateur (php-wasm, dans un Web Worker), tests automatiques, indices, solutions commentées, explication « pour un enfant » et technique. Les katas entrent dans la répétition espacée et les rappels par mail.
 
 Le tout est **hébergé gratuitement sur GitHub** (Pages + Actions), avec **rappels par mail** chaque matin quand des thèmes sont dus.
 
@@ -148,9 +149,12 @@ src/
   data/regions.js   # Zones et lieux de la page Géopolitique (mots-clés)
   data/questions/   # Banques de questions par thème (ajoute les tiennes !)
   data/sqlCases/    # Les enquêtes SQL (schéma + données + étapes + indices)
+  data/katas/       # Katas de design patterns (théorie + étapes + tests PHP + solutions)
   lib/spaced.js     # Logique de répétition espacée (Ebbinghaus)
   lib/github.js     # Sync progression → repo GitHub
   lib/sqlEngine.js  # SQLite navigateur (sql.js)
+  lib/phpEngine.js  # PHP navigateur (php-wasm en Web Worker, coupé au-delà de 6 s)
+  lib/kataHarness.js# Harness PHP des katas (assertions Expect::…, checks structurels)
 scripts/
   feeds.json        # Sources RSS par thème (personnalise librement)
   fetch-feeds.mjs   # Agrégateur RSS → public/data/articles.json
@@ -168,5 +172,6 @@ scripts/
   si le flux doit alimenter le résumé quotidien).
 - **Suivre un autre actif** : une entrée dans le tableau `ASSETS` de `scripts/fetch-quotes.mjs`.
 - **Ajouter une enquête SQL** : copie un fichier de `src/data/sqlCases/`, déclare-le dans `index.js`.
+- **Ajouter un kata** : copie un fichier de `src/data/katas/`, déclare-le dans `index.js` et ajoute son id dans `KATA_NAMES` de `scripts/send-reminders.mjs`. Chaque test est du PHP qui renvoie `true` ou un message d'échec (helpers `Expect::same`, `near`, `throws`, `implements`, `without`, `ignores`…). Le code du bac à sable entouré de `if (!defined('KATA_TESTING'))` est ignoré pendant la validation.
 - **Changer les intervalles Ebbinghaus** : `INTERVALS_DAYS` dans `src/lib/spaced.js`
   (et l'heure du mail dans `reminders.yml`).

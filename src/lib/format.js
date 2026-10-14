@@ -61,3 +61,10 @@ export function sparkPoints(series, w, h, days = 90) {
     .map((y, i) => `${((i / (v.length - 1)) * w).toFixed(1)},${(h - 2 - ((y - mn) / (mx - mn || 1)) * (h - 4)).toFixed(1)}`)
     .join(' ')
 }
+
+// Durée lisible : 75 000 ms → « 1 min 15 s »
+export function duration(ms) {
+  const s = Math.max(0, Math.round(ms / 1000))
+  const m = Math.floor(s / 60)
+  return m ? `${m} min ${pad2(s % 60)} s` : `${s} s`
+}

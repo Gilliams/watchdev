@@ -8,6 +8,10 @@ export const state = reactive({
   themes: {},
   // { [caseId]: { solvedSteps: [indices], solved: bool, hintsUsed: n } }
   sqlCases: {},
+  // { [kataId]: { level, lastReview, nextReview, history: [{date, ms, hints, revealed}] } } — synchronisé
+  katas: {},
+  // { [kataId]: { step, code, startedAt, hints, revealed } } — essai en cours, local uniquement
+  kataDrafts: {},
   readArticles: [], // liens des articles marqués lus
   readDigest: [], // titres des sujets de « L'actu en 5 min » marqués lus
   settings: {
@@ -27,6 +31,8 @@ export function loadProgress() {
       const saved = JSON.parse(raw)
       Object.assign(state.themes, saved.themes || {})
       Object.assign(state.sqlCases, saved.sqlCases || {})
+      Object.assign(state.katas, saved.katas || {})
+      Object.assign(state.kataDrafts, saved.kataDrafts || {})
       state.readArticles = saved.readArticles || []
       state.readDigest = saved.readDigest || []
       Object.assign(state.settings, saved.settings || {})
@@ -48,6 +54,7 @@ export function exportProgress() {
   return {
     themes: state.themes,
     sqlCases: state.sqlCases,
+    katas: state.katas,
     email: state.settings.email,
     updatedAt: new Date().toISOString(),
   }
@@ -56,5 +63,6 @@ export function exportProgress() {
 export function importProgress(data) {
   if (data.themes) Object.assign(state.themes, data.themes)
   if (data.sqlCases) Object.assign(state.sqlCases, data.sqlCases)
+  if (data.katas) Object.assign(state.katas, data.katas)
   if (data.email && !state.settings.email) state.settings.email = data.email
 }

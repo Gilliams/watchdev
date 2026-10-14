@@ -3,7 +3,8 @@ import { computed, ref, onMounted } from 'vue'
 import Icon from '../components/Icon.vue'
 import { state } from '../stores/progress.js'
 import { THEMES, themeById } from '../data/themes.js'
-import { dueThemes } from '../lib/spaced.js'
+import { dueThemes, dueKatas } from '../lib/spaced.js'
+import { kataById } from '../data/katas/index.js'
 import { SQL_CASES } from '../data/sqlCases/index.js'
 import { loadData } from '../lib/data.js'
 import { digest, readingMinutes } from '../lib/digest.js'
@@ -54,11 +55,16 @@ const medias = (n) => `${n || 1} média${(n || 1) > 1 ? 's' : ''}`
 const due = computed(() => dueThemes(state).map((id) => themeById(id)).filter(Boolean))
 const neverTested = computed(() => THEMES.filter((t) => t.quiz && !state.themes[t.id]))
 const sessions = computed(() => Object.values(state.themes).reduce((n, t) => n + (t.history?.length || 0), 0))
-const reviseList = computed(() => [...due.value, ...neverTested.value])
-const bigCount = computed(() => (due.value.length ? due.value.length : neverTested.value.length))
+const dueK = computed(() => dueKatas(state).map(kataById).filter(Boolean))
+const reviseList = computed(() => [
+  ...dueK.value.map((k) => ({ id: `kata-${k.id}`, name: `Kata ${k.name}`, to: `/katas/${k.id}` })),
+  ...[...due.value, ...neverTested.value].map((t) => ({ ...t, to: `/quiz/${t.id}` })),
+])
+const dueCount = computed(() => due.value.length + dueK.value.length)
+const bigCount = computed(() => (dueCount.value ? dueCount.value : neverTested.value.length))
 const bigLabel = computed(() =>
-  due.value.length
-    ? `thème${due.value.length > 1 ? 's' : ''} à réviser`
+  dueCount.value
+    ? `thème${dueCount.value > 1 ? 's' : ''} à réviser`
     : `thème${neverTested.value.length > 1 ? 's' : ''} jamais testé${neverTested.value.length > 1 ? 's' : ''}`
 )
 
@@ -181,7 +187,7 @@ const solved = computed(() => SQL_CASES.filter((c) => state.sqlCases[c.id]?.solv
         <span class="rev-l">{{ bigLabel }}<br />{{ sessions }} session{{ sessions > 1 ? 's' : '' }} de quiz</span>
       </div>
       <div class="rev-chips">
-        <router-link v-for="t in reviseList" :key="t.id" :to="`/quiz/${t.id}`" class="rev-chip">{{ t.name }}</router-link>
+        <router-link v-for="t in reviseList" :key="t.id" :to="t.to" class="rev-chip">{{ t.name }}</router-link>
       </div>
       <router-link to="/quiz/random" class="btn-ink" style="margin-top: auto">Quiz aléatoire tous thèmes<Icon name="arrow-right" :size="16" /></router-link>
     </div>

@@ -16,6 +16,9 @@ const THEME_NAMES = {
   laravel: 'Laravel', vuejs: 'VueJS', ia: 'IA', all: 'All'
 }
 
+// Katas de design patterns (src/data/katas/) : ajoute ici l'id de chaque nouveau kata
+const KATA_NAMES = { strategy: 'Strategy', decorator: 'Decorator', observer: 'Observer' }
+
 if (!existsSync(progressPath)) {
   console.log('Pas de progress/progress.json — synchronise ta progression depuis l\'appli (Paramètres). Rien à envoyer.')
   process.exit(0)
@@ -33,6 +36,15 @@ for (const [id, name] of Object.entries(THEME_NAMES)) {
   } else if (new Date(t.nextReview).getTime() <= now) {
     const late = Math.floor((now - new Date(t.nextReview).getTime()) / 86400000)
     due.push({ name, late })
+  }
+}
+
+// Katas : seuls ceux déjà pratiqués au moins une fois sont rappelés
+for (const [id, name] of Object.entries(KATA_NAMES)) {
+  const k = progress.katas?.[id]
+  if (k?.nextReview && new Date(k.nextReview).getTime() <= now) {
+    const late = Math.floor((now - new Date(k.nextReview).getTime()) / 86400000)
+    due.push({ name: `Kata ${name}`, late, kata: true })
   }
 }
 
@@ -58,7 +70,7 @@ D'après ta courbe d'Ebbinghaus, ${due.length > 1 ? 'ces thèmes attendent' : 'c
 
 ${dueList}
 ${never.length ? `\nJamais testés : ${never.join(', ')}\n` : ''}
-Un quiz de 8 questions suffit pour re-espacer l'intervalle. 💪
+${due.some((d) => !d.kata) ? "Un quiz de 8 questions suffit pour re-espacer l'intervalle. 💪\n" : ''}${due.some((d) => d.kata) ? 'Un kata réussi sans indice repousse la prochaine répétition. 🥋\n' : ''}
 ${appUrl ? `\n👉 ${appUrl}` : ''}
 
 — DevWatch, ton coach mémoire
