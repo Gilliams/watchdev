@@ -2,29 +2,58 @@
   "themes": {
     "php": {
       "level": 0,
-      "lastReview": "2026-07-03T08:05:18.573Z",
-      "nextReview": "2026-07-04T08:05:18.573Z",
+      "lastReview": "2026-10-12T10:04:26.483Z",
+      "nextReview": "2026-10-13T10:04:26.483Z",
       "history": [
         {
-          "date": "2026-07-03T08:05:18.573Z",
-          "score": 6,
+          "date": "2026-10-12T10:04:26.483Z",
+          "score": 2,
           "total": 8
+        }
+      ]
+    },
+    "ia": {
+      "level": 0,
+      "lastReview": "2026-10-14T12:12:03.375Z",
+      "nextReview": "2026-10-15T12:12:03.375Z",
+      "history": [
+        {
+          "date": "2026-10-14T12:12:03.375Z",
+          "score": 2,
+          "total": 4
         }
       ]
     }
   },
   "sqlCases": {
     "galerie": {
-      "solvedSteps": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "solved": true,
-      "hintsUsed": 5
+      "solvedSteps": [],
+      "solved": false,
+      "hintsUsed": 0,
+      "notes": ""
+    },
+    "zephyr": {
+      "solvedSteps": [],
+      "solved": false,
+      "hintsUsed": 0,
+      "notes": ""
     }
   },
-  "email": "andrieuxflorian5@gmail.com",
-  "updatedAt": "2026-07-03T08:59:21.723Z"
+  "katas": {
+    "strategy": {
+      "level": 0,
+      "lastReview": "2026-10-14T14:55:28.403Z",
+      "nextReview": "2026-10-15T14:55:28.403Z",
+      "history": [
+        {
+          "date": "2026-10-14T14:55:28.403Z",
+          "ms": 3601309,
+          "hints": 3,
+          "revealed": true
+        }
+      ]
+    }
+  },
+  "email": "",
+  "updatedAt": "2026-10-14T14:55:28.968Z"
 }
