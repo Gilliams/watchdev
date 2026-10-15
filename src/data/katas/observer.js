@@ -1,8 +1,11 @@
 // Kata Observer — inscription d'un utilisateur et ses réactions
+import { callerTest } from '../../lib/kataHarness.js'
+
 const php = String.raw
 
 export default {
   id: 'observer',
+  version: 2,
   name: 'Observer',
   nameFr: 'Observateur',
   family: 'Comportemental',
@@ -81,6 +84,7 @@ final class SendWelcomeMail
         "`RegistrationService::__construct(UserRepository $users)` et `subscribe(UserRegisteredListener $listener): void`",
         "`register()` enregistre, puis prévient les abonnés dans l'ordre d'abonnement",
         "`User`, `UserRepository`, `Mailer`, `Slack` et `Newsletter` sont fournis, ne les modifie pas",
+        "Le code appelant `demo()` doit continuer de tourner : c'est lui qui branche les abonnés, adapte-le",
       ],
       starter: php`<?php
 declare(strict_types=1);
@@ -163,14 +167,19 @@ final class RegistrationService
     }
 }
 
-// --- Bac à sable : exécuté par « Exécuter », ignoré pendant la validation ---
-if (!defined('KATA_TESTING')) {
+// --- Code appelant : le formulaire d'inscription ---
+// Lancé par « Exécuter » et vérifié par les tests : adapte-le si tu changes l'API.
+function demo(): void
+{
     $mailer = new Mailer();
     $slack = new Slack();
     $service = new RegistrationService(new UserRepository(), $mailer, $slack);
     $service->register('ana@exemple.fr');
-    print_r($mailer->sent);
-    print_r($slack->messages);
+    echo 'Mails : ', count($mailer->sent), ' · Slack : ', implode(' / ', $slack->messages), PHP_EOL;
+}
+
+if (!defined('KATA_TESTING')) {
+    demo();
 }
 `,
       tests: [
@@ -210,7 +219,10 @@ return Expect::same(['Nouvel inscrit : ana@exemple.fr'], $slack->messages, 'Mess
         },
         {
           label: "Les abonnés sont prévenus dans l'ordre, après l'enregistrement",
-          code: php`$repo = new UserRepository();
+          code: php`if (!interface_exists('UserRegisteredListener')) {
+    return 'UserRegisteredListener doit d\'abord être une interface';
+}
+$repo = new UserRepository();
 $trace = new ArrayObject();
 $spy = fn (string $name) => new class ($name, $trace, $repo) implements UserRegisteredListener {
     public function __construct(private string $name, private ArrayObject $trace, private UserRepository $repo) {}
@@ -232,11 +244,12 @@ return Expect::same(['A voit 1 inscrit(s)', 'B voit 1 inscrit(s)'], $trace->getA
     Expect::ignores('RegistrationService', ['mailer', 'slack'], 'le sujet ne doit pas connaître ses abonnés'),
 );`,
         },
+        callerTest,
       ],
       hints: [
         "Le sujet a besoin de deux choses : une liste (`private array $listeners = []`) et une méthode pour s'y ajouter (`subscribe()`).",
         "Chaque bloc de réaction de `register()` déménage dans la méthode `onUserRegistered()` d'un listener, avec la dépendance dont il a besoin (le `Mailer` ou `Slack`) dans son constructeur.",
-        "Après `$this->users->save($user);` : `foreach ($this->listeners as $listener) { $listener->onUserRegistered($user); }`.",
+        "Après `$this->users->save($user);` : `foreach ($this->listeners as $listener) { $listener->onUserRegistered($user); }`. Puis dans `demo()`, abonne les deux listeners avec `subscribe()`.",
       ],
       solution: php`<?php
 declare(strict_types=1);
@@ -297,6 +310,21 @@ final class RegistrationService
 
         return $user;
     }
+}
+
+function demo(): void
+{
+    $mailer = new Mailer();
+    $slack = new Slack();
+    $service = new RegistrationService(new UserRepository());
+    $service->subscribe(new WelcomeMailListener($mailer));
+    $service->subscribe(new SlackListener($slack));
+    $service->register('ana@exemple.fr');
+    echo 'Mails : ', count($mailer->sent), ' · Slack : ', implode(' / ', $slack->messages), PHP_EOL;
+}
+
+if (!defined('KATA_TESTING')) {
+    demo();
 }
 `,
       solutionNote:

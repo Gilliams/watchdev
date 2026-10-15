@@ -39,21 +39,6 @@
       "notes": ""
     }
   },
-  "katas": {
-    "strategy": {
-      "level": 0,
-      "lastReview": "2026-10-14T14:55:28.403Z",
-      "nextReview": "2026-10-15T14:55:28.403Z",
-      "history": [
-        {
-          "date": "2026-10-14T14:55:28.403Z",
-          "ms": 3601309,
-          "hints": 3,
-          "revealed": true
-        }
-      ]
-    }
-  },
   "email": "",
-  "updatedAt": "2026-10-14T14:55:28.968Z"
+  "updatedAt": "2026-10-14T12:12:03.959Z"
 }

@@ -130,9 +130,27 @@ final class Expect
 }
 `
 
-// Script « Exécuter » : lance le fichier tel quel
+// Script « Exécuter » : lance le fichier tel quel ; une exception non attrapée
+// s'affiche en une ligne lisible plutôt qu'en « Fatal error » + trace
 export function runScript() {
-  return `<?php\nrequire ${phpStr(KATA_FILE)};\n`
+  return `<?php
+try {
+    require ${phpStr(KATA_FILE)};
+} catch (Throwable $e) {
+    echo PHP_EOL, '✗ ', $e::class, ' : ', $e->getMessage(), ' (ligne ', $e->getLine(), ')', PHP_EOL;
+}
+`
+}
+
+// Test commun à tous les katas : le code appelant (fonction demo() en bas du fichier)
+// doit toujours tourner. Refactoriser une API, c'est aussi mettre à jour ceux qui l'utilisent.
+export const callerTest = {
+  label: 'Le code appelant demo() tourne toujours',
+  code: `if (!function_exists('demo')) {
+    return "La fonction demo() a disparu : garde-la, c'est le code qui utilise tes classes";
+}
+demo();
+return true;`,
 }
 
 // Script « Valider » : charge le code, lance chaque test, imprime le JSON des résultats
@@ -163,7 +181,7 @@ ${list}
             $__report['results'][] = ['label' => $label, 'ok' => $r === true, 'msg' => $r === true ? '' : (string) $r];
         } catch (Throwable $e) {
             $where = $e->getFile() === KATA_FILE ? sprintf(' (ton code, ligne %d)', $e->getLine()) : '';
-            $msg = preg_replace('/ (in|on) php-wasm run script( on)? line \\d+/', '', $e->getMessage());
+            $msg = preg_replace(['/ (in|on) php-wasm run script( on)? line \\d+/', '/ in ' . preg_quote(KATA_FILE, '/') . ' on line (\\d+)/'], ['', ' (ligne $1)'], $e->getMessage());
             $__report['results'][] = ['label' => $label, 'ok' => false, 'msg' => sprintf('%s : %s%s', $e::class, $msg, $where)];
         }
         $__report['stdout'] .= ob_get_clean();

@@ -1,8 +1,11 @@
 // Kata Strategy — frais de port d'une boutique en ligne
+import { callerTest } from '../../lib/kataHarness.js'
+
 const php = String.raw
 
 export default {
   id: 'strategy',
+  version: 2, // incrémenter quand le code de départ ou les tests changent (réinitialise l'essai en cours)
   name: 'Strategy',
   nameFr: 'Stratégie',
   family: 'Comportemental',
@@ -90,6 +93,7 @@ final class ShippingCalculator
         "Classes `ColissimoShipping` (`'colissimo'`), `ChronopostShipping` (`'chronopost'`) et `RelayShipping` (`'relais'`)",
         "`ShippingCalculator::__construct(iterable $strategies)`, `cost()` garde sa signature",
         'Mêmes tarifs, mêmes exceptions, tout dans l’espace de noms global',
+        "Le code appelant `demo()` doit continuer de tourner : c'est lui qui crée le calculateur, adapte-le",
       ],
       starter: php`<?php
 declare(strict_types=1);
@@ -125,11 +129,17 @@ final class ShippingCalculator
     }
 }
 
-// --- Bac à sable : exécuté par « Exécuter », ignoré pendant la validation ---
-if (!defined('KATA_TESTING')) {
+// --- Code appelant : la page panier qui utilise le calculateur ---
+// Lancé par « Exécuter » et vérifié par les tests : adapte-le si tu changes l'API.
+function demo(): void
+{
     $calculator = new ShippingCalculator();
     echo 'Colissimo 2 kg : ', $calculator->cost('colissimo', 2.0), ' €', PHP_EOL;
     echo 'Chronopost 7 kg : ', $calculator->cost('chronopost', 7.0), ' €', PHP_EOL;
+}
+
+if (!defined('KATA_TESTING')) {
+    demo();
 }
 `,
       tests: [
@@ -166,7 +176,10 @@ return Expect::all(
         },
         {
           label: "Le calculateur n'utilise que les stratégies reçues",
-          code: php`$only = new ShippingCalculator([new ColissimoShipping()]);
+          code: php`if (!interface_exists('ShippingStrategy')) {
+    return 'ShippingStrategy doit d\'abord être une interface';
+}
+$only = new ShippingCalculator([new ColissimoShipping()]);
 $custom = new ShippingCalculator([new class implements ShippingStrategy {
     public function carrier(): string { return 'test'; }
     public function cost(float $weightKg): float { return 42.0; }
@@ -183,11 +196,12 @@ return Expect::all(
     Expect::ignores('ShippingCalculator', ['colissimo', 'chronopost', 'relais'], 'le calculateur ne doit plus nommer de transporteur'),
 );`,
         },
+        callerTest,
       ],
       hints: [
         "Commence par l'interface : quelles sont les deux questions qu'on pose à un transporteur ? « Qui es-tu ? » et « Combien pour ce poids ? ».",
         "Chaque `case` devient le corps de la méthode `cost()` d'une classe. Le `default` (transporteur inconnu) reste dans le calculateur.",
-        "Dans le constructeur, range les stratégies dans un tableau indexé par `carrier()`. `cost()` devient une simple recherche : `$this->strategies[$carrier] ?? throw new InvalidArgumentException(…)`.",
+        "Dans le constructeur, range les stratégies dans un tableau indexé par `carrier()`. `cost()` devient une simple recherche : `$this->strategies[$carrier] ?? throw new InvalidArgumentException(…)`. N'oublie pas `demo()` : il doit maintenant passer les stratégies au calculateur.",
       ],
       solution: php`<?php
 declare(strict_types=1);
@@ -266,6 +280,21 @@ final class ShippingCalculator
         return $strategy->cost($weightKg);
     }
 }
+
+function demo(): void
+{
+    $calculator = new ShippingCalculator([
+        new ColissimoShipping(),
+        new ChronopostShipping(),
+        new RelayShipping(),
+    ]);
+    echo 'Colissimo 2 kg : ', $calculator->cost('colissimo', 2.0), ' €', PHP_EOL;
+    echo 'Chronopost 7 kg : ', $calculator->cost('chronopost', 7.0), ' €', PHP_EOL;
+}
+
+if (!defined('KATA_TESTING')) {
+    demo();
+}
 `,
       solutionNote:
         "Le calculateur indexe les stratégies par `carrier()` une seule fois, puis fait une recherche en O(1). Chaque règle tarifaire vit seule dans sa classe : on peut la tester isolément et la modifier sans risque pour les autres. Le `match` de Chronopost reste dans sa stratégie : il exprime une règle interne, pas un aiguillage entre transporteurs.",
@@ -328,7 +357,7 @@ return Expect::all(
 }
 `,
       solutionNote:
-        "Une classe ajoutée, zéro ligne modifiée ailleurs : c'est tout l'intérêt du pattern. Dans Symfony, grâce au tag automatique sur l'interface, la nouvelle stratégie serait même injectée sans toucher à la configuration.",
+        "Une classe ajoutée (plus une ligne dans le code appelant pour la brancher), zéro ligne modifiée dans le calculateur : c'est tout l'intérêt du pattern. Dans Symfony, grâce au tag automatique sur l'interface, la nouvelle stratégie serait même injectée sans toucher à la configuration.",
     },
   ],
 }
