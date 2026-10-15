@@ -1,33 +1,36 @@
-// Kata Decorator — taux de change avec cache, logs et retry
+// Kata Decorator — le glacier de Gino
+import { callerTest } from '../../lib/kataHarness.js'
+
 const php = String.raw
 
 export default {
   id: 'decorator',
+  version: 2,
   name: 'Decorator',
   nameFr: 'Décorateur',
   family: 'Structurel',
   guru: 'https://refactoring.guru/fr/design-patterns/decorator',
-  summary: 'Cache, logs, retry greffés à coups de booléens dans le code métier.',
+  summary: 'Des options greffées à coups de booléens et de if.',
 
   problem:
-    "Une classe accumule des préoccupations annexes (cache, logs, nouvelles tentatives) activées par des booléens dans son constructeur. Chaque option double les combinaisons à tester, et la logique métier se noie dans la tuyauterie.",
+    "Une classe se voit greffer des options à coups de booléens dans son constructeur. Chaque nouvelle option ajoute un paramètre et des `if` un peu partout, on ne peut pas prendre deux fois la même option, et l'ordre est figé dans le code.",
 
   kid:
-    "Une boule de glace à la vanille. Tu peux ajouter du chocolat, puis de la chantilly, puis des vermicelles. Ça reste une glace : chaque garniture se pose par-dessus sans changer la boule d'en dessous, et c'est toi qui choisis l'ordre (la chantilly sous le chocolat, ce n'est pas pareil).",
+    "Une boule de glace à la vanille. Tu peux ajouter du chocolat, puis de la chantilly, puis des vermicelles. Ça reste une glace : chaque garniture se pose par-dessus sans changer la boule d'en dessous. Tu peux même mettre deux fois du chocolat, et c'est toi qui choisis l'ordre.",
 
   technical:
-    "Decorator enveloppe un objet dans un autre qui implémente **la même interface**. Le décorateur reçoit l'objet « intérieur » dans son constructeur, ajoute son comportement avant ou après l'appel, et lui délègue le reste. Comme l'enveloppe a le même type que ce qu'elle contient, l'appelant ne voit pas la différence et on empile les couches dans l'ordre voulu.",
+    "Decorator enveloppe un objet dans un autre qui a **la même interface**. L'enveloppe reçoit l'objet « intérieur » dans son constructeur, fait son petit ajout (avant ou après), et lui délègue le reste. Comme l'enveloppe a le même type que ce qu'elle contient, l'appelant ne voit pas la différence : on empile autant de couches qu'on veut, dans l'ordre qu'on veut.",
 
   example: {
     intro: "En préproduction, tous les mails doivent partir vers l'équipe QA. Plutôt qu'un `if (env === 'preprod')` dans le mailer, on l'enveloppe.",
     code: php`interface Mailer
 {
-    public function send(string $to, string $subject, string $body): void;
+    public function send(string $to, string $subject): void;
 }
 
 final class SmtpMailer implements Mailer
 {
-    public function send(string $to, string $subject, string $body): void
+    public function send(string $to, string $subject): void
     {
         // envoi réel
     }
@@ -37,9 +40,10 @@ final class RedirectingMailer implements Mailer
 {
     public function __construct(private Mailer $inner, private string $redirectTo) {}
 
-    public function send(string $to, string $subject, string $body): void
+    public function send(string $to, string $subject): void
     {
-        $this->inner->send($this->redirectTo, "[pour $to] $subject", $body);
+        // petit ajout : on change le destinataire, puis on délègue
+        $this->inner->send($this->redirectTo, "[pour $to] $subject");
     }
 }
 
@@ -48,20 +52,22 @@ $mailer = new RedirectingMailer(new SmtpMailer(), 'qa@exemple.fr');`,
   },
 
   symfony: {
-    text: "Le HttpClient en est truffé : `RetryableHttpClient`, `CachingHttpClient`, `ScopingHttpClient` enveloppent tous un `HttpClientInterface`. En dev, le profiler décore l'EventDispatcher pour tracer les événements. Pour décorer ton propre service sans toucher à la config des autres :",
-    code: php`#[AsDecorator(decorates: RateProvider::class)]
-final class CachedRateProvider implements RateProvider
+    text: "Symfony décore ses propres services en permanence : en dev, le profiler enveloppe l'EventDispatcher pour tracer les événements, et `RetryableHttpClient` enveloppe un client HTTP pour réessayer. Pour décorer un de tes services sans toucher à ceux qui l'utilisent :",
+    code: php`#[AsDecorator(decorates: Mailer::class)]
+final class RedirectingMailer implements Mailer
 {
     public function __construct(
-        #[AutowireDecorated] private RateProvider $inner,
+        #[AutowireDecorated] private Mailer $inner,
     ) {}
+
+    // …
 }`,
   },
 
   avoid: [
-    "Une interface avec quinze méthodes : chaque décorateur doit toutes les déléguer. Le code devient du copier-coller, signe qu'il faut une interface plus fine.",
-    "Quand l'ordre des couches est critique et mal compris (le cache avant ou après le log ?), l'empilement devient un piège : documente-le ou centralise la composition.",
-    "Pour un comportement qui fait partie du métier lui-même (un calcul de TVA), ce n'est pas une couche : il appartient à la classe.",
+    "Une interface avec beaucoup de méthodes : chaque décorateur doit toutes les redéléguer, le code devient du copier-coller. Signe qu'il faut une interface plus petite.",
+    "Quand l'ordre des couches change le résultat et que personne ne le sait, l'empilement devient un piège. Compose les couches à un seul endroit, bien visible.",
+    "Des options qui ne font qu'ajouter un prix fixe pourraient tenir dans une simple liste. Le décorateur prend tout son sens quand une couche change vraiment le comportement (tu le verras à l'étape 2).",
   ],
 
   steps: [
@@ -69,316 +75,324 @@ final class CachedRateProvider implements RateProvider
       title: 'Refactoriser',
       kind: 'Refacto',
       brief:
-        "`EcbRateProvider` récupère des taux de change. Au fil des demandes, on lui a greffé un cache et des logs via des options de constructeur. Rends-lui son seul métier (donner un taux) et transforme le cache et les logs en **décorateurs** empilables.",
+        "Gino tient un glacier. Sa caisse calcule le prix d'une glace avec une case à cocher par garniture : chocolat, chantilly, vermicelles. Ce matin, un enfant demande **double chocolat** : la caisse ne sait pas faire. Et à chaque nouvelle garniture, il faut rouvrir la classe pour ajouter un booléen et deux `if`. Transforme chaque garniture en **couche** qu'on pose sur la glace : elle ajoute son prix et son nom, et laisse la glace d'en dessous faire le reste.",
       contract: [
-        "Interface `RateProvider` avec `rate(string $from, string $to): float`",
-        "`EcbRateProvider` : constructeur sans paramètre, garde le compteur public `$calls`, plus de cache ni de log",
-        "`CachedRateProvider(RateProvider $inner)` : n'interroge l'intérieur qu'une fois par paire",
-        "`LoggedRateProvider(RateProvider $inner, Logbook $logbook)` : ajoute `\"EUR/USD = 1.08\"` à chaque appel",
-        '`Logbook` est fourni, ne le modifie pas',
+        "`IceCream` devient une interface avec `price(): float` et `describe(): string`",
+        "`Vanilla` : la boule de base, 2,50 €, décrite `'Vanille'`",
+        "`Chocolate` (+0,80 €, `', chocolat'`), `WhippedCream` (+0,60 €, `', chantilly'`), `Sprinkles` (+0,40 €, `', vermicelles'`) : chacune reçoit la glace qu'elle recouvre dans son constructeur",
+        'Plus aucun `if` ni booléen dans les garnitures',
+        "Le code appelant `demo()` doit continuer de tourner : c'est lui qui compose la glace, adapte-le",
       ],
       starter: php`<?php
 declare(strict_types=1);
 
-// Journal fourni (ne pas modifier) : garde les lignes en mémoire
-final class Logbook
+// La caisse du glacier de Gino.
+// Une case à cocher par garniture : impossible de prendre deux fois du chocolat,
+// et chaque nouvelle garniture ajoute un booléen et deux « if ».
+final class IceCream
 {
-    /** @var list<string> */
-    public array $lines = [];
-
-    public function add(string $line): void
-    {
-        $this->lines[] = $line;
-    }
-}
-
-// Taux de change de la BCE (appel HTTP simulé).
-// On lui a greffé un cache et des logs… à coups d'options.
-final class EcbRateProvider
-{
-    private const RATES = ['EUR/USD' => 1.08, 'EUR/GBP' => 0.85, 'EUR/JPY' => 162.0];
-
-    /** Nombre d'appels « réseau » réellement effectués */
-    public int $calls = 0;
-
-    /** @var array<string, float> */
-    private array $cache = [];
-
     public function __construct(
-        private bool $useCache = false,
-        private ?Logbook $logbook = null,
+        private bool $chocolate = false,
+        private bool $whippedCream = false,
+        private bool $sprinkles = false,
     ) {
     }
 
-    public function rate(string $from, string $to): float
+    public function price(): float
     {
-        $pair = "$from/$to";
-
-        if ($this->useCache && isset($this->cache[$pair])) {
-            $rate = $this->cache[$pair];
-        } else {
-            $this->calls++; // appel HTTP simulé
-            $rate = self::RATES[$pair] ?? throw new InvalidArgumentException("Paire inconnue : $pair");
-            if ($this->useCache) {
-                $this->cache[$pair] = $rate;
-            }
+        $price = 2.50; // la boule vanille
+        if ($this->chocolate) {
+            $price += 0.80;
         }
+        if ($this->whippedCream) {
+            $price += 0.60;
+        }
+        if ($this->sprinkles) {
+            $price += 0.40;
+        }
+        return $price;
+    }
 
-        $this->logbook?->add("$pair = $rate");
-
-        return $rate;
+    public function describe(): string
+    {
+        $text = 'Vanille';
+        if ($this->chocolate) {
+            $text .= ', chocolat';
+        }
+        if ($this->whippedCream) {
+            $text .= ', chantilly';
+        }
+        if ($this->sprinkles) {
+            $text .= ', vermicelles';
+        }
+        return $text;
     }
 }
 
-// --- Bac à sable : exécuté par « Exécuter », ignoré pendant la validation ---
+// --- Code appelant : le ticket de caisse ---
+// Lancé par « Exécuter » et vérifié par les tests : adapte-le si tu changes l'API.
+function demo(): void
+{
+    $iceCream = new IceCream(chocolate: true, whippedCream: true);
+    echo $iceCream->describe(), ' : ', $iceCream->price(), ' €', PHP_EOL;
+}
+
 if (!defined('KATA_TESTING')) {
-    $logbook = new Logbook();
-    $ecb = new EcbRateProvider(useCache: true, logbook: $logbook);
-    $ecb->rate('EUR', 'USD');
-    $ecb->rate('EUR', 'USD');
-    echo "Appels réseau : {$ecb->calls}", PHP_EOL;
-    echo implode(PHP_EOL, $logbook->lines), PHP_EOL;
+    demo();
 }
 `,
       tests: [
         {
           label: 'Le contrat existe',
           code: php`return Expect::all(
-    Expect::that(interface_exists('RateProvider'), 'RateProvider doit être une interface'),
-    Expect::implements('EcbRateProvider', 'RateProvider'),
-    Expect::implements('CachedRateProvider', 'RateProvider'),
-    Expect::implements('LoggedRateProvider', 'RateProvider'),
+    Expect::that(interface_exists('IceCream'), 'IceCream doit être une interface'),
+    Expect::implements('Vanilla', 'IceCream'),
+    Expect::implements('Chocolate', 'IceCream'),
+    Expect::implements('WhippedCream', 'IceCream'),
+    Expect::implements('Sprinkles', 'IceCream'),
 );`,
         },
         {
-          label: "EcbRateProvider ne fait plus qu'une chose",
-          code: php`$ecb = new EcbRateProvider();
-$ecb->rate('EUR', 'USD');
-$second = $ecb->rate('EUR', 'USD');
+          label: 'La boule seule',
+          code: php`$glace = new Vanilla();
 return Expect::all(
-    Expect::same([], Expect::constructorTypes('EcbRateProvider'), 'Paramètres du constructeur de EcbRateProvider'),
-    Expect::near(1.08, $second, 'EUR/USD'),
-    Expect::same(2, $ecb->calls, 'Appels réseau sans cache'),
-    Expect::throws(InvalidArgumentException::class, fn () => $ecb->rate('EUR', 'XYZ'), 'Paire EUR/XYZ'),
+    Expect::near(2.50, $glace->price(), 'Prix de la vanille'),
+    Expect::same('Vanille', $glace->describe(), 'Description de la vanille'),
 );`,
         },
         {
-          label: 'Le cache évite les appels répétés',
-          code: php`$ecb = new EcbRateProvider();
-$cached = new CachedRateProvider($ecb);
-$cached->rate('EUR', 'USD');
-$cached->rate('EUR', 'USD');
-$rate = $cached->rate('EUR', 'USD');
-$cached->rate('EUR', 'GBP');
+          label: 'Chaque garniture ajoute son prix et son nom',
+          code: php`return Expect::all(
+    Expect::near(3.30, (new Chocolate(new Vanilla()))->price(), 'Vanille + chocolat'),
+    Expect::same('Vanille, chocolat', (new Chocolate(new Vanilla()))->describe(), 'Description vanille + chocolat'),
+    Expect::near(3.10, (new WhippedCream(new Vanilla()))->price(), 'Vanille + chantilly'),
+    Expect::near(2.90, (new Sprinkles(new Vanilla()))->price(), 'Vanille + vermicelles'),
+);`,
+        },
+        {
+          label: 'Les garnitures s’empilent dans l’ordre choisi',
+          code: php`$glace = new Sprinkles(new WhippedCream(new Chocolate(new Vanilla())));
 return Expect::all(
-    Expect::near(1.08, $rate, 'EUR/USD via le cache'),
-    Expect::same(2, $ecb->calls, 'Appels réseau (3× EUR/USD + 1× EUR/GBP)'),
+    Expect::near(4.30, $glace->price(), 'Prix de la glace complète'),
+    Expect::same('Vanille, chocolat, chantilly, vermicelles', $glace->describe(), 'Description'),
+    Expect::same('Vanille, chantilly, chocolat', (new Chocolate(new WhippedCream(new Vanilla())))->describe(), 'Chantilly posée avant le chocolat'),
 );`,
         },
         {
-          label: 'Les logs tracent chaque appel',
-          code: php`$log = new Logbook();
-$logged = new LoggedRateProvider(new EcbRateProvider(), $log);
-$logged->rate('EUR', 'USD');
-$logged->rate('EUR', 'GBP');
-return Expect::same(['EUR/USD = 1.08', 'EUR/GBP = 0.85'], $log->lines, 'Lignes du journal');`,
-        },
-        {
-          label: 'Les décorateurs s’empilent : log, puis cache',
-          code: php`$ecb = new EcbRateProvider();
-$log = new Logbook();
-$stack = new LoggedRateProvider(new CachedRateProvider($ecb), $log);
-foreach ([1, 2, 3] as $_) { $stack->rate('EUR', 'USD'); }
+          label: 'Double chocolat, enfin possible',
+          code: php`$glace = new Chocolate(new Chocolate(new Vanilla()));
 return Expect::all(
-    Expect::same(1, $ecb->calls, 'Appels réseau'),
-    Expect::same(3, count($log->lines), 'Lignes de log (le log est à l’extérieur du cache)'),
+    Expect::near(4.10, $glace->price(), 'Prix du double chocolat'),
+    Expect::same('Vanille, chocolat, chocolat', $glace->describe(), 'Description du double chocolat'),
 );`,
         },
         {
-          label: 'L’ordre compte : cache, puis log',
-          code: php`$ecb = new EcbRateProvider();
-$log = new Logbook();
-$stack = new CachedRateProvider(new LoggedRateProvider($ecb, $log));
-foreach ([1, 2, 3] as $_) { $stack->rate('EUR', 'USD'); }
-return Expect::same(1, count($log->lines), 'Lignes de log (le cache intercepte avant le log)');`,
-        },
-        {
-          label: 'Un décorateur accepte n’importe quel RateProvider',
-          code: php`$fake = new class implements RateProvider {
-    public function rate(string $from, string $to): float { return 2.0; }
+          label: 'Une garniture se pose sur n’importe quelle glace',
+          code: php`if (!interface_exists('IceCream')) {
+    return 'IceCream doit d\'abord être une interface';
+}
+$sorbet = new class implements IceCream {
+    public function price(): float { return 2.00; }
+    public function describe(): string { return 'Sorbet citron'; }
 };
+$glace = new Chocolate($sorbet);
 return Expect::all(
-    Expect::near(2.0, (new CachedRateProvider($fake))->rate('A', 'B'), 'Cache autour d’un faux fournisseur'),
-    Expect::near(2.0, (new LoggedRateProvider($fake, new Logbook()))->rate('A', 'B'), 'Log autour d’un faux fournisseur'),
+    Expect::near(2.80, $glace->price(), 'Sorbet + chocolat'),
+    Expect::same('Sorbet citron, chocolat', $glace->describe(), 'Description sorbet + chocolat'),
 );`,
         },
+        {
+          label: 'Plus de cases à cocher',
+          code: php`return Expect::all(
+    Expect::same([], Expect::constructorTypes('Vanilla'), 'Paramètres du constructeur de Vanilla'),
+    Expect::same(['IceCream'], Expect::constructorTypes('Chocolate'), 'Paramètres du constructeur de Chocolate'),
+    Expect::same(['IceCream'], Expect::constructorTypes('WhippedCream'), 'Paramètres du constructeur de WhippedCream'),
+    Expect::same(['IceCream'], Expect::constructorTypes('Sprinkles'), 'Paramètres du constructeur de Sprinkles'),
+    Expect::without('Chocolate', null, [T_IF], 'une garniture ne décide rien, elle s’ajoute'),
+    Expect::without('WhippedCream', null, [T_IF], 'une garniture ne décide rien, elle s’ajoute'),
+    Expect::without('Sprinkles', null, [T_IF], 'une garniture ne décide rien, elle s’ajoute'),
+);`,
+        },
+        callerTest,
       ],
       hints: [
-        "Extrais d'abord l'interface : la seule méthode que l'appelant utilise, c'est `rate()`. Ensuite, retire de `EcbRateProvider` tout ce qui n'est pas « aller chercher le taux ».",
-        "Un décorateur a toujours la même forme : `implements RateProvider`, un `private RateProvider $inner` reçu au constructeur, et une méthode `rate()` qui finit par appeler `$this->inner->rate(…)`.",
-        "Pour le cache : `return $this->cache[\"$from/$to\"] ??= $this->inner->rate($from, $to);`. Pour le log : appelle l'intérieur, écris la ligne, renvoie le taux.",
+        "Commence par l'interface : à une glace, la caisse ne demande que deux choses, son prix et sa description. L'ancienne classe devient l'interface `IceCream`, et la boule de base devient `Vanilla`.",
+        "Une garniture **est** une glace (elle implémente `IceCream`) et **contient** une glace (reçue dans son constructeur). Elle demande le prix à celle qu'elle recouvre, puis ajoute le sien.",
+        "Dans `Chocolate` : `return $this->iceCream->price() + 0.80;` et `return $this->iceCream->describe() . ', chocolat';`. Puis dans `demo()` : `$iceCream = new WhippedCream(new Chocolate(new Vanilla()));`.",
       ],
       solution: php`<?php
 declare(strict_types=1);
 
-final class Logbook
+interface IceCream
 {
-    /** @var list<string> */
-    public array $lines = [];
+    public function price(): float;
 
-    public function add(string $line): void
+    public function describe(): string;
+}
+
+final class Vanilla implements IceCream
+{
+    public function price(): float
     {
-        $this->lines[] = $line;
+        return 2.50;
+    }
+
+    public function describe(): string
+    {
+        return 'Vanille';
     }
 }
 
-interface RateProvider
+final class Chocolate implements IceCream
 {
-    public function rate(string $from, string $to): float;
-}
-
-final class EcbRateProvider implements RateProvider
-{
-    private const RATES = ['EUR/USD' => 1.08, 'EUR/GBP' => 0.85, 'EUR/JPY' => 162.0];
-
-    public int $calls = 0;
-
-    public function rate(string $from, string $to): float
-    {
-        $this->calls++; // appel HTTP simulé
-        return self::RATES["$from/$to"] ?? throw new InvalidArgumentException("Paire inconnue : $from/$to");
-    }
-}
-
-final class CachedRateProvider implements RateProvider
-{
-    /** @var array<string, float> */
-    private array $cache = [];
-
-    public function __construct(private RateProvider $inner)
+    public function __construct(private IceCream $iceCream)
     {
     }
 
-    public function rate(string $from, string $to): float
+    public function price(): float
     {
-        return $this->cache["$from/$to"] ??= $this->inner->rate($from, $to);
+        return $this->iceCream->price() + 0.80;
+    }
+
+    public function describe(): string
+    {
+        return $this->iceCream->describe() . ', chocolat';
     }
 }
 
-final class LoggedRateProvider implements RateProvider
+final class WhippedCream implements IceCream
 {
-    public function __construct(private RateProvider $inner, private Logbook $logbook)
+    public function __construct(private IceCream $iceCream)
     {
     }
 
-    public function rate(string $from, string $to): float
+    public function price(): float
     {
-        $rate = $this->inner->rate($from, $to);
-        $this->logbook->add("$from/$to = $rate");
-
-        return $rate;
+        return $this->iceCream->price() + 0.60;
     }
+
+    public function describe(): string
+    {
+        return $this->iceCream->describe() . ', chantilly';
+    }
+}
+
+final class Sprinkles implements IceCream
+{
+    public function __construct(private IceCream $iceCream)
+    {
+    }
+
+    public function price(): float
+    {
+        return $this->iceCream->price() + 0.40;
+    }
+
+    public function describe(): string
+    {
+        return $this->iceCream->describe() . ', vermicelles';
+    }
+}
+
+function demo(): void
+{
+    $iceCream = new WhippedCream(new Chocolate(new Vanilla()));
+    echo $iceCream->describe(), ' : ', $iceCream->price(), ' €', PHP_EOL;
+}
+
+if (!defined('KATA_TESTING')) {
+    demo();
 }
 `,
       solutionNote:
-        "`EcbRateProvider` ne fait plus qu'une chose et se teste sans options. Chaque décorateur tient en quelques lignes et ne connaît que l'interface, donc il s'applique aussi à un autre fournisseur de taux. La composition (quelles couches, dans quel ordre) se décide à un seul endroit : la configuration des services.",
+        "Chaque garniture tient en quelques lignes et ne connaît que l'interface. Le double chocolat devient possible sans rien prévoir, et la description suit l'ordre d'empilement. C'est maintenant la caisse (le code appelant) qui compose la glace, au lieu que la glace connaisse toutes les garnitures.",
     },
     {
-      title: 'Ajouter un retry',
+      title: 'Ajouter deux nouveautés',
       kind: 'Ajout',
       brief:
-        "L'API de la BCE tombe parfois et lève une `RuntimeException`. Ajoute un décorateur qui **réessaie** : jusqu'à `$attempts` tentatives au total, puis il relance la dernière exception. Une erreur métier (paire inconnue, `InvalidArgumentException`) ne se réessaie pas : elle remonte tout de suite. Aucune autre classe ne change.",
+        "L'été arrive. Gino lance le **coulis de fraise** (+0,70 €) et un **happy hour** de 16 h à 17 h : la glace à moitié prix. Ajoute ces deux couches sans toucher aux classes existantes. Petite subtilité : le happy hour divise tout ce qu'il recouvre. Posé en dernier, toute la glace est à moitié prix ; posé avant la chantilly, la chantilly reste plein tarif.",
       contract: [
-        "Classe `RetryRateProvider(RateProvider $inner, int $attempts = 3)` qui implémente `RateProvider`",
-        'Réessaie uniquement sur `RuntimeException`',
-        "Après `$attempts` échecs : relance la dernière exception",
+        "`StrawberrySauce` : +0,70 €, ajoute `', coulis de fraise'`",
+        "`HappyHour` : divise par deux le prix de ce qu'il recouvre, ajoute `' (happy hour)'` à la description",
+        'Les deux implémentent `IceCream` et reçoivent la glace qu’ils recouvrent',
+        'Aucune classe existante ne change',
       ],
       tests: [
         {
-          label: 'RetryRateProvider est un RateProvider',
-          code: php`return Expect::implements('RetryRateProvider', 'RateProvider');`,
-        },
-        {
-          label: 'Réussit après deux pannes',
-          code: php`$flaky = new class implements RateProvider {
-    public int $tries = 0;
-    public function rate(string $from, string $to): float
-    {
-        if (++$this->tries <= 2) {
-            throw new RuntimeException('BCE indisponible');
-        }
-        return 1.08;
-    }
-};
-$rate = (new RetryRateProvider($flaky, 3))->rate('EUR', 'USD');
-return Expect::all(
-    Expect::near(1.08, $rate, 'Taux obtenu'),
-    Expect::same(3, $flaky->tries, 'Tentatives'),
+          label: 'Les deux nouveautés sont des glaces',
+          code: php`return Expect::all(
+    Expect::implements('StrawberrySauce', 'IceCream'),
+    Expect::implements('HappyHour', 'IceCream'),
 );`,
         },
         {
-          label: 'Abandonne après N tentatives',
-          code: php`$down = new class implements RateProvider {
-    public int $tries = 0;
-    public function rate(string $from, string $to): float
-    {
-        $this->tries++;
-        throw new RuntimeException('BCE indisponible');
-    }
-};
+          label: 'Le coulis de fraise',
+          code: php`$glace = new StrawberrySauce(new Vanilla());
 return Expect::all(
-    Expect::throws(RuntimeException::class, fn () => (new RetryRateProvider($down, 4))->rate('EUR', 'USD'), 'API toujours en panne'),
-    Expect::same(4, $down->tries, 'Tentatives avec $attempts = 4'),
+    Expect::near(3.20, $glace->price(), 'Vanille + coulis'),
+    Expect::same('Vanille, coulis de fraise', $glace->describe(), 'Description vanille + coulis'),
 );`,
         },
         {
-          label: 'Ne réessaie pas une erreur métier',
-          code: php`$ecb = new EcbRateProvider();
+          label: 'Le happy hour divise toute la glace',
+          code: php`$glace = new HappyHour(new WhippedCream(new Chocolate(new Vanilla())));
 return Expect::all(
-    Expect::throws(InvalidArgumentException::class, fn () => (new RetryRateProvider($ecb))->rate('EUR', 'XYZ'), 'Paire inconnue'),
-    Expect::same(1, $ecb->calls, 'Appels pour une paire inconnue'),
+    Expect::near(1.95, $glace->price(), 'Glace chocolat chantilly en happy hour'),
+    Expect::same('Vanille, chocolat, chantilly (happy hour)', $glace->describe(), 'Description'),
 );`,
         },
         {
-          label: 'Tout s’empile',
-          code: php`$ecb = new EcbRateProvider();
-$log = new Logbook();
-$stack = new LoggedRateProvider(new RetryRateProvider(new CachedRateProvider($ecb)), $log);
-$stack->rate('EUR', 'GBP');
-$stack->rate('EUR', 'GBP');
+          label: 'L’ordre des couches change le prix',
+          code: php`$avant = new WhippedCream(new HappyHour(new Chocolate(new Vanilla())));
+$apres = new HappyHour(new WhippedCream(new Chocolate(new Vanilla())));
 return Expect::all(
-    Expect::same(1, $ecb->calls, 'Appels réseau'),
-    Expect::same(['EUR/GBP = 0.85', 'EUR/GBP = 0.85'], $log->lines, 'Journal'),
+    Expect::near(2.25, $avant->price(), 'Happy hour posé avant la chantilly (chantilly plein tarif)'),
+    Expect::near(1.95, $apres->price(), 'Happy hour posé en dernier'),
 );`,
         },
       ],
       hints: [
-        'Même squelette que les deux autres décorateurs, avec une boucle autour de l’appel à `$this->inner`.',
-        "Attrape seulement `RuntimeException` : un `catch (Throwable)` réessaierait aussi les erreurs métier. Garde l'exception dans une variable pour la relancer à la fin.",
-        "`for ($i = 1; ; $i++) { try { return $this->inner->rate($from, $to); } catch (RuntimeException $e) { if ($i >= $this->attempts) { throw $e; } } }`",
+        '`StrawberrySauce` est une garniture comme les autres : copie `Chocolate` et change le prix et le nom.',
+        "`HappyHour` a la même forme, mais au lieu d'ajouter, il **transforme** ce que renvoie la glace qu'il recouvre.",
+        "`return $this->iceCream->price() / 2;` et `return $this->iceCream->describe() . ' (happy hour)';`",
       ],
-      solution: php`final class RetryRateProvider implements RateProvider
+      solution: php`final class StrawberrySauce implements IceCream
 {
-    public function __construct(private RateProvider $inner, private int $attempts = 3)
+    public function __construct(private IceCream $iceCream)
     {
     }
 
-    public function rate(string $from, string $to): float
+    public function price(): float
     {
-        for ($try = 1; ; $try++) {
-            try {
-                return $this->inner->rate($from, $to);
-            } catch (RuntimeException $e) {
-                if ($try >= $this->attempts) {
-                    throw $e;
-                }
-            }
-        }
+        return $this->iceCream->price() + 0.70;
+    }
+
+    public function describe(): string
+    {
+        return $this->iceCream->describe() . ', coulis de fraise';
+    }
+}
+
+final class HappyHour implements IceCream
+{
+    public function __construct(private IceCream $iceCream)
+    {
+    }
+
+    public function price(): float
+    {
+        return $this->iceCream->price() / 2;
+    }
+
+    public function describe(): string
+    {
+        return $this->iceCream->describe() . ' (happy hour)';
     }
 }
 `,
       solutionNote:
-        "Une nouvelle couche, rien de modifié ailleurs. Le test d'empilement montre la vraie question d'architecture : où placer chaque couche ? Ici le retry est sous le log : le journal garde une seule ligne par demande, quel que soit le nombre de tentatives, et le cache ne stocke que des taux réellement obtenus. Symfony fait exactement ça avec `RetryableHttpClient`.",
+        "Deux classes ajoutées, aucune modifiée. Le happy hour montre la vraie force du pattern : une couche ne fait pas qu'ajouter, elle peut transformer tout ce qu'elle recouvre. C'est aussi son piège : l'ordre des couches change le résultat. Dans Symfony, c'est l'option `priority` de `#[AsDecorator]` qui fixe cet ordre.",
     },
   ],
 }

@@ -172,6 +172,6 @@ scripts/
   si le flux doit alimenter le résumé quotidien).
 - **Suivre un autre actif** : une entrée dans le tableau `ASSETS` de `scripts/fetch-quotes.mjs`.
 - **Ajouter une enquête SQL** : copie un fichier de `src/data/sqlCases/`, déclare-le dans `index.js`.
-- **Ajouter un kata** : copie un fichier de `src/data/katas/`, déclare-le dans `index.js` et ajoute son id dans `KATA_NAMES` de `scripts/send-reminders.mjs`. Chaque test est du PHP qui renvoie `true` ou un message d'échec (helpers `Expect::same`, `near`, `throws`, `implements`, `without`, `ignores`…). Le code du bac à sable entouré de `if (!defined('KATA_TESTING'))` est ignoré pendant la validation.
+- **Ajouter un kata** : copie un fichier de `src/data/katas/`, déclare-le dans `index.js` et ajoute son id dans `KATA_NAMES` de `scripts/send-reminders.mjs`. Chaque test est du PHP qui renvoie `true` ou un message d'échec (helpers `Expect::same`, `near`, `throws`, `implements`, `without`, `ignores`…). Le code appelant vit dans une fonction `demo()` en bas du starter : « Exécuter » la lance, et le test commun `callerTest` vérifie qu'elle tourne toujours après le refacto. Incrémente `version` dans le kata quand son code de départ ou ses tests changent (les essais en cours sont alors réinitialisés).
 - **Changer les intervalles Ebbinghaus** : `INTERVALS_DAYS` dans `src/lib/spaced.js`
   (et l'heure du mail dans `reminders.yml`).

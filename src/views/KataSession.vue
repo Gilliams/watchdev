@@ -3,6 +3,7 @@ import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import Icon from '../components/Icon.vue'
 import PhpEditor from '../components/PhpEditor.vue'
+import CodeBlock from '../components/CodeBlock.vue'
 import { state } from '../stores/progress.js'
 import { kataById } from '../data/katas/index.js'
 import { php, bootPhp, runPhp, RUN_TIMEOUT_S } from '../lib/phpEngine.js'
@@ -15,8 +16,14 @@ const route = useRoute()
 const kata = kataById(route.params.id)
 
 // --- Essai en cours (persisté en local, jamais synchronisé) ---
-const freshAttempt = () => ({ step: 0, code: kata.steps[0].starter, startedAt: null, hints: 0, shown: 0, revealed: false, finished: null })
-if (kata && !state.kataDrafts[kata.id]) state.kataDrafts[kata.id] = freshAttempt()
+const freshAttempt = () => ({ version: kata.version || 1, step: 0, code: kata.steps[0].starter, startedAt: null, hints: 0, shown: 0, revealed: false, finished: null })
+// Kata modifié depuis l'essai en cours (nouveau code de départ ou nouveaux tests) : on repart de zéro
+const outdated = ref(false)
+if (kata) {
+  const draft = state.kataDrafts[kata.id]
+  if (draft && (draft.version || 1) !== (kata.version || 1)) outdated.value = true
+  if (!draft || outdated.value) state.kataDrafts[kata.id] = freshAttempt()
+}
 const attempt = computed(() => kata && state.kataDrafts[kata.id])
 const step = computed(() => kata.steps[attempt.value.step])
 const isLast = computed(() => attempt.value.step === kata.steps.length - 1)
@@ -49,7 +56,15 @@ const running = ref('') // '' | 'run' | 'validate'
 const result = ref(null) // { mode, report, raw, timeout, error }
 const stepPassed = ref(false)
 
-const tidy = (s) => String(s || '').replace(new RegExp(` in ${KATA_FILE} on line (\\d+)`, 'g'), ' (ligne $1)').replace(new RegExp(KATA_FILE, 'g'), 'ton code')
+// Messages PHP : chemins internes remplacés par des numéros de ligne, trace du harness retirée
+const FILE_RE = KATA_FILE.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&')
+const tidy = (s) =>
+  String(s || '')
+    .replace(new RegExp(` in ${FILE_RE} on line (\\d+)`, 'g'), ' (ligne $1)')
+    .replace(new RegExp(` in ${FILE_RE}:(\\d+)`, 'g'), ' (ligne $1)')
+    .replace(new RegExp(`${FILE_RE}\\((\\d+)\\)`, 'g'), 'ligne $1')
+    .replace(/^#\d+ php-wasm run script.*$\n?/gm, '')
+    .replace(new RegExp(FILE_RE, 'g'), 'ton code')
 
 async function exec(mode) {
   if (running.value || attempt.value.finished) return
@@ -196,14 +211,14 @@ const theoryOpen = !sr.value // ouvert à la découverte, replié pour les rép�
           <div class="kicker k-acc">Ce que fait le pattern</div>
           <p class="txt"><template v-for="(s, i) in segs(kata.technical)" :key="i"><code v-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><strong v-else-if="s.kind === 'bold'">{{ s.t }}</strong><span v-else>{{ s.t }}</span></template></p>
           <p class="txt muted"><template v-for="(s, i) in segs(kata.example.intro)" :key="i"><code v-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><span v-else>{{ s.t }}</span></template></p>
-          <pre class="code-block">{{ kata.example.code }}</pre>
+          <CodeBlock :code="kata.example.code" />
         </div>
       </div>
       <div class="cells">
         <div class="cell cell-wide">
           <div class="kicker k-acc">Dans Symfony</div>
           <p class="txt"><template v-for="(s, i) in segs(kata.symfony.text)" :key="i"><code v-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><span v-else>{{ s.t }}</span></template></p>
-          <pre class="code-block">{{ kata.symfony.code }}</pre>
+          <CodeBlock :code="kata.symfony.code" />
         </div>
         <div class="cell">
           <div class="kicker k-acc">Quand l'éviter</div>
@@ -227,6 +242,7 @@ const theoryOpen = !sr.value // ouvert à la découverte, replié pour les rép�
           </span>
         </div>
       </div>
+      <p v-if="outdated" class="notice">Ce kata a été mis à jour depuis ton dernier essai : tu repars du nouveau code de départ.</p>
       <template v-if="!attempt.finished">
         <span class="cur-l">{{ step.title }}</span>
         <p class="cur-q"><template v-for="(s, i) in segs(step.brief)" :key="i"><code v-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><strong v-else-if="s.kind === 'bold'" style="color: var(--acc)">{{ s.t }}</strong><span v-else>{{ s.t }}</span></template></p>
@@ -275,7 +291,7 @@ const theoryOpen = !sr.value // ouvert à la découverte, replié pour les rép�
         </ul>
         <details class="test-code">
           <summary>Voir le code des tests</summary>
-          <div v-for="(t, i) in tests" :key="i"><span class="muted" style="font-size: 12px">{{ t.label }}</span><pre class="code-block">{{ t.code }}</pre></div>
+          <div v-for="(t, i) in tests" :key="i"><span class="muted" style="font-size: 12px">{{ t.label }}</span><CodeBlock :code="t.code" /></div>
         </details>
 
         <template v-if="result && (result.mode === 'run' || result.report?.stdout || (result.report && result.raw))">
@@ -297,14 +313,14 @@ const theoryOpen = !sr.value // ouvert à la découverte, replié pour les rép�
         <div v-if="stepPassed && !isLast" class="ok">
           <span class="ok-h">Étape validée.</span>
           <p class="ok-p"><template v-for="(s, i) in segs(step.solutionNote)" :key="i"><code v-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><span v-else>{{ s.t }}</span></template></p>
-          <details class="sol"><summary>Comparer avec une solution</summary><pre class="code-block">{{ step.solution }}</pre></details>
+          <details class="sol"><summary>Comparer avec une solution</summary><CodeBlock :code="step.solution" /></details>
           <button class="next" @click="nextStep">Étape suivante →</button>
         </div>
 
         <details v-if="solutionOpen && !stepPassed" class="sol sol-alone" open>
           <summary>Une solution possible</summary>
           <p class="ok-p"><template v-for="(s, i) in segs(step.solutionNote)" :key="i"><code v-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><span v-else>{{ s.t }}</span></template></p>
-          <pre class="code-block">{{ step.solution }}</pre>
+          <CodeBlock :code="step.solution" />
         </details>
       </template>
 
@@ -318,7 +334,7 @@ const theoryOpen = !sr.value // ouvert à la découverte, replié pour les rép�
         <details class="sol sol-closed">
           <summary>Comparer avec la solution de la dernière étape</summary>
           <p class="ok-p"><template v-for="(s, i) in segs(step.solutionNote)" :key="i"><code v-if="s.kind === 'code'" class="code-inline">{{ s.t }}</code><span v-else>{{ s.t }}</span></template></p>
-          <pre class="code-block">{{ step.solution }}</pre>
+          <CodeBlock :code="step.solution" />
         </details>
         <button class="replay" @click="restart">Refaire le kata</button>
       </div>
@@ -357,6 +373,7 @@ const theoryOpen = !sr.value // ouvert à la découverte, replié pour les rép�
 .bars span { flex: 1; height: 8px; }
 .cur-l { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--acc); }
 .cur-q { font-size: clamp(19px, 1.9vw, 24px); line-height: 1.4; font-weight: 600; letter-spacing: -0.01em; max-width: 980px; text-wrap: pretty; }
+.notice { padding: 10px 14px; background: var(--sf); border-left: 4px solid var(--ink); font-size: 14px; }
 .contract { border-top: 2px solid var(--rule); padding-top: 14px; display: flex; flex-direction: column; gap: 8px; }
 .contract ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; line-height: 1.5; }
 
