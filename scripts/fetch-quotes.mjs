@@ -1,6 +1,8 @@
 // Cotations : TTWO, S&P 500, CAC 40, CD Projekt, Bitcoin, Solana -> public/data/quotes.json
 // Lancé par .github/workflows/deploy.yml (ou en local : npm run fetch-quotes)
-// Chaque actif embarque `series` : [[timestamp_s, clôture], …] sur 1 an, pour les graphiques de l'onglet Marchés.
+// Chaque actif embarque `series` : [[timestamp_s, clôture], …] sur 1 an, pour les graphiques de l'onglet Marchés,
+// et `intraday` : [[timestamp_s, prix], …] par pas de 5 min sur la séance du jour (ou la dernière séance si
+// le marché est fermé ; 24 h glissantes pour les cryptos), avec `day` : ouverture, plus haut, plus bas, clôture veille.
 //
 // Aucune clé d'API. Trois sources, essayées dans l'ordre, la première qui répond gagne :
 //   1. CoinGecko  (crypto, officiel, gratuit, sans clé)
@@ -117,6 +119,63 @@ export async function fromYahoo(symbol) {
   }
 }
 
+/* ---------------------------------------------------------------- Intraday */
+// Statistiques de séance calculées sur les points 5 min (repli sur les métadonnées Yahoo)
+export function dayStats(points, meta = {}) {
+  const v = points.map(([, c]) => c)
+  if (!v.length) return null
+  return {
+    open: meta.open ?? v[0],
+    high: Math.max(...v, ...(Number.isFinite(meta.high) ? [meta.high] : [])),
+    low: Math.min(...v, ...(Number.isFinite(meta.low) ? [meta.low] : [])),
+    prevClose: meta.prevClose ?? null,
+    from: points[0][0],
+    to: points[points.length - 1][0],
+  }
+}
+
+export async function yahooIntraday(symbol) {
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=1d&interval=5m`
+  const json = await get(url)
+  const r = json?.chart?.result?.[0]
+  if (!r) throw new Error(json?.chart?.error?.description || 'réponse vide')
+  const closes = r.indicators?.quote?.[0]?.close || []
+  const opens = r.indicators?.quote?.[0]?.open || []
+  const points = (r.timestamp || [])
+    .map((t, i) => [t, closes[i]])
+    .filter(([, c]) => Number.isFinite(c))
+    .map(([t, c]) => [t, Number(c.toPrecision(6))])
+  if (points.length < 2) throw new Error('séance vide')
+  const m = r.meta || {}
+  const day = dayStats(points, {
+    open: opens.find(Number.isFinite),
+    high: m.regularMarketDayHigh,
+    low: m.regularMarketDayLow,
+    prevClose: m.chartPreviousClose ?? m.previousClose,
+  })
+  return { intraday: points, day }
+}
+
+// 24 h glissantes, pas de 5 min (granularité automatique de l'API publique pour days=1)
+export async function coinGeckoIntraday(id) {
+  const json = await get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${VS_CURRENCY}&days=1`)
+  const points = (json.prices || []).map(([ts, c]) => [Math.round(ts / 1000), Number(c.toPrecision(6))])
+  if (points.length < 2) throw new Error('séance vide')
+  return { intraday: points, day: dayStats(points, { prevClose: points[0][1] }) }
+}
+
+async function intradayFor(asset, source) {
+  const tries = []
+  if (source === 'coingecko' && asset.coingecko) tries.push(() => coinGeckoIntraday(asset.coingecko))
+  if (asset.yahoo) tries.push(() => yahooIntraday(asset.yahoo))
+  for (const t of tries) {
+    try {
+      return await t()
+    } catch {}
+  }
+  return null // Stooq n'a pas d'intraday gratuit : le graphique « 1 J » sera masqué
+}
+
 /* ------------------------------------------------------------------- Stooq */
 export async function fromStooq(symbol) {
   const csv = await get(`https://stooq.com/q/d/l/?s=${encodeURIComponent(symbol)}&i=d`, 'text')
@@ -195,9 +254,12 @@ export async function main() {
     }
 
     if (quote) {
+      const intra = await intradayFor(asset, quote.source)
+      if (intra) Object.assign(quote, intra)
+      else tried.push('intraday:indisponible')
       assets.push({ ...base, ...quote, stale: false })
       const d1 = quote.changes.d1
-      console.log(`✔ ${asset.name.padEnd(22)} ${quote.price} ${quote.currency || ''} ${d1 == null ? '' : `(${d1.toFixed(2)} % j)`} [${quote.source}, ${quote.series?.length || 0} pts]`)
+      console.log(`✔ ${asset.name.padEnd(22)} ${quote.price} ${quote.currency || ''} ${d1 == null ? '' : `(${d1.toFixed(2)} % j)`} [${quote.source}, ${quote.series?.length || 0} pts, ${quote.intraday?.length || 0} pts jour]`)
     } else if (prevById[asset.id]) {
       assets.push({ ...prevById[asset.id], stale: true })
       errors.push(`${asset.id}: ${tried.join(' | ')}`)

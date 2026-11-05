@@ -17,6 +17,8 @@ export const THEMES = [
   { id: 'frontend', name: 'FrontEnd', icon: '🎨', quiz: false, color: '#ec4899', group: 'tech' },
   { id: 'threed', name: '3D', icon: '🧊', quiz: false, color: '#84cc16', group: 'tech' },
   { id: 'drupal', name: 'Drupal', icon: '💧', quiz: false, color: '#29a8df', group: 'tech' },
+  { id: 'hardware', name: 'Hardware', icon: '🖥️', quiz: false, color: '#f59e0b', group: 'tech' },
+  { id: 'jeux', name: 'Jeux vidéo', icon: '🕹️', quiz: false, color: '#8b5cf6', group: 'tech' },
   { id: 'divers', name: 'Divers', icon: '📰', quiz: false, color: '#8b949e', group: 'tech' },
   // --- Monde ---
   { id: 'actu-fr', name: 'Actu France', icon: '🇫🇷', quiz: false, color: '#60a5fa', group: 'monde' },

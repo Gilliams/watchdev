@@ -164,6 +164,15 @@ scripts/
 .github/workflows/  # deploy.yml (données + site) · reminders.yml (mail)
 ```
 
+## 🆕 Marchés, Steam, YouTube
+
+- **Marchés** : séance du jour par pas de 5 min (bouton « 1 J », ouverture / plus haut / plus bas, clôture de la veille en pointillés),
+  axes prix/dates sur tous les graphiques, bloc **« Les gros mouvements »** (seuils dans `src/data/assets.js`) avec les actus liées à chaque actif
+  (mots-clés dans `src/data/assets.js`, ou `"asset": "<id>"` sur un flux de `scripts/feeds.json`).
+- **Veille** : thèmes *Hardware* et *Jeux vidéo* ; le thème Jeux vidéo affiche le classement Steam (`scripts/fetch-steam.mjs`, API publique du magasin).
+- **Recos vidéo** : dernières vidéos des chaînes de `scripts/youtube.json` (flux Atom publics, sans clé), classées par surperformance.
+  Ajouter une chaîne = une ligne avec son `@handle` ; l'identifiant `UC…` est retrouvé automatiquement puis mis en cache.
+
 ## ✍️ Personnaliser
 
 - **Ajouter des questions** : édite `src/data/questions/<theme>.js` (format : question, 4 choix,

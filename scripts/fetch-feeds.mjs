@@ -215,6 +215,7 @@ async function main() {
           digest: !!cfg.digest,
           summary: clip(stripHtml(item.contentSnippet || item.summary || item.content || '')),
           image: extractImage(item),
+          ...(feed.asset ? { asset: feed.asset } : {}), // actu rattachée à un actif de l'onglet Marchés
         })
       }
       console.log(`✔ ${feed.source.padEnd(24)} ${items.length}/${parsed.items?.length ?? 0} items`)

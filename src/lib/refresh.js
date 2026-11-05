@@ -31,6 +31,8 @@ const STEP_LABELS = [
   [/^(Set up job|Run actions\/(checkout|setup-node|configure-pages))/, 'Préparation'],
   [/npm ci/, 'Installation des dépendances'],
   [/cotations précédentes|veille précédente/, 'Reprise des données précédentes'],
+  [/^Steam$/, 'Classement Steam'],
+  [/YouTube/, 'Recommandations YouTube'],
   [/npm run build$/, 'Construction du site'],
   [/upload-pages-artifact/, 'Envoi du site'],
   [/deploy-pages/, 'Publication'],

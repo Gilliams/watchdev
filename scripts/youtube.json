@@ -1,0 +1,31 @@
+{
+  "defaults": { "maxAgeDays": 30, "perChannel": 6 },
+  "categories": [
+    { "id": "dev", "name": "Dev & archi" },
+    { "id": "hardware", "name": "Hardware" },
+    { "id": "monde", "name": "Géopolitique & actu" },
+    { "id": "jeux", "name": "Jeux vidéo" },
+    { "id": "eco", "name": "Économie & bourse" }
+  ],
+  "channels": [
+    { "handle": "@grafikart", "channelId": "UCj_iGliGCkLcHSZ8eqVNPDQ", "name": "Grafikart", "category": "dev", "lang": "fr" },
+    { "handle": "@Underscore_", "name": "Underscore_", "category": "dev", "lang": "fr" },
+    { "handle": "@Micode", "name": "Micode", "category": "dev", "lang": "fr" },
+    { "handle": "@Fireship", "name": "Fireship", "category": "dev" },
+    { "handle": "@t3dotgg", "name": "Theo", "category": "dev" },
+    { "handle": "@ThePrimeTimeagen", "name": "ThePrimeTime", "category": "dev" },
+    { "handle": "@ByteByteGo", "name": "ByteByteGo", "category": "dev" },
+    { "handle": "@ArjanCodes", "name": "ArjanCodes", "category": "dev" },
+    { "handle": "@Computerphile", "name": "Computerphile", "category": "dev" },
+    { "handle": "@LinusTechTips", "name": "Linus Tech Tips", "category": "hardware" },
+    { "handle": "@GamersNexus", "name": "Gamers Nexus", "category": "hardware" },
+    { "handle": "@Hardwareunboxed", "name": "Hardware Unboxed", "category": "hardware" },
+    { "handle": "@HugoDecrypte", "name": "HugoDécrypte", "category": "monde", "lang": "fr" },
+    { "handle": "@CaspianReport", "name": "CaspianReport", "category": "monde" },
+    { "handle": "@PolyMatter", "name": "PolyMatter", "category": "monde" },
+    { "handle": "@RealLifeLore", "name": "RealLifeLore", "category": "monde" },
+    { "handle": "@GameMakersToolkit", "name": "Game Maker's Toolkit", "category": "jeux" },
+    { "handle": "@NoclipDocs", "name": "Noclip", "category": "jeux" },
+    { "handle": "@Heureka", "name": "Heu?reka", "category": "eco", "lang": "fr" }
+  ]
+}

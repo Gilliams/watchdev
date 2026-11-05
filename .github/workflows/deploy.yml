@@ -35,13 +35,16 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v5
 
-      # Dernières cotations publiées : valeur de repli si une source financière ne répond pas
+      # Données publiées au relevé précédent : valeurs de repli si une source ne répond pas,
+      # cache des images og:image (veille) et des identifiants de chaînes YouTube
       - name: Récupérer les cotations précédentes
         run: mkdir -p public/data && curl -sfL "${{ steps.pages.outputs.base_url }}/data/quotes.json" -o public/data/quotes.json || true
 
-      # Veille précédente : sert de cache pour les images og:image déjà trouvées
       - name: Récupérer la veille précédente
-        run: curl -sfL "${{ steps.pages.outputs.base_url }}/data/articles.json" -o public/data/articles.json || true
+        run: |
+          for f in articles steam videos; do
+            curl -sfL "${{ steps.pages.outputs.base_url }}/data/$f.json" -o "public/data/$f.json" || rm -f "public/data/$f.json"
+          done
 
       - name: Veille RSS
         run: npm run fetch-feeds
@@ -58,6 +61,14 @@ jobs:
         run: npm run fetch-quotes
         env:
           CRYPTO_VS: ${{ vars.CRYPTO_VS || 'eur' }}
+
+      - name: Steam
+        continue-on-error: true
+        run: npm run fetch-steam
+
+      - name: Recommandations YouTube
+        continue-on-error: true
+        run: npm run fetch-youtube
 
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3

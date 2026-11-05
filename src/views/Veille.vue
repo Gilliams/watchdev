@@ -6,7 +6,7 @@ import { themesByGroup, themeById } from '../data/themes.js'
 import { loadData } from '../lib/data.js'
 import { theme } from '../lib/theme.js'
 import { isRead, toggleRead, markRead } from '../lib/read.js'
-import { dateShort } from '../lib/format.js'
+import { dateShort, money } from '../lib/format.js'
 
 const route = useRoute()
 const router = useRouter()
@@ -22,9 +22,14 @@ const th = computed(() => (ids.has(route.params.theme) ? route.params.theme : 'a
 const q = ref('')
 const fr = ref(false)
 const hide = ref(false)
+// Panneau Steam (thème Jeux vidéo)
+const steam = ref(null)
+const steamTab = ref('top_sellers')
+const steamSection = computed(() => steam.value?.sections?.find((x) => x.key === steamTab.value) || steam.value?.sections?.[0])
 
 onMounted(async () => {
-  const data = await loadData('articles')
+  const [data, st] = await Promise.all([loadData('articles'), loadData('steam')])
+  steam.value = st
   // articles.json est déjà trié : francophones d'abord, puis par date
   articles.value = (data?.articles || []).filter((a) => ids.has(a.theme))
   generatedAt.value = data?.generatedAt || null
@@ -64,7 +69,7 @@ const stamp = computed(() => (generatedAt.value ? new Date(generatedAt.value).to
     <div class="intro">
       <div v-if="stamp" class="kicker">Dernière mise à jour : {{ stamp }}</div>
       <h1 class="hero-title">Veille<br />techno<span class="dot">.</span></h1>
-      <p class="intro-p">Flux RSS agrégés à chaque rafraîchissement, articles francophones en tête.</p>
+      <p class="intro-p">Flux RSS agrégés à chaque rafraîchissement, articles francophones en tête. Dev, sécurité, IA, hardware et jeux vidéo (avec le classement Steam).</p>
     </div>
     <div class="wave">
       <dw-wave class="scene" :theme="theme"></dw-wave>
@@ -95,6 +100,27 @@ const stamp = computed(() => (generatedAt.value ? new Date(generatedAt.value).to
       <button class="toggle" :aria-pressed="fr" @click="fr = !fr">Français uniquement</button>
       <button class="toggle" :aria-pressed="hide" @click="hide = !hide">Masquer les lus</button>
       <span class="count">{{ list.length }} article(s) · {{ list.filter((a) => a.lang === 'fr').length }} FR</span>
+    </div>
+  </section>
+
+  <section v-if="th === 'jeux' && steamSection" class="steam band">
+    <div class="steam-head">
+      <h2 class="steam-h">Sur Steam</h2>
+      <div class="seg" role="group" aria-label="Rubrique Steam">
+        <button v-for="sec in steam.sections" :key="sec.key" :aria-pressed="steamSection.key === sec.key" @click="steamTab = sec.key">{{ sec.label }}</button>
+      </div>
+      <span class="count">Relevé {{ new Date(steam.generatedAt).toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' }) }}</span>
+    </div>
+    <div class="steam-grid">
+      <a v-for="g in steamSection.items" :key="g.id" :href="g.url" target="_blank" rel="noopener" class="game">
+        <span class="visual game-visual"><img v-if="g.image" referrerpolicy="no-referrer" :src="g.image" alt="" loading="lazy" @error="$event.target.remove()" /></span>
+        <span class="game-n">{{ g.name }}</span>
+        <span class="game-p">
+          <b v-if="g.discount" class="game-d">−{{ g.discount }} %</b>
+          <s v-if="g.discount && g.original">{{ money(g.original, g.currency) }}</s>
+          <span>{{ g.price === 0 ? 'Gratuit' : g.price === null ? '—' : money(g.price, g.currency) }}</span>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -155,6 +181,20 @@ const stamp = computed(() => (generatedAt.value ? new Date(generatedAt.value).to
 .search:focus-within { border-color: var(--ink); }
 .search input { flex: 1; min-width: 0; height: 36px; border: 0; background: transparent; color: var(--ink); font-size: 15px; outline: none; }
 .count { margin-left: auto; font-size: 13px; color: var(--mut); }
+
+.steam { padding: 24px var(--pad) 32px; }
+.steam-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-bottom: 18px; }
+.steam-h { font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.04em; }
+.seg { display: flex; flex-wrap: wrap; border: 2px solid var(--ink); }
+.seg button { height: 34px; padding: 0 14px; border: 0; font-size: 13px; font-weight: 700; background: transparent; color: var(--ink); }
+.seg button[aria-pressed='true'] { background: var(--ink); color: var(--bg); }
+.steam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); border-top: 2px solid var(--rule); border-left: 2px solid var(--rule); }
+.game { border-right: 2px solid var(--rule); border-bottom: 2px solid var(--rule); padding: 12px; display: flex; flex-direction: column; gap: 8px; color: var(--ink); }
+.game-visual { aspect-ratio: 460 / 215; display: block; }
+.game-n { font-size: 15px; font-weight: 700; line-height: 1.2; }
+.game-p { margin-top: auto; display: flex; gap: 8px; align-items: baseline; font-size: 13px; font-variant-numeric: tabular-nums; }
+.game-p s { color: var(--mut); }
+.game-d { background: var(--acc); color: var(--onacc); padding: 1px 5px; font-size: 12px; }
 
 .lead-visual { flex: 1 1 440px; min-height: 340px; display: block; }
 .lead-body { flex: 1 1 440px; padding: 36px var(--pad); display: flex; flex-direction: column; gap: 16px; justify-content: flex-end; }

@@ -11,6 +11,7 @@ import QuizSession from './views/QuizSession.vue'
 import Sql from './views/Sql.vue'
 import SqlCase from './views/SqlCase.vue'
 import Katas from './views/Katas.vue'
+import Recos from './views/Recos.vue'
 import Settings from './views/Settings.vue'
 
 export default createRouter({
@@ -38,6 +39,7 @@ export default createRouter({
     { path: '/katas', component: Katas },
     // Chargée à la demande : l'éditeur de code n'alourdit pas le reste du site
     { path: '/katas/:id', component: () => import('./views/KataSession.vue') },
+    { path: '/recos', component: Recos },
     { path: '/settings', component: Settings },
   ],
 })

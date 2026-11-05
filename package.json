@@ -11,7 +11,9 @@
     "fetch-feeds": "node scripts/fetch-feeds.mjs",
     "send-reminders": "node scripts/send-reminders.mjs",
     "fetch-quotes": "node scripts/fetch-quotes.mjs",
-    "build-digest": "node scripts/build-digest.mjs"
+    "build-digest": "node scripts/build-digest.mjs",
+    "fetch-steam": "node scripts/fetch-steam.mjs",
+    "fetch-youtube": "node scripts/fetch-youtube.mjs"
   },
   "dependencies": {
     "@codemirror/lang-php": "^6.0.2",

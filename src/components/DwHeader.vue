@@ -17,6 +17,7 @@ const PAGES = computed(() => [
   ['/quiz', 'Quiz & Révisions', (p) => p.startsWith('/quiz')],
   ['/sql', 'Enquêtes SQL', (p) => p.startsWith('/sql')],
   ['/katas', 'Katas', (p) => p.startsWith('/katas')],
+  ['/recos', 'Recos vidéo', (p) => p === '/recos'],
 ])
 const pctLabel = computed(() => `${Math.round(refresh.progress * 100)} %`)
 </script>
@@ -37,7 +38,7 @@ const pctLabel = computed(() => `${Math.round(refresh.progress * 100)} %`)
       <button
         class="btn-outline"
         :disabled="refresh.status === 'running'"
-        title="Relance la veille, le résumé et les cotations sur GitHub (1 à 2 min)"
+        title="Relance la veille, le résumé, les cotations, Steam et YouTube sur GitHub (1 à 2 min)"
         @click="triggerRefresh"
       >
         <span :class="{ spin: refresh.status === 'running' }"><Icon name="refresh" :stroke="2.2" /></span>
