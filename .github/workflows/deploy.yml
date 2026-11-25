@@ -20,11 +20,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -74,6 +71,24 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
+    timeout-minutes: 15 # jamais un run bloqué 6 h
+
+  # Déploiement dans un job séparé : depuis ~22/11/2026, deploy-pages lancé juste après l'upload
+  # dans le même job ne voit pas encore l'artefact (« Found 0 artifact(s) », actions/deploy-pages#451).
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url || steps.retry.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v5
-    timeout-minutes: 15 # jamais un run bloqué 6 h
+        continue-on-error: true
+      - name: Publication, nouvel essai dans 30 s
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+      - id: retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+    timeout-minutes: 10
