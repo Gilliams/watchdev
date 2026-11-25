@@ -7,8 +7,8 @@ import { theme } from '../lib/theme.js'
 import { pad2, pct, deltaColor, money, dateShort, dateTime, timeHM } from '../lib/format.js'
 import { movers as findMovers, marketSummary, matchesAsset } from '../lib/movers.js'
 
-const RANGES = [['1 J', 1], ['1 M', 30], ['3 M', 90], ['6 M', 182], ['1 an', 365]]
-const range = ref(90)
+const RANGES = [['1 J', 1], ['1 S', 7], ['1 M', 30], ['6 M', 182], ['1 an', 365]]
+const range = ref(30)
 const rangeLabel = computed(() => RANGES.find((r) => r[1] === range.value)[0])
 
 const quotes = ref(null)
@@ -27,6 +27,7 @@ onMounted(async () => {
 // Variation sur la période affichée, calculée depuis la série
 function periodChange(a) {
   if (range.value === 1) return a.changes?.d1
+  if (range.value === 7) return a.changes?.d7 // clôture d'il y a 7 j, plus juste que le 1er point filtré
   const since = Date.now() / 1000 - range.value * 86400
   const p = (a.series || []).filter(([t]) => t >= since)
   if (p.length > 1) return ((a.price - p[0][1]) / p[0][1]) * 100
@@ -51,7 +52,7 @@ const ribbons = computed(() => {
 })
 
 const deltas = (a) =>
-  range.value === 1 || range.value === 365
+  [1, 7, 365].includes(range.value) // déjà couverts par 24 h / 7 j / 1 an
     ? [['24 h', a.changes?.d1], ['7 j', a.changes?.d7], ['1 an', a.changes?.y1]]
     : [['24 h', a.changes?.d1], ['7 j', a.changes?.d7], [rangeLabel.value, periodChange(a)]]
 
